@@ -5,8 +5,9 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|add_index, unique:true, null:false,|
+|name|string|add_index, null:false|
 |email|string|null:false|
+|password|string|null:false|
 |avatar_image|string|
 
 ### Association
@@ -42,9 +43,9 @@
 ## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user|references|index: true, foreinkey: true|
+|user|references|index: true, foreign_key: true|
 |article|references|index: true, foreign_key: true|
-|comment|references|index: true, foreign_key: true
+|comment|references|index: true, foreign_key: true|
 
 ### Association
 - belongs_to user
