@@ -25,7 +25,7 @@
 ### Association
 - belongs_to :user
 - has_many :comments
-- has_many :likes, dependent: destroy
+- has_many :likes, dependent: :destroy
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -38,7 +38,7 @@
 ### Association
 - bolongs_to :user
 - belongs_to :article
-- has_many :likes, dependent: destroy
+- has_many :likes, dependent: :destroy
 
 ## likesテーブル
 |Column|Type|Options|
