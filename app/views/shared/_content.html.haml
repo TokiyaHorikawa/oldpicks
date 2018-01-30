@@ -1,0 +1,99 @@
+.content
+  .eyecatch-container
+    .col-md-8.slide
+      / -@method.each do ||
+      /    = link_to '#', { class: 'slide-link'} do
+      /      - if article.image?
+      = image_tag 'sky.jpg', { class: 'slide-image'}
+      /       - else article.image?
+      /         =
+      .capture
+        .picks
+          45
+          .small-letter
+            Picks
+        .title
+          ニュース
+        .detail
+          .source
+            毎日新聞
+          .time
+            12時
+
+    .col-md-4.sub
+      .top
+        = image_tag 'sky.jpg', { class: 'top-image'}
+        .capture
+          .special
+            特集
+          .about
+            トーク
+          .title
+            ニュース
+      .bottom
+        = image_tag 'sky.jpg', { class: 'bottom-image'}
+        .capture
+          .special
+            特集
+          .about
+            トーク
+          .title
+            ニュース
+
+  .topic
+    .genre
+      .newsblock
+        %h3.title テクノロジー
+        = link_to "テクノロジー  一覧を見る", '#', { class: 'genre-link'}
+        .col-md-4.article-box
+          = render partial: 'article'
+        .col-md-4.article-box1
+          = render partial: 'article'
+        .col-md-4.article-box1
+          = render partial: 'article'
+
+    .genre
+      .newsblock
+        %h3.title ビジネス
+        = link_to "ビジネス　 一覧を見る", '#', { class: 'genre-link'}
+
+    .genre
+      .newsblock
+        %h3.title 政治・経済
+        = link_to "政治・経済　 一覧を見る", '#', { class: 'genre-link'}
+
+    .genre
+      .newsblock
+        %h3.title 金融・マーケット
+        = link_to "金融・マーケット　 一覧を見る", '#', { class: 'genre-link'}
+
+    .genre
+      .newsblock
+        %h3.title キャリア・教育
+        = link_to "キャリア・教育　 一覧を見る", '#', { class: 'genre-link'}
+
+    .genre
+      .newsblock
+        %h3.title 社会・スポーツ
+        = link_to "社会・スポーツ　 一覧を見る", '#', { class: 'genre-link'}
+
+    .genre
+      .newsblock
+        %h3.title ジョブオファー
+        = link_to "ジョブオファー　 一覧を見る", '#', { class: 'genre-link'}
+
+    .genre
+      .newsblock
+        過去の人気特集
+
+    .genre
+      .newsblock
+        アナリシス
+
+  .footer
+    .about
+      = link_to "OldPICKS について ", '#', { class: 'footer-link'}
+      = link_to "利用規約", '#', { class: 'footer-link'}
+      = link_to "コンテンツの利用について", '#', { class: 'footer-link'}
+      = link_to "個人情報保護方針", '#', { class: 'footer-link'}
+      = link_to "広告掲載", '#', { class: 'footer-link'}
