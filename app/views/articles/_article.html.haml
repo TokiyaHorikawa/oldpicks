@@ -1,0 +1,27 @@
+.article
+  = link_to root_path do       #仮置きのリンク
+    .article-image
+      / - if article.image.present?
+      = image_tag 'sky.jpg', { class: 'image'}
+      / - else
+
+    .picks
+      10
+      %span.small-letter
+      Picks
+
+    .title_ellipsised
+      ネット広告市場に忍び寄るアマゾンの脅威　 eコマースの巨人、すでにツイッターを上回る広告収入
+
+  = link_to root_path do       #仮置きのリンク
+    .article-user
+      .user-icon
+        / - if article.image.present?
+        = image_tag 'sky.jpg', { class: 'icon-image'}
+        / - else
+
+      .user-info
+        .user-name
+          鈴木　太郎
+        .user-status
+          代表取締役社長

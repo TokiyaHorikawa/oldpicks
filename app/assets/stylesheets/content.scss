@@ -23,16 +23,23 @@
       .capture{
         position: absolute;
         bottom: 0;
-        margin-left: 15px;
+        margin: 0 0 15px 15px;
         .picks{
           display: inline-block;
           border: 1px solid white;
           color: white;
           padding: 5px 10px;
-          font-size: 16px;
+          font-size: 20px;
+          margin-bottom: 10px;
+          .small-letter{
+            font-size: 14px;
+            display: inline-block;
+          }
         }
         .title{
           padding-left: 10px;
+          font-size: 32px;
+          margin-bottom: 5px;
         }
         .detail{
           padding-left: 15px;
@@ -44,7 +51,7 @@
           .time{
             display: inline-block;
             float: left;
-            margin-left: 15px;
+            margin-left: 20px;
           }
         }
       }
@@ -83,7 +90,8 @@
             margin-left: 3px;
           }
           .title{
-
+            padding: 10px 0 0 5px;
+            font-size: 20px;
           }
         }
       }
@@ -112,7 +120,8 @@
             margin-left: 3px;
           }
           .title{
-
+            padding: 10px 0 0 5px;
+            font-size: 20px;
           }
         }
       }
@@ -132,6 +141,11 @@
         .title{
           display: inline-block;
           float: left;
+        }
+        .article-box{
+          clear: both;
+        }
+        .article-box1{
         }
         .genre-link{
           display: inline-block;

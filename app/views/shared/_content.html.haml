@@ -9,9 +9,11 @@
       /         =
       .capture
         .picks
-          45picks
+          45
+          .small-letter
+            Picks
         .title
-          %h2 ニュース
+          ニュース
         .detail
           .source
             毎日新聞
@@ -27,7 +29,7 @@
           .about
             トーク
           .title
-            %h4 ニュース
+            ニュース
       .bottom
         = image_tag 'sky.jpg', { class: 'bottom-image'}
         .capture
@@ -36,13 +38,19 @@
           .about
             トーク
           .title
-            %h4 ニュース
+            ニュース
 
   .topic
     .genre
       .newsblock
         %h3.title テクノロジー
         = link_to "テクノロジー  一覧を見る", '#', { class: 'genre-link'}
+        .col-md-4.article-box
+          = render partial: 'article'
+        .col-md-4.article-box1
+          = render partial: 'article'
+        .col-md-4.article-box1
+          = render partial: 'article'
 
     .genre
       .newsblock
