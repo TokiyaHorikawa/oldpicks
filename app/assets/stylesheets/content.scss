@@ -134,13 +134,14 @@
       min-width: 960px;
       width: calc( ( 100vw - 185px ) * 2 / 3 );
       padding-top: 30px;
-      .newsblock{
+      .articleblock{
         display: inline-block;
         box-sizing: border-box;
         width: 100%;
         .title{
           display: inline-block;
           float: left;
+          margin-left: 20px;
         }
         .article-box{
           clear: both;
