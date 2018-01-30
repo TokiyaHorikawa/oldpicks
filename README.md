@@ -20,12 +20,11 @@
 |------|----|-------|
 |url|string|add_index, null:false|
 |user|references|index: true, foreign_key: true|
-|like_counts|integer|
+|comment_counts|integer|
 
 ### Association
 - belongs_to :user
-- has_many :comments
-- has_many :likes, dependent: :destroy
+- has_many :comments, dependent: :destoy
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -37,17 +36,15 @@
 
 ### Association
 - bolongs_to :user
-- belongs_to :article
+- belongs_to :article, counter_cache: :comment_counts
 - has_many :likes, dependent: :destroy
 
 ## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user|references|index: true, foreign_key: true|
-|article|references|index: true, foreign_key: true|
 |comment|references|index: true, foreign_key: true|
 
 ### Association
 - belongs_to user
-- belongs_to article, counter_cache: :like_counts
 - belongs_to comment, counter_cache: :like_counts
