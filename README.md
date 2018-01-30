@@ -1,24 +1,50 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Newspicksを目コピで作ったアプリケーションです。
 
-Things you may want to cover:
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|add_index, null:false|
+|email|string|null:false|
+|password|string|null:false|
+|avatar_image|string|
 
-* Ruby version
+### Association
+- has_many :articles
+- has_many :comments
+- has_many :likes
 
-* System dependencies
+## articlesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|url|string|add_index, null:false|
+|user|references|index: true, foreign_key: true|
+|comment_counts|integer|
 
-* Configuration
+### Association
+- belongs_to :user
+- has_many :comments, dependent: :destoy
 
-* Database creation
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|content|text|add_index, null: false|
+|user|references|index: true, foreign_key: true|
+|article|references|index: true, foreign_key: true|
+|like_counts|integer|
 
-* Database initialization
+### Association
+- bolongs_to :user
+- belongs_to :article, counter_cache: :comment_counts
+- has_many :likes, dependent: :destroy
 
-* How to run the test suite
+## likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user|references|index: true, foreign_key: true|
+|comment|references|index: true, foreign_key: true|
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to user
+- belongs_to comment, counter_cache: :like_counts
