@@ -1,0 +1,11 @@
+.side-bar{
+  float: left;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  box-sizing: border-box;
+  width: 185px;
+  height: calc(100vh - 50px);
+  background-color: white;
+  z-index: 3;
+}
