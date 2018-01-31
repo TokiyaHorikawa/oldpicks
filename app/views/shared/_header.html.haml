@@ -9,9 +9,13 @@
   .col-md-4.logo
     = link_to "Old PICKS", '#', { class: 'logo-mark'}
 
-  .col-md-4.right-items
+  .col-md-2.right-items
     .self
-
+      = image_tag 'user-image.png', {class: 'user-image'}
+      .name-block
+        %span.display-name 坂本 龍馬
+        %span.plan アカデミック
+      %span.caret
     .flag
       = image_tag 'flag.png', {class: 'flag-icon', id: 'flag_button'}
     .pick

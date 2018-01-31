@@ -1,5 +1,69 @@
-.side-bar
-  / .user
-  /   .user-icon
-  /     = image_tag 'sky.jpg', { class: 'icon' }
+.container
+  .side-bar
+    .user
+      .user-header
+        .user-icon
+          = link_to root_path do
+            = image_tag 'user-image.png'
+        .user-name 坂本 龍馬
+        .user-title 海援隊
+        .follow
+          = link_to root_path, {class: 'follow-info'} do
+            .follow-count 20
+            .follow-caption フォロー
+          = link_to root_path, {class: 'follower-info'} do
+            .follower-count 50
+            .follower-caption フォロワー
+        .time-line
+          = link_to root_path do
+            .time-line-caption マイニュースを作ろう
+            = image_tag 'blue-arrow.png', {class: 'arrow'}
+            .time-line-sub-caption 興味に合わせてカスタマイズ
 
+      .stream_time-line
+        .stream-tile
+          .picker-info
+            = link_to root_path do
+              = image_tag 'user-image.png', {class: 'picker-icon'}
+              .picker-name 織田 信長
+              .picked-date 2018年2月1日
+          = link_to root_path do
+            .picker-comment
+              ロボット、てゆうとくくりが広過ぎる  掃除ロボ、産業ロボ、倉庫搬送ロボ、ピザ宅配ロボなどはすでに実用商業化していて非常に強いプロダクト 今後は警備ロボ、ドローン物流、自動運転車、オート建機など、いわゆる泥くさい仕事のロボット化が期待されているだろう
+            .pick-news-info
+              = link_to root_path do
+                %span.news-title
+                ロボット業界は今後どうなる？ 2017年の70社以上の事例などから読み解く
+            %span をPickしました
+        .stream-tile
+          .picker-info
+            = link_to root_path do
+              = image_tag 'user-image.png', {class: 'picker-icon'}
+              .picker-name 豊臣 秀吉
+              .picked-date 2018年2月1日
+          = link_to root_path do
+            .picker-comment
+              スマホの前のインターフェイスは何なの？
+              歴史を振り返って、順に並べてから次を考えるならわかる😄
+            .pick-news-info
+              = link_to root_path do
+                %span.news-title
+                【スーパーエンジニアに聞く】スマホの次のインターフェースはロボット
+            %span をPickしました
+        .stream-tile
+          .picker-info
+            = link_to root_path do
+              = image_tag 'user-image.png', {class: 'picker-icon'}
+              .picker-name 徳川 家康
+              .picked-date 2018年2月1日
+          = link_to root_path do
+            .picker-comment
+              アメリカだとマスクしている人はいないので目立つ、インフルの時はそれぞれ休むか、無理して来て、ふつうに働いているw
+              医者にかかると高いからあまり行きたくないし
+              それでもひどい感染拡大は聞かない。
+              やはり人が満員電車みたいに密集することが少ないからだろうか
+            .pick-news-info
+              = link_to root_path do
+                %span.news-title
+                インフル予防にマスクは「推奨していない」厚生労働省
+            %span をPickしました

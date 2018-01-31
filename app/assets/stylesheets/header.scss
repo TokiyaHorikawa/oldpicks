@@ -56,12 +56,58 @@
       color: white;
     }
   .right-items{
-    display: inline-block;
-    float: left;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    .user-image{
+      margin-right: 5px;
+      width: 32px;
+      height: 32px;
+      float: left;
+    }
+    .self{
+      position: relative;
+      padding-top: 10px;
+      width: 110px;
+      float:left;
+      cursor: pointer;
+    }
+    .display-name{
+      display: block;
+      color: #ccd4de;
+      font-size: 11px;
+      margin-top: 0;
+      margin-bottom: -2px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .plan{
+      display: inline-block;
+      color: #ccd4de;
+      background-color: #3a476b;
+      font-size: 8px;
+      padding: 0 6px 1px;
+      border-radius: 2px;
+      transform: scale(0.8);
+      margin-left: -8px;
+    }
+    .caret{
+      position: absolute;
+      top: 10px;
+      right: -7px;
+      display: block;
+      width: 3px;
+      border-top: solid 3px #ccd4de;
+      border-left: solid 3px transparent;
+      border-right: solid 3px transparent;
+      margin: 15px 8px 0 16px;
+    }
     .flag{
       display: inline-block;
       .flag-icon{
-        width: 25px;
+        width: 20px;
         height: 25px;
         margin: 10px;
       }
@@ -69,7 +115,7 @@
     .pick{
       display: inline-block;
       .pick-icon{
-        width: 25px;
+        width: 20px;
         height: 25px;
         margin: 10px;
       }
