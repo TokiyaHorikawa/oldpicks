@@ -1,19 +1,36 @@
 .header
   .col-md-1.open-menu
-    = image_tag 'menu.png', {class: 'menu', id: 'menu_bar_button'}
+    = image_tag 'menu.png', { class: 'menu', id: 'menu_bar_button' }
   .col-md-1.search-box
-    = form_tag(method: :get) do
-      = image_tag 'glass.svg', {class: 'glass'}
-      = text_field  :body, nil, {placeholder: "検索する", class: "text"}
+    = form_tag( method: :get ) do
+      = image_tag 'glass.svg', { class: 'glass' }
+      = text_field  :body, nil, { placeholder: "検索する", class: "text" }
 
   .col-md-4.logo
-    = link_to "Old PICKS", '#', { class: 'logo-mark'}
+    = link_to "Old PICKS", '#', { class: 'logo-mark' }
 
   .col-md-4.right-items
     .self
 
     .flag
-      = image_tag 'flag.png', {class: 'flag-icon', id: 'flag_button'}
+      = image_tag 'flag.png', { class: 'flag-icon', id: 'flag_button' }
     .pick
-      = image_tag 'pick.png', {class: 'pick-icon', id: 'pick_button'}
+      = image_tag 'pick.png', { class: 'pick-icon', id: 'pick_button' } do
+        %a.modal-open
+  / modal
+  .modal
+    .background
+    .modal-content-wrapper
+      #modal-content.dialog
+        = image_tag 'xxx.png', { class: 'close-btn' }
+        .urlpickpanel.closable
+          .pick-form
+            .message
+              URLを指定して
+              %br
+              おすすめの記事を共有しましょう
+            .url-group
+              %input{ placeholder: 'URLを入力', type: 'text', class: 'url-value', id: 'url-pick-box' }
+            .notfound
+              指定されたページがありません。
 
