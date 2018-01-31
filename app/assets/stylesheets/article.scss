@@ -2,10 +2,11 @@
   display: inline-block;
   box-sizing: border-box;
   background-color: white;
-  height: 400px;
-  width: 300px;
+  height: 420px;
+  width: 360px;
   float: left;
   margin-top: 10px;
+  margin-left: 23px;
   .article-image{
     box-sizing: border-box;
     height: 25%;
@@ -16,9 +17,10 @@
     }
   }
   .picks{
-    position: absolute;
-    top: 5%;
-    right: 5px;
+    position: relative;
+    bottom: 80px;
+    left: 289px;
+    width: 60px;
     color: white;
     border: 1px solid white;
     border-right: none;
@@ -28,10 +30,10 @@
     font-weight: bold;
     font-size: 18px;
     height: 52px;
-    margin: 16px 20px 8px;
+    margin: 0 20px 8px;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    // white-space: nowrap;
+    // text-overflow: ellipsis;
   }
   .article-user{
     margin-top: 20px;
@@ -76,25 +78,25 @@
       font-size: 14px;
       height: 60px;
       overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      // white-space: nowrap;
+      // text-overflow: ellipsis;
     }
     .comment-user{
       margin: 10px 0 0;
       .comment-icon{
         width: 24px;
         height: 24px;
-        margin-top: 5px;
+        margin-top: 10px;
         margin-right: 5px;
       }
     }
   }
 
   .footer{
-    width: 94%;
+    width: 350px;
     border-top: 1px solid #ccc;
-    position: absolute;
-    bottom: 0;
+    position: relative;
+    bottom: 15px;
     .publisher{
       display: inline-block;
       float: left;
