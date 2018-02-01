@@ -9,12 +9,13 @@
   left: 0;
   z-index: 5;
   .open-menu{
-    .menu{
+    #menu_bar_button{
     display: inline-block;
     float: left;
     width: 30px;
     height: 35px;
     margin: 6px 20px 0 20px;
+    cursor: pointer;
     }
   }
   .search-box{
@@ -52,7 +53,7 @@
       display: inline-block;
       float: left;
       margin: 10px 100px;
-      font-size: 20px;
+      font-size: 25px;
       color: white;
     }
   .right-items{
@@ -122,3 +123,93 @@
     }
   }
 }
+
+.user-menu-container{
+  width: 190px;
+  height:300px;
+  top: 56px;
+  right: 112px;
+  position: fixed;
+  z-index: 8000;
+  display: none;
+  .nozzle-border{
+    right: 48px;
+    content: "";
+    position: absolute;
+    top: -11px;
+    right: 15px;
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid #FFF;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+  }
+  .border{
+    margin: 0 0 8px;
+    border-top: 1px solid #D9D9D9;
+  }
+  .user-menu{
+    padding: 8px 0;
+    background:white;
+    .menu-item{
+      display: block;
+      padding: 8px 24px;
+      cursor: pointer;
+      color: inherit;
+      text-decoration: none;
+      outline: 0;
+    }
+  }
+  }
+
+  .notification-container{
+    width: 400px;
+    height: 360px;
+    top: 45px;
+    right: 90px;
+    position: fixed;
+    background: #FFF;
+    -moz-box-shadow: 0 0 4px #CCC;
+    -webkit-box-shadow: 0 0 4px #CCC;
+    box-shadow: 0 0 4px #CCC;
+    border-radius: 2px;
+    color: #222;
+    z-index: 8000;
+    display: none;
+    .nozzle-border{
+      right: 48px;
+      content: "";
+      position: absolute;
+      top: -11px;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-bottom: 10px solid #FFF;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+    }
+    .notification-header{
+      font-size: 14px;
+      padding: 7.5px 16px;
+      .title{
+        float: left;
+      }
+      .link{
+        float: right;
+      }
+    }
+    .content{
+      border-top: 1px solid #D3DDE9;
+      height:53px;
+      max-width: 400px;
+      background-color: #FFF;
+      position:absolute;
+      left:0;
+    }
+    .nothing-content{
+      padding: 16px 0;
+      text-align: center;
+      font-weight: 700;
+    }
+  }
+
