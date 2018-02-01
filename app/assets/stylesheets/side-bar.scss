@@ -5,6 +5,43 @@
   margin: auto;
   position: relative;
 
+.menu{
+  background: #FFF;
+  width: 285px;
+  height: 100vh;
+  position: fixed;
+  top: 51px;
+  left: auto;
+  bottom: 10px;
+  box-shadow: 2px 2px 8px #CCC;
+  display: none;
+  z-index: 1;
+  overflow-y: auto;
+
+  .main-menu{
+    margin: 16px 0;
+    border-bottom: solid 1px #EAEAEA;
+  }
+  .menu-item{
+    display: block;
+    cursor: pointer;
+    padding: 16px 0 16px 32px;
+    color: #666;
+    transition: all .15s linear;
+  }
+  .theme_menu{
+    height: 100vh;
+    border-top: 1px solid #CCC;
+    padding-bottom: 16px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 237px;
+    bottom: 20px;
+    overflow: auto
+  }
+ }
+
 .side-bar{
   position: fixed;
   top: 50px;
@@ -13,7 +50,7 @@
   width: 185px;
   height: calc(100vh - 50px);
   background-color: white;
-  z-index: 3;
+  display: block;
 
   .user{
     padding-top: 24px;

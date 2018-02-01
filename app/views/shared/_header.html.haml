@@ -1,13 +1,13 @@
 .header
   .col-md-1.open-menu
-    = image_tag 'menu.png', {class: 'menu', id: 'menu_bar_button'}
+    = image_tag 'menu.png', {class: 'menu-list', id: 'menu_bar_button'}
   .col-md-1.search-box
     = form_tag(method: :get) do
       = image_tag 'glass.svg', {class: 'glass'}
       = text_field  :body, nil, {placeholder: "検索する", class: "text"}
 
   .col-md-4.logo
-    = link_to "Old PICKS", '#', { class: 'logo-mark'}
+    = link_to "Old PICKS", root_path, { class: 'logo-mark'}
 
   .col-md-2.right-items
     .self
@@ -20,4 +20,32 @@
       = image_tag 'flag.png', {class: 'flag-icon', id: 'flag_button'}
     .pick
       = image_tag 'pick.png', {class: 'pick-icon', id: 'pick_button'}
+
+.user-menu-container
+  .nozzle-border
+  .nozzle
+  .user-menu
+    = link_to 'マイピックス', root_path, {class: 'menu-item'}
+    = link_to 'ユーザーを探す', root_path, {class: 'menu-item'}
+    %hr.border
+    = link_to 'アカデミア', root_path, {class: 'menu-item'}
+    = link_to '有料サービスについて', root_path, {class: 'menu-item'}
+    %hr.border
+    = link_to '設定', root_path, {class: 'menu-item'}
+    = link_to 'お問い合わせ', root_path, {class: 'menu-item'}
+    = link_to 'ログアウト', root_path, {class: 'menu-item'}
+
+.notification-container
+  .nozzle-border
+  .notification-header
+    .title お知らせ
+    .link
+      = link_to 'キーワード設定/編集'
+  .content
+    .nothing-content お知らせはありません
+
+
+
+
+
 
