@@ -19,7 +19,7 @@
       .slide-image{
         width: 100%;
         height: 100%;
-        border-right: 2px white solid;
+        border-right: 1px white solid;
       }
       .capture{
         position: absolute;
@@ -70,7 +70,7 @@
           width: 100%;
           height: calc( ( 100vw - 185px ) * 0.3 * 0.5);
           min-height: calc( ( 910px - 220px) * 0.3 * 0.5);
-          border-bottom: 2px white solid;
+          border-bottom: 1px white solid;
           position: absolute;
         }
         .capture{
@@ -131,12 +131,12 @@
 
   .topic{
     margin-top: 10px;
-    padding-left: 30px;
     .top-topic{
       display: inline-block;
-      min-width: 1150px;
+      min-width: 1200px;
       width: calc( ( 100vw - 185px ) * 2 / 3 );
       padding-top: 20px;
+      padding-left: 25px;
       .top-article-block{
         display: inline-block;
         float: left;
@@ -159,12 +159,80 @@
       }
     }
 
+    .innovation-topic{
+      display: inline-block;
+      min-width: 1260px;
+      width: calc( ( 100vw - 185px ) * 2 / 3 );
+      height: 470px;
+      margin-top: 50px;
+      background-color: #5B87C6;
+      .innovation-block{
+        display: block;
+        box-sizing: border-box;
+        margin-top: 20px;
+        width: 100%;
+        height: 100%;
+        .innovation-header{
+          height: 50px;
+          .title{
+            display: inline-block;
+            float: left;
+            margin-left: 50px;
+            font-weight: bold;
+            color: white;
+          }
+          .ibm-logo{
+            display: inline-block;
+            width: 80px;
+            float: left;
+            margin: 10px 0 0 25px;
+          }
+          .innovation-link{
+            display: inline-block;
+            float: right;
+            color: white;
+            padding: 10px 80px 0 0;
+          }
+        }
+        .innovation-content{
+          box-sizing: border-box;
+          height: 400px;
+          .innovation-left-block{
+            box-sizing: border-box;
+            height: 400px;
+            width: 630px;
+            float: left;
+          }
+          .innovation-right-block{
+            box-sizing: border-box;
+            height: 400px;
+            width: 630px;
+            float: left;
+            .innovation-right-image{
+              width: 500px;
+              height:320px;
+              margin: 20px 0 20px 50px;
+            }
+            .innovation-right-block-link{
+              z-index: 1;
+              color: white;
+              position: relative;
+              right: 100px;
+              top: 130px;
+            }
+          }
+
+        }
+      }
+    }
+
 
     .genre-topic{
       display: inline-block;
-      min-width: 1150px;
+      min-width: 1200px;
       width: calc( ( 100vw - 185px ) * 2 / 3 );
       padding-top: 30px;
+      padding-left: 25px;
       .genreblock{
         display: inline-block;
         box-sizing: border-box;
@@ -174,23 +242,69 @@
           display: inline-block;
           float: left;
           margin-left: 20px;
+          font-weight: bold;
         }
         .genre-link{
           display: inline-block;
           float: right;
-          padding: 20px 20px 0 0;
+          padding: 10px 20px 0 0;
+        }
+        .description{
+          display: inline-block;
+          float: left;
+          color: #999;
+          padding: 2px 0 0 50px;
         }
         .article-box{
           clear: both;
         }
       }
     }
+    .user-ranking{
+      margin-top: 40px;
+      padding-left: 45px;
+      display: inline-block;
+      min-width: 1200px;
+      .title{
+        display: inline-block;
+        float: left;
+        font-weight: bold;
+      }
+      .user-ranking-link{
+        display: inline-block;
+        float: right;
+        padding: 10px 70px 0 0;
+      }
+      .user-ranking-block{
+        margin-top: 70px;
+      }
+    }
   }
 
+    .comment-ranking{
+      margin-top: 30px;
+      padding-left: 45px;
+      display: inline-block;
+      min-width: 1200px;
+      .title{
+        display: inline-block;
+        float: left;
+        font-weight: bold;
+      }
+      .comment-ranking-link{
+        display: inline-block;
+        float: right;
+        padding: 10px 70px 0 0;
+      }
+      .comment-ranking-block{
+        margin-top: 70px;
+      }
+    }
+
   .footer{
-    margin-top: 50px;
+    margin-top: 40px;
     border-top: 1px solid #ccc;
-    width: 100%;
+    width: 1200px;
     .about{
       padding: 10px 10px 0;
       display: inline-block;
@@ -203,25 +317,97 @@
         text-decoration: none;
       }
     }
-    .logo-mark{
-      .app_store{
+    .social-page{
+      width: 110px;
+      height: 30px;
+      padding: 0 8px;
+      margin: 8px 0 0 100px;
+      border-left: 1px solid #D9D9D9;
+      border-right: 1px solid #D9D9D9;
+      display:inline-block;
+      float: left;
+      .twitter-mark{
+        width: 18px;
+        height: 18px;
+        margin: 8px 13px 0;
+      }
+      .facebook-mark{
+        width: 18px;
+        height: 18px;
+        margin: 8px 12px 0;
+      }
+    }
+    .social-action{
+      width: 200px;
+      height: 30px;
+      margin: 8px;
+      display: inline-block;
+      float: left;
+      border-right: 1px solid #D9D9D9;
+      .twitter-button{
+        width: 75px;
+        height: 20px;
+        margin: 8px 8px 0;
+        background-color:#1b95e0;
+        border-radius: 5px;
+        float: left;
+        .twitter-action-mark{
+          color: white;
+          padding: 2px 5px;
+          display: inline-block;
+          float: left;
+        }
+        .twitter-label{
+          color: white;
+          font-size: 10px;
+          display: inline-block;
+          float: left;
+          margin-left: 5px;
+          padding: 2px 0;
+        }
+      }
+      .facebook-button{
+        width: 75px;
+        height: 20px;
+        margin: 8px 8px 0;
+        background-color: #4267b2;
+        border-radius: 5px;
+        float: left;
+        .facebook-action-mark{
+          color: white;
+          padding: 2px 5px;
+          display: inline-block;
+          float: left;
+        }
+        .facebook-label{
+          color: white;
+          font-size: 10px;
+          display: inline-block;
+          float: left;
+          margin-left: 5px;
+          padding: 2px 0;
+        }
+      }
+    }
+    .stores{
+      .app-store{
         float: right;
         display: inline-block;
         width: 110px;
         height: 30px;
         margin: 10px 20px 15px 0;
-        .app_store_logo{
+        .app-store-logo{
           width: 100%;
           height: 100%;
         }
       }
-      .google_play{
+      .google-play{
         float: right;
         display: inline-block;
         width: 115px;
         height: 30px;
         margin: 10px 20px 15px 0;
-        .google_play_logo{
+        .google-play-logo{
           width: 100%;
           height: 100%;
         }
