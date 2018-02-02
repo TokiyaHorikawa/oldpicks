@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180130001142) do
+ActiveRecord::Schema.define(version: 20180129054159) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "url",            null: false
+    t.string   "url",        null: false
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "comment_counts"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
   end
 
@@ -27,16 +26,17 @@ ActiveRecord::Schema.define(version: 20180130001142) do
     t.integer  "articles_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.integer  "like_counts"
     t.index ["articles_id"], name: "index_comments_on_articles_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
+    t.integer  "article_id"
     t.integer  "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_likes_on_article_id", using: :btree
     t.index ["comment_id"], name: "index_likes_on_comment_id", using: :btree
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20180130001142) do
   add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles", column: "articles_id"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "articles"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "users"
 end
