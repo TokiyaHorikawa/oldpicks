@@ -1,0 +1,81 @@
+.user-ranking-card{
+  width: 545px;
+  height: 100px;
+  background-color: white;
+  display: inline-block;
+  float: left;
+  margin-right: 30px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  .ranking-order{
+    width: 80px;
+    height: 100px;
+    float: left;
+    .rank-circle{
+      background-color: #DBB25E;
+      border-color: #DBB25E;
+      border-radius: 20px;
+      border: 1px solid #666;
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      margin-top: 35px;
+      margin-left: 20px;
+      .rank{
+        text-align: center;
+        padding-top: 5px;
+        color: white;
+      }
+    }
+  }
+  .user-cover{
+    width: 50px;
+    height: 100px;
+    display: inline-block;
+    float: left;
+    .user-icon{
+      width: 50px;
+      height: 50px;
+      margin-top: 25px;
+    }
+  }
+  .user-info{
+    width: 320px;
+    height: 100px;
+    display: inline-block;
+    float: left;
+    padding-left: 23px;
+    padding-top: 25px;
+    .name-wrapper{
+      display: block;
+      box-sizing: border-box;
+      height: 20px;
+      .username_ellipsised{
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+    .title_ellipsised{
+      color: #222;
+      font-size: 12px;
+    }
+    .likes {
+      color: #999;
+      font-size: 12px;
+      .likes_detail{
+        float: left;
+      }
+      .likes_count{
+        float: left;
+        margin-left: 5px;
+      }
+    }
+  }
+  .follow{
+    .follow-btn{
+      width: 75px;
+      height: 28px;
+      margin-top: 35px;
+    }
+  }
+}

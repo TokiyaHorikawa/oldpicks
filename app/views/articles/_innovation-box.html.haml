@@ -1,0 +1,27 @@
+.innovation-article
+  = link_to root_path do       #仮置きのリンク
+    .innovation-article-image
+      / - if article.image.present?
+      = image_tag 'sky.jpg', { class: 'innovation-image'}
+      / - else
+
+      .innovation-picks
+        .innovation-picks-count
+          10
+        %span.innovation-picks-small-letter
+          Picks
+
+    .innovation-title_ellipsised
+      ネット広告市場に忍び寄るアマゾンの脅威　 eコマースの巨人、すでにツイッターを上回る広告収入
+
+
+  = link_to root_path do       #仮置きのリンク
+    .innovation-comment-user
+      = image_tag 'sky.jpg', { class: 'innovation-comment-user-icon'}
+      = image_tag 'sky.jpg', { class: 'innovation-comment-user-icon'}
+
+  .bottom
+    .innovation-publisher
+      ITmedia ビジネスオンライン
+    .innovation-published
+      10時間前
