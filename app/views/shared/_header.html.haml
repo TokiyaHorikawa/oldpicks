@@ -33,4 +33,17 @@
               %input{ placeholder: 'URLを入力', type: 'text', class: 'url-value', id: 'url-pick-box' }
             .notfound
               指定されたページがありません。
-
+            .urlpick-dialog-content
+              .pick-site
+              .cover-controls
+                .cover
+                  Icon
+                = form_for '' do |f|
+                  .comment-container
+                    = f.text_area :contet, placeholder: "コメントを書く（任意）", class: "comment"
+                  .pick-control
+                    .description シェアする
+                    .sns.twitter twitter
+                    .sns.facebook facebook
+                    .pick
+                      =f.submit 'Pick', class: 'pick-font'

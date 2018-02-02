@@ -1,11 +1,9 @@
 class ArticlesController < ApplicationController
 
   def index
-
   end
 
   def new
-    meta = MetaInspector.new()
   end
 
   def create
@@ -22,6 +20,5 @@ class ArticlesController < ApplicationController
 
   def destroy
   end
-
 
 end

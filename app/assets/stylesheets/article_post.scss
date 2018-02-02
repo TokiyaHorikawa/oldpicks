@@ -30,7 +30,7 @@
         z-index:2;
         border-radius: 5px;
         .pick-form {
-          margin: 10px;
+          margin: 20px;
           .message {
             text-align: center;
             font-size: 145%;
@@ -45,6 +45,80 @@
           .notfound {
             color: red;
             margin: 20px 0;
+            display: none;
+          }
+          .urlpick-dialog-content{
+            .pick-site{
+              .pageinfo{
+                margin: 15px 0;
+                .page-thumbnail{
+                  float: left;
+                }
+                .texts{
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  margin: 5px 0 5px 5px;
+                  .title_ellipsised{
+                    font-weight: bold;
+                    font-size: 18px;
+                  }
+                  .summary_ellipsised{
+                    font-size: 14px;
+                    margin-top: 10px;
+                  }
+                }
+              }
+            }
+            .cover-controls{
+              display: none;
+              margin-top: 25px;
+              .cover{
+                float: left;
+              }
+              form{
+                .comment-container{
+                  float: right;
+                  .comment{
+                    height: 120px;
+                    width: 450px;
+                    border-radius: 5px;
+                    border: 0.5px solid;
+                    border-color: #ccc;
+                    outline: 0;
+                    padding: 16px;
+                    resize: none;
+                  }
+                }
+                .pick-control{
+                  clear: both;
+                  display: -webkit-flex;
+                  display: -moz-flex;
+                  display: -ms-flex;
+                  display: -o-flex;
+                  display: flex;
+                  justify-content: flex-end;
+                  padding-top: 10px;
+                  .description{
+                    margin-left: 10px;
+                  }
+                  .sns.twitter{
+                    margin-left: 10px;
+                  }
+                  .sns.facebook{
+                    margin-left: 10px;
+                  }
+                  .pick{
+                    margin-left: 10px;
+                    .pick-font{
+                      padding: 10px 25px;
+                      border-color: #27375c;
+                      background-color: #27375c;
+                      color: #FFF;
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
