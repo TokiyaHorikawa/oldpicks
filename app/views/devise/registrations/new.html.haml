@@ -1,0 +1,38 @@
+.modal-user
+  .background
+  .content-wrapper
+    .dialog
+      = image_tag 'twitter.png', {class: 'close-btn'}
+      .register-form
+        .register-message 新規登録
+        .go-logon
+        %span.go 既にアカウントをお持ちの方は
+        = link_to 'ログインへ', new_user_session_path, {class: 'login'}
+        %button.register-fb
+          %span.facebook Facebookで登録
+        %button.register-tw
+          %span.twetter Twitterで登録
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          .field
+            = f.label :name
+            %br/
+            = f.text_field :name, autofocus: true
+          .field
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email"
+          .field
+            = f.label :password
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} characters minimum)
+            %br/
+            = f.password_field :password, autocomplete: "off"
+          .field
+            = f.label :password_confirmation
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "off"
+          .actions
+            = f.submit "Sign up"
+        = render "devise/shared/links"

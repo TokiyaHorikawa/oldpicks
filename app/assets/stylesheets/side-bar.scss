@@ -1,11 +1,236 @@
+.container{
+  min-width: 1024px;
+  width: 100%;
+  padding: 0;
+  margin: auto;
+  position: relative;
+
+.menu{
+  background: #FFF;
+  width: 285px;
+  height: 100vh;
+  position: fixed;
+  top: 51px;
+  left: auto;
+  bottom: 10px;
+  box-shadow: 2px 2px 8px #CCC;
+  display: none;
+  z-index: 1;
+  overflow-y: auto;
+
+  .main-menu{
+    margin: 16px 0;
+    border-bottom: solid 1px #EAEAEA;
+  }
+  .menu-item{
+    display: block;
+    cursor: pointer;
+    padding: 16px 0 16px 32px;
+    color: #666;
+    transition: all .15s linear;
+  }
+  .theme_menu{
+    height: 100vh;
+    border-top: 1px solid #CCC;
+    padding-bottom: 16px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 237px;
+    bottom: 20px;
+    overflow: auto
+  }
+ }
+
 .side-bar{
-  float: left;
   position: fixed;
   top: 50px;
-  left: 0;
+  bottom: 0;
   box-sizing: border-box;
   width: 185px;
   height: calc(100vh - 50px);
   background-color: white;
-  z-index: 3;
+  display: block;
+
+  .user{
+    padding-top: 24px;
+    height: 190px;
+    .user-header{
+      padding-bottom: 12px;
+    .user-icon{
+      width: 48px;
+      height: 48px;
+      margin: 0 auto;
+    }
+    .user-name{
+      width: 100%;
+      font-size: 20px;
+      text-align: center;
+      font-style: bold;
+    }
+    .user-title{
+      color: #666;
+      width: 100%;
+      margin: 3px auto 0;
+      height: 28px;
+      text-align: center;
+      word-break: break-word;
+      border-bottom: solid 1px #EAEAEA;
+    }
+    .button_to{
+      padding-left: 20px;
+      .create-account{
+        font-size: 12px;
+        width: 144px;
+        height: 32px;
+        border: 1px solid #37509C;
+        background-color: #FFF;
+        color: #37509C;
+        border-radius: 2px;
+        transition: all .1s linear;
+        padding: 0;
+        cursor: pointer;
+        &:hover{
+          background: lightblue;
+        }
+      }
+    }
+    .follow{
+      width: 100%;
+      margin-top: 3px;
+      border-bottom: solid 1px #EAEAEA;
+    .follow-info{
+      display: inline-block;
+      float: left;
+      width: 50%;
+      height:100%;
+      border-right: solid 1px #EAEAEA;
+      cursor: pointer;
+    .follow-count{
+      text-align: center;
+      font-size: 18px;
+      color: #15274D;
+    }
+    .follow-caption{
+      text-align: center;
+      color: #666;
+      font-size: 8px;
+      line-height: 1em
+    }
+    }
+
+    .follower-info{
+      display: inline-block;
+      width: 50%;
+      height: 100%;
+      cursor: pointer;
+    .follower-count{
+      text-align: center;
+      font-size: 18px;
+      color: #15274D;
+    }
+    .follower-caption{
+      text-align: center;
+      color: #666;
+      font-size: 8px;
+      line-height: 1em
+    }
+    }
+    }
+    }
+    }
+    .time-line{
+      background-color: #FCFCFC;
+      border-bottom: solid 1px #EAEAEA;
+      padding: 0 16px 6px;
+      text-align: left;
+    .time-line-caption{
+      padding: 14px 15px 5px 0;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    img.arrow{
+      width: 6px;
+      margin-top: 3px;
+      float: right;
+      right: -8px;
+      position: relative;
+      transition: all .1s linear;
+    }
+    .time-line-sub-caption{
+      font-size: 10px;
+      font-weight: 600;
+      color: #999;
+    }
+    }
+    .stream_time-line{
+      position: absolute;
+      overflow-y: auto;
+      background-color: #FCFCFC;
+      top: 228px;
+      transition: top 1000ms 0s ease;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      .stream-tile{
+        border-bottom: solid 1px #EAEAEA;
+        background-color: #FCFCFC;
+        padding: 16px 0;
+        margin: 0 16px;
+        .picker-info{
+          font-size: 12px;
+          height: 30px;
+          width: 100%;
+        .picker-icon{
+          width: 30px;
+          height: 30px;
+          float: left;
+        }
+        .picker-name{
+          font-size: 12px;
+          font-weight: 700;
+          margin-left: 10px;
+          max-height: 16px;
+          color: black;
+          float: left;
+        }
+        .picked-date{
+          font-size: 10px;
+          color: #999;
+          margin-left: 10px;
+          float: left;
+        }
+        }
+        a:hover{
+          background: #eaeaea;
+        }
+
+        .picker-comment{
+          overflow: initial;
+          word-break: break-all;
+          word-break: break-word;
+          overflow: hidden;
+          max-height: 50px;
+          margin-top: 8px;
+          font-size: 12px;
+          color: black;
+          a:hover{
+            background: #eaeaea;
+          }
+        }
+        .pick-news-info{
+          color: #999;
+          padding-top: 8px;
+          font-size: 12px;
+        .news-title{
+          color: #37509C;
+        }
+        }
+        span{
+          color: #999;
+          font-size: 12px;
+        }
+      }
+    }
+  }
 }
