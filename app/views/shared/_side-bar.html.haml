@@ -19,24 +19,39 @@
 
   .side-bar
     .user
-      .user-header
-        .user-icon
-          = link_to root_path do
-            = image_tag 'user-image.png'
-        .user-name 坂本 龍馬
-        .user-title 海援隊
-        .follow
-          = link_to root_path, {class: 'follow-info'} do
-            .follow-count 20
-            .follow-caption フォロー
-          = link_to root_path, {class: 'follower-info'} do
-            .follower-count 50
-            .follower-caption フォロワー
-        .time-line
-          = link_to root_path do
-            .time-line-caption マイニュースを作ろう
-            = image_tag 'blue-arrow.png', {class: 'arrow'}
-            .time-line-sub-caption 興味に合わせてカスタマイズ
+      - if user_signed_in?
+        .user-header
+          .user-icon
+            = link_to root_path do
+              = image_tag 'user-image.png'
+          .user-name #{current_user.name}
+          .user-title
+          .follow
+            = link_to root_path, {class: 'follow-info'} do
+              .follow-count 20
+              .follow-caption フォロー
+            = link_to root_path, {class: 'follower-info'} do
+              .follower-count 50
+              .follower-caption フォロワー
+          .time-line
+            = link_to root_path do
+              .time-line-caption マイニュースを作ろう
+              = image_tag 'blue-arrow.png', {class: 'arrow'}
+              .time-line-sub-caption 興味に合わせてカスタマイズ
+      -else
+        .user-header
+          .user-icon
+            = link_to new_user_registration_path do
+              = image_tag 'user-image.png'
+          .user-name No Account
+          = button_to 'アカウントを作成する', new_user_registration_path, {class: 'create-account', method: :get}
+          .follow
+            .follow-info
+              .follow-count -
+              .follow-caption フォロー
+            .follower-info
+              .follower-count -
+              .follower-caption フォロワー
 
       .stream_time-line
         .stream-tile

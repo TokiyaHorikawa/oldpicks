@@ -121,6 +121,33 @@
         margin: 10px;
       }
     }
+    .register-or-login-items{
+      margin-right: 35px;
+      margin-top: 11px;
+      font-size: 86%;
+    }
+    .register{
+      float: left;
+      margin-right: 0;
+      padding: 6px 10px;
+      font-size: 14px;
+      border-radius: 2px;
+      cursor: pointer;
+      color: #FFF;
+    }
+    .login{
+      color: #FFF;
+      float: right;
+      cursor: pointer;
+      margin-right: 10px;
+      padding: 5px 12px;
+      background-color: #4277EC;
+      font-weight: 700;
+      font-size: 12px;
+      -moz-border-radius: 2px;
+      -webkit-border-radius: 2px;
+      border-radius: 2px;
+    }
   }
 }
 
