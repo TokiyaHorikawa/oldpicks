@@ -77,6 +77,24 @@
       word-break: break-word;
       border-bottom: solid 1px #EAEAEA;
     }
+    .button_to{
+      padding-left: 20px;
+      .create-account{
+        font-size: 12px;
+        width: 144px;
+        height: 32px;
+        border: 1px solid #37509C;
+        background-color: #FFF;
+        color: #37509C;
+        border-radius: 2px;
+        transition: all .1s linear;
+        padding: 0;
+        cursor: pointer;
+        &:hover{
+          background: lightblue;
+        }
+      }
+    }
     .follow{
       width: 100%;
       margin-top: 3px;
