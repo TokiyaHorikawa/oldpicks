@@ -1,17 +1,35 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.modal-user
+  .background
+  .content-wrapper
+    .dialog#login
+      = link_to '戻る', root_path, {class: 'close-btn'}
+      .register-message ログイン
+      .go-logon
+      %span.go アカウントをお持ちでない方は
+      = link_to '新規登録へ', new_user_registration_path, {class: 'login'}
+      = link_to 'https://www.facebook.com/' do
+        %button.register-fb
+          = image_tag 'facebook.png', {class: 'fb-btn'}
+          %span.facebook Facebookでログイン
+      %br
+      = link_to 'https://twitter.com/?lang=ja' do
+        %button.register-tw
+          = image_tag 'twitter.png', {class: 'tw-btn'}
+          %span.twetter Twitterでログイン
+      .or
+        %div または
+
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = devise_error_messages!
+        .field
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: '登録したメールアドレス または Oldpicks ID'
+        .field
+          %br/
+          = f.password_field :password, autocomplete: "off", placeholder: 'パスワード'
+
+          .actions
+          = f.submit "ログイン", id: 'submit'
+
+          .forget-passward
+          = link_to 'パスワードをお忘れの方はこちら', new_user_password_path, {class: 'login'}
