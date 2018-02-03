@@ -2,9 +2,9 @@
   .col-md-1.open-menu
     = image_tag 'menu.png', {class: 'menu-list', id: 'menu_bar_button'}
   .col-md-1.search-box
-    = form_tag(method: :get) do
-      = image_tag 'glass.svg', {class: 'glass'}
-      = text_field  :body, nil, {placeholder: "検索する", class: "text"}
+    = form_tag( method: :get ) do
+      = image_tag 'glass.svg', { class: 'glass' }
+      = text_field  :body, nil, { placeholder: "検索する", class: "text" }
 
   .col-md-4.logo
     = link_to "Old PICKS", root_path, { class: 'logo-mark'}
@@ -21,6 +21,36 @@
         = image_tag 'flag.png', {class: 'flag-icon', id: 'flag_button'}
       .pick
         = image_tag 'pick.png', {class: 'pick-icon', id: 'pick_button'}
+    / modal
+    .modal
+      .background
+      .modal-content-wrapper
+        #modal-content.dialog
+          = image_tag 'xxx.png', { class: 'close-btn' }
+          .urlpickpanel.closable
+            .pick-form
+              .message
+                URLを指定して
+                %br
+                おすすめの記事を共有しましょう
+              .url-group
+                %input{ placeholder: 'URLを入力', type: 'text', class: 'url-value', id: 'url-pick-box' }
+              .notfound
+                指定されたページがありません。
+              .urlpick-dialog-content
+                .pick-site
+                .cover-controls
+                  .cover
+                    Icon
+                  = form_for '' do |f|
+                    .comment-container
+                      = f.text_area :contet, placeholder: "コメントを書く（任意）", class: "comment"
+                    .pick-control
+                      .description シェアする
+                      .sns.twitter twitter
+                      .sns.facebook facebook
+                      .pick
+                        =f.submit 'Pick', class: 'pick-font'
   - else
     .col-md-2.right-items
       .register-or-login-items
@@ -49,9 +79,3 @@
       = link_to 'キーワード設定/編集'
   .content
     .nothing-content お知らせはありません
-
-
-
-
-
-
