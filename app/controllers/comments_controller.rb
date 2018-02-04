@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
 
   def create
+    # binding.pry
+    # @comments = Comment.create()
   end
 
   def edit

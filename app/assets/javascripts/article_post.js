@@ -29,15 +29,26 @@ $(document).on('turbolinks:load', function() {
       return false;
     });
 
+    // URL入力欄が空なら消す
     $('#url-pick-box').keyup(function() {
-      if($(this).val() == "") {
-        $('.urlpick-dialog-content').empty();
+      if($(this).val() ==  "") {
+        $('.urlpick-dialog-content').hide();
+        // js作成htmlとコメントの削除
+        $('.pageinfo').empty();
+        $('.comment').empty();
+        // pickボタンをhiden
+        $('.pick').hide();
+        $('.pick-font').hide();
       }
     });
 
     // keyupでコメント入力欄表示
     $("#url-pick-box").on('keyup', function() {
       $('.cover-controls').show();
+    });
+    // keyupでPickボタン表示
+    $("#url-pick-box").on('keyup', function() {
+      $('.pick').show();
     });
     // keyupで記事概要表示
     $("#url-pick-box").on("keyup", function() {
