@@ -259,7 +259,7 @@
                         float: left;
                       }
                     }
-                    .drop-down-button{
+                    .popular-drop-down-button{
                       width: 30px;
                       height: 28px;
                       cursor: pointer;
@@ -292,7 +292,7 @@
                       float: left;
                       width: 90px;
                       padding-top: 20px;
-                      .like-mark{
+                      .like-icon{
                         width: 15px;
                         height: 15px;
                         margin-top: 45%;
@@ -315,6 +315,36 @@
                         margin-top: 5px;
                         margin-left: 55px;
                         cursor: pointer;
+                      }
+                    }
+                  }
+                  .popular-drop-menus{
+                    width: 320px;
+                    margin: 16px 0;
+                    border: solid 1px #EAEAEA;
+                    border-bottom: none;
+                    background-color: white;
+                    float: left;
+                    z-index: 1;
+                    position: relative;
+                    display: none;
+                    bottom: 220px;
+                    left: 280px;
+                    .drop-menu{
+                      border-bottom: solid 1px #EAEAEA;
+                      .menu-item{
+                        display: inline-block;
+                        width: 270px;
+                        cursor: pointer;
+                        padding: 16px 20px 16px 32px;
+                        color: #666;
+                        transition: all .15s linear;
+                      }
+                      .drop-icon{
+                        width: 24px;
+                        height: 24px;
+                        display: inline-block;
+                        margin-left: 20px;
                       }
                     }
                   }
@@ -371,7 +401,7 @@
                         float: left;
                       }
                     }
-                    .drop-down-button{
+                    .recommend-drop-down-button{
                       width: 30px;
                       height: 28px;
                       cursor: pointer;
@@ -403,7 +433,7 @@
                       float: left;
                       width: 90px;
                       padding-top: 20px;
-                      .like-mark{
+                      .like-icon{
                         width: 15px;
                         height: 15px;
                         margin-top: 45%;
@@ -426,6 +456,36 @@
                         margin-top: 5px;
                         margin-left: 55px;
                         cursor: pointer;
+                      }
+                    }
+                  }
+                  .recommend-drop-menus{
+                    width: 320px;
+                    margin: 16px 0;
+                    border: solid 1px #EAEAEA;
+                    border-bottom: none;
+                    background-color: white;
+                    float: left;
+                    z-index: 1;
+                    position: relative;
+                    display: none;
+                    bottom: 200px;
+                    left: 280px;
+                    .drop-menu{
+                      border-bottom: solid 1px #EAEAEA;
+                      .menu-item{
+                        display: inline-block;
+                        width: 270px;
+                        cursor: pointer;
+                        padding: 16px 20px 16px 32px;
+                        color: #666;
+                        transition: all .15s linear;
+                      }
+                      .drop-icon{
+                        width: 24px;
+                        height: 24px;
+                        display: inline-block;
+                        margin-left: 20px;
                       }
                     }
                   }
