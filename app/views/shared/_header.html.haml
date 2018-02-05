@@ -22,35 +22,7 @@
       .pick
         = image_tag 'pick.png', {class: 'pick-icon', id: 'pick_button'}
     / modal
-    .modal
-      .background
-      .modal-content-wrapper
-        #modal-content.dialog
-          = image_tag 'xxx.png', { class: 'close-btn' }
-          .urlpickpanel.closable
-            .pick-form
-              .message
-                URLを指定して
-                %br
-                おすすめの記事を共有しましょう
-              .url-group
-                %input{ placeholder: 'URLを入力', type: 'text', class: 'url-value', id: 'url-pick-box' }
-              .notfound
-                指定されたページがありません。
-              .urlpick-dialog-content
-                .pick-site
-                .cover-controls
-                  .cover
-                    Icon
-                  = form_for '' do |f|
-                    .comment-container
-                      = f.text_area :contet, placeholder: "コメントを書く（任意）", class: "comment"
-                    .pick-control
-                      .description シェアする
-                      .sns.twitter twitter
-                      .sns.facebook facebook
-                      .pick
-                        =f.submit 'Pick', class: 'pick-font'
+    = render partial: "articles/article_post"
   - else
     .col-md-2.right-items
       .register-or-login-items
