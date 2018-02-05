@@ -2,9 +2,9 @@
   .col-md-1.open-menu
     = image_tag 'menu.png', {class: 'menu-list', id: 'menu_bar_button'}
   .col-md-1.search-box
-    = form_tag(method: :get) do
-      = image_tag 'glass.svg', {class: 'glass'}
-      = text_field  :body, nil, {placeholder: "検索する", class: "text"}
+    = form_tag( method: :get ) do
+      = image_tag 'glass.svg', { class: 'glass' }
+      = text_field  :body, nil, { placeholder: "検索する", class: "text" }
 
   .col-md-4.logo
     = link_to "Old PICKS", root_path, { class: 'logo-mark'}
@@ -21,6 +21,8 @@
         = image_tag 'flag.png', {class: 'flag-icon', id: 'flag_button'}
       .pick
         = image_tag 'pick.png', {class: 'pick-icon', id: 'pick_button'}
+    / modal
+    = render partial: "articles/article_post"
   - else
     .col-md-2.right-items
       .register-or-login-items
@@ -49,9 +51,3 @@
       = link_to 'キーワード設定/編集'
   .content
     .nothing-content お知らせはありません
-
-
-
-
-
-

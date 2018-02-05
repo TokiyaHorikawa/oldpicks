@@ -8,6 +8,6 @@ Rails.application.routes.draw do
       resources :likes, only: [:create, :destroy]
     end
   end
-
+  resources :get_urls, only: [:index]
   resources :users, only: [:show, :edit, :update]
 end

@@ -1,0 +1,161 @@
+.modal-user{
+  display: block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 8000;
+  .background{
+    position:relative;
+    position: fixed;
+    background: #15274D;
+    width: 100%;
+    height: 100%;
+    opacity: .9;
+  }
+  .content-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    text-align: center;
+    overflow-y: auto;
+    height: 100%;
+    .dialog{
+      text-align: left;
+      position: relative;
+      display: inline-block;
+      font-size: 16px;
+      background: #FFF;
+      padding: 32px 40px;
+      width: 400px;
+      height: 650px;
+      border-radius: 3px;
+      text-align: center;
+      transition: all .1s linear;
+      .close-btn{
+        position: absolute;
+        top: -30px;
+        right: -30px;
+        width: 25px;
+        height: 25px;
+        z-index: 1;
+        transition: all .1s linear;
+        cursor: pointer;
+      }
+      .register-message{
+        font-size: 20px;
+        color: #00133A;
+        font-weight: 700;
+        line-height: 100%;
+        margin-bottom: 8px;
+      }
+      .go{
+        font-size: 14px;
+      }
+      .login{
+        color: #37509C;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      .register-fb{
+        margin-top: 8px;
+        font-size: 14px;
+        height: 48px;
+        width: 100%;padding-left: 24px;
+        text-align: left;
+        background-color: #3C5B97;
+        color: #FFF;
+        .fb-btn{
+        width: 16px;
+        height: 16px;
+        background: #FFF;
+        margin-right: 10px;
+        }
+      }
+      .register-tw{
+        margin-top: 8px;
+        font-size: 14px;
+        height: 48px;
+        width: 100%;padding-left: 24px;
+        text-align: left;
+        background-color: #59ADEC;
+        color: #FFF;
+        .tw-btn{
+          width: 16px;
+          height: 16px;
+          background: #FFF;
+          margin-right: 10px;
+        }
+      }
+      .or{
+        margin: 16px 4px 4px;
+        height: 20px;
+        clear: both;
+        content: '';
+        display: block;
+        background-color: #CCC;
+        height: 1px;
+        div{
+          background-color: #FFF;
+          position: absolute;
+          margin-top: -10px;
+          width: 140px;
+          left: 50%;
+          margin-left: -70px;
+          font-size: 12px;
+          padding-top: 3px;
+          color: #999;
+        }
+      }
+      input{
+        width: 100%;
+        height: 40px;
+        font-size: 12px;
+        margin-top: 15px;
+        transition: all .1s linear;
+        &#submit{
+        border: 1px solid #15274d;
+        background-color: #15274d;
+        color: #FFF;
+        border-radius: 2px;
+        transition: all .1s linear;
+        }
+      }
+      .description{
+        margin-top: 24px;
+        color: #999;
+        font-size: 12px;
+      }
+      #error_explanation{
+        background-color:#ffff80;
+        border-color:#E5A500;
+        color:#CC7600;
+      h2{
+        font-size: 14px;
+      }
+      li{
+        text-align: center;
+        list-style: none;
+        font-size: 10px;
+      }
+      }
+      &#login{
+        text-align: left;
+        position: relative;
+        display: inline-block;
+        font-size: 16px;
+        background: #FFF;
+        padding: 32px 40px;
+        width: 400px;
+        height: 500px;
+        border-radius: 3px;
+        text-align: center;
+        transition: all .1s linear;
+      }
+    }
+  }
+}
