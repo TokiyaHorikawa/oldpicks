@@ -1,0 +1,236 @@
+.show-wrapper
+  = render partial: "shared/header"
+  = render partial: "shared/side-bar"
+
+  .show-content
+    .breadcrumbs
+      .link-wrapper
+        = link_to articles_path do
+          = image_tag 'arrow-left.png', { class: 'arrow-left'}
+          総合トップ
+
+    .show-contents
+      .main-contents-area
+        = link_to root_path do       #仮置きのリンク
+          .show-article-image
+            / - if article.image.present?
+            = image_tag 'sky.jpg', { class: 'show-image'}
+            / - else
+
+            .show-picks
+              .show-count
+                10
+              %span.show-small-letter
+                Picks
+
+          .news
+            = link_to articles_path do
+              .title-bordered-editor
+                ネット広告市場に忍び寄るアマゾンの脅威　 eコマースの巨人、すでにツイッターを上回る広告収入
+            .meta
+              = image_tag 'publisher.png', { class: 'icon-image'}
+              .caption
+                Reuters
+              = image_tag 'published.png', { class: 'icon-image'}
+              .caption
+                8時間前
+            = link_to '続きを読む', 'root_path', { class: 'read-more-center'}
+
+          .news-comment
+            .pick-editor
+              .comment-area
+                = image_tag 'sky.jpg', { class: 'cover'}
+                .comment-container
+                  = form_for "" do |f|
+                    = f.text_field :content, {class: 'form-comment', placeholder: "コメントを書く"}
+              .pick-control
+                .description
+                  シェアする
+                .sns-twitter
+                  = image_tag 'twitter-gray', { class: 'twitter-mark'}
+                .sns-facebook
+                  = image_tag 'facebook-gray', { class: 'facebook-mark'}
+                .pick-button
+                  .pick
+                    Pick
+
+
+            .comments
+              .populars
+                .section-header
+                  注目のコメント
+                .comment-container
+                  / - @article.comments.limit(3).each do |comment|
+                  .comment-row-no-border
+                    .user-bar
+                      .user-cover
+                        = image_tag 'sky.jpg', { class: 'user-icon'}
+                      .user-profile
+                        .user-name
+                          織田信長
+                        .user-job
+                          ユーザベース SPEEDAアナリスト
+                        .pick-time
+                          4時間前
+                      .popular-drop-down-button
+                        ⋮
+                    .comment-box
+                      .comment
+                        バブル崩壊から30年近く、アジア通貨危機・日本の金融危機からほぼ20年、リーマンショックから10年ですから、日々のマーケットの動きとは波長の違う大きな波がそろそろやって来るのかも知れません。人工知能の時代でもマーケットを動かすのは人間の心理。人間は常に高所恐怖症です。金利上昇の波に襲われると日本はかなり辛いです
+                      .like-panel
+                        = image_tag 'like-gray', { class: 'like-icon'}
+                        / = image_tag 'like-red', { class: 'like-mark'}
+                        .like-count-box
+                          .like-count
+                            0
+                        .like-label
+                          Likes
+                    .popular-drop-menus
+                      .drop-menu
+                        = image_tag 'follow', { class: 'drop-icon'}
+                        = link_to  'このユーザーをフォロー', root_path, {class: 'menu-item'}
+                      .drop-menu
+                        = image_tag 'mute-icon', { class: 'drop-icon'}
+                        = link_to 'このユーザーのコメントを非表示', root_path, {class: 'menu-item'}
+                      .drop-menu
+                        = image_tag 'report-icon', { class: 'drop-icon'}
+                        = link_to '問題を報告', root_path, {class: 'menu-item'}
+
+
+                  / .comment-row-no-border
+                  /   .user-bar
+                  /     .user-cover
+                  /       = image_tag 'sky.jpg', { class: 'user-icon'}
+                  /     .user-profile
+                  /       .user-name
+                  /         Fuji Kentaro
+                  /       .user-job
+                  /         ユーザベース SPEEDAアナリスト
+                  /       .pick-time
+                  /         4時間前
+                  /     .drop-down-button
+                  /       ⋮
+                  /   .comment-box
+                  /     .comment
+                  /       バブル崩壊から30年近く、アジア通貨危機・日本の金融危機からほぼ20年、リーマンショックから10年ですから、日々のマーケットの動きとは波長の違う大きな波がそろそろやって来るのかも知れません。人工知能の時代でもマーケットを動かすのは人間の心理。人間は常に高所恐怖症です。金利上昇の波に襲われると日本はかなり辛いです
+                  /     .like-panel
+                  /       = image_tag 'like-gray', { class: 'like-mark'}
+                  /       / = image_tag 'like-red', { class: 'like-mark'}
+                  /       .like-count-box
+                  /         .like-count
+                  /           0
+                  /       .like-label
+                  /         Likes
+
+                  / .comment-row-no-border
+                  /   .user-bar
+                  /     .user-cover
+                  /       = image_tag 'sky.jpg', { class: 'user-icon'}
+                  /     .user-profile
+                  /       .user-name
+                  /         Fuji Kentaro
+                  /       .user-job
+                  /         ユーザベース SPEEDAアナリスト
+                  /       .pick-time
+                  /         4時間前
+                  /     .drop-down-button
+                  /       ⋮
+                  /   .comment-box
+                  /     .comment
+                  /       バブル崩壊から30年近く、アジア通貨危機・日本の金融危機からほぼ20年、リーマンショックから10年ですから、日々のマーケットの動きとは波長の違う大きな波がそろそろやって来るのかも知れません。人工知能の時代でもマーケットを動かすのは人間の心理。人間は常に高所恐怖症です。金利上昇の波に襲われると日本はかなり辛いです
+                  /     .like-panel
+                  /       = image_tag 'like-gray', { class: 'like-mark'}
+                  /       / = image_tag 'like-red', { class: 'like-mark'}
+                  /       .like-count-box
+                  /         .like-count
+                  /           0
+                  /       .like-label
+                  /         Likes
+
+              .recommend
+                .section-header
+                  おすすめのコメント
+                .comment-container
+                  / - @article.each do |comment|
+                  .comment-row-no-border
+                    .user-bar
+                      .user-cover
+                        = image_tag 'sky.jpg', { class: 'user-icon'}
+                      .user-profile
+                        .user-name
+                          豊臣秀吉
+                        .user-job
+                          ユーザベース SPEEDAアナリスト
+                        .pick-time
+                          4時間前
+                      .recommend-drop-down-button
+                        ⋮
+                    .comment-box
+                      .comment
+                        バブル崩壊から30年近く、アジア通貨危機・日本の金融危機からほぼ20年、リーマンショックから10年ですから、日々のマーケットの動きとは波長の違う大きな波がそろそろやって来るのかも知れません。人工知能の時代でもマーケットを動かすのは人間の心理。人間は常に高所恐怖症です。金利上昇の波に襲われると日本はかなり辛いです
+                      .like-panel
+                        = image_tag 'like-gray', { class: 'like-icon'}
+                        / = image_tag 'like-red', { class: 'like-mark'}
+                        .like-count-box
+                          .like-count
+                            0
+                        .like-label
+                          Likes
+                    .recommend-drop-menus
+                      .drop-menu
+                        = image_tag 'follow', { class: 'drop-icon'}
+                        = link_to  'このユーザーをフォロー', root_path, {class: 'menu-item'}
+                      .drop-menu
+                        = image_tag 'mute-icon', { class: 'drop-icon'}
+                        = link_to 'このユーザーのコメントを非表示', root_path, {class: 'menu-item'}
+                      .drop-menu
+                        = image_tag 'report-icon', { class: 'drop-icon'}
+                        = link_to '問題を報告', root_path, {class: 'menu-item'}
+
+
+              .load-all
+                .show-other-pick
+                  .other-pick-text
+                    .other-pick-label
+                      他
+                    .remaining-count
+                      1
+                    .other-pick-label
+                      件の Pickを表示
+
+    .right-container
+      .transmit-source-container
+        .related-user-section-title
+          配信メディア
+          .related-user
+            = image_tag 'sky.jpg', { class: 'transmit-source-icon'}
+            .related-user-name
+              毎日新聞
+            = image_tag 'follow-button.png', { class: 'follow-btn'}
+
+      .side-news-wrapper
+        .side-news-section-title
+          関連記事一覧
+        .side-contents
+          = link_to root_path do       #仮置きのリンク
+            .side-article-image
+              / - if article.image.present?
+              = image_tag 'sky.jpg', { class: 'show-image'}
+              / - else
+
+              .show-picks
+                .show-count
+                  10
+                %span.show-small-letter
+                  Picks
+
+            .news-detail
+              .title-bordered-editor
+                ネット広告市場に忍び寄るアマゾンの脅威　 eコマースの巨人、すでにツイッターを上回る広告収入
+            .meta
+              .caption-publisher
+                Reuters
+              .caption-published
+                8時間前
+
+
