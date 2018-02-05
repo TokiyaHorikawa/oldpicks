@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  # root "articles#index"
-  root "articles#show"
+  root "articles#index"
 
   resources :articles, shallow: true do
     resources :comments, only: [:index, :create, :edit, :update, :destroy] do
