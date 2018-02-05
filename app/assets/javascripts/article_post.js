@@ -66,12 +66,14 @@ $(document).on('turbolinks:load', function() {
         $('.message').empty();
         $('.pick-site').append(pageinfo)
         $('.cover-controls').show();
+        // 記事情報をテキストエリアに記述
+        $('.post_title').append(page.title)
+        $('.post_description').append(page.description)
+        $('.post_image').append(page.image)
+        $('.post_site_name').append(page.site_name)
       })
-
+        // 条件分岐に変える
         $('notfound').show();
-
     });
   });
 });
-
-
