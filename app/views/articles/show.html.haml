@@ -13,28 +13,29 @@
       .main-contents-area
         = link_to root_path do       #仮置きのリンク
           .show-article-image
-            / - if article.image.present?
-            = image_tag 'sky.jpg', { class: 'show-image'}
-            / - else
+            - if @article.image.present?
+              = image_tag @article.image, { class: 'show-image'}
+            - else
+              = imaeg_tag @sky.jpg, { class: 'show-image'}
 
             .show-picks
               .show-count
-                10
+                =@article.pick_counts
               %span.show-small-letter
                 Picks
 
           .news
-            = link_to articles_path do
+            = link_to @article.url do
               .title-bordered-editor
-                ネット広告市場に忍び寄るアマゾンの脅威　 eコマースの巨人、すでにツイッターを上回る広告収入
+                = @article.title
             .meta
               = image_tag 'publisher.png', { class: 'icon-image'}
               .caption
-                Reuters
+                = @article.site_name
               = image_tag 'published.png', { class: 'icon-image'}
               .caption
-                8時間前
-            = link_to '続きを読む', 'root_path', { class: 'read-more-center'}
+                = "#{@article.before_time}"
+            = link_to '続きを読む', @article.url, { class: 'read-more-center'}
 
           .news-comment
             .pick-editor
