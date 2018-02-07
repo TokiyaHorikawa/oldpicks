@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @articles = Article.new
-    @comments = Comment.new
+    @article = Article.new
+    @comment = Comment.new
   end
 
   def update
