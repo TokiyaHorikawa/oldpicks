@@ -1,17 +1,18 @@
 .notification {
   .notice {
+    font-size: 10px;
     background: white;
     color: blue;
     text-align: center;
     position:relative;
-    z-index: 9000;
   }
 
   .alert {
+    margin-top: 25px;
+    font-size: 10px;
     background-color: #2fc7f9;
     color: white;
     text-align: center;
     position: relative;
-    z-index: 9000;
   }
 }

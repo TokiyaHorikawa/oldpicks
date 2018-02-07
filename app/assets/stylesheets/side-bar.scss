@@ -28,6 +28,11 @@
     padding: 16px 0 16px 32px;
     color: #666;
     transition: all .15s linear;
+    text-decoration: none;
+    &:hover{
+      background: #EFEFEF;
+      color: #15274D;
+    }
   }
   .theme_menu{
     height: 100vh;
