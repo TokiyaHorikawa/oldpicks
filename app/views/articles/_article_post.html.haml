@@ -1,0 +1,35 @@
+.modal
+  .background
+  .modal-content-wrapper
+    #modal-content.dialog
+      = image_tag 'xxx.png', { class: 'close-btn' }
+      .urlpickpanel.closable
+        .pick-form
+          .message
+            URLを指定して
+            %br
+            おすすめの記事を共有しましょう
+          .url-group
+            = form_for @articles do |f|
+              = f.text_area :url, placeholder: "URLを入力してください", class: "url-value", id: "url-pick-box"
+              .notfound
+                指定されたページがありません。
+              .urlpick-dialog-content
+                .article_input
+                  = f.text_area :title, class: "post_title"
+                  = f.text_area :description, class: "post_description"
+                  = f.text_area :image, class: "post_image"
+                  = f.text_area :site_name, class: "post_site_name"
+                .pick-site
+                .cover-controls
+                  .cover
+                    Icon
+                  = fields_for @comments do |o|
+                    .comment-container
+                      = o.text_area :content, placeholder: "コメントを書く（任意）", class: "comment"
+                    .pick-control
+                      .description シェアする
+                      .sns.twitter twitter
+                      .sns.facebook facebook
+              .pick
+                = f.submit 'Pick', class: 'pick-font'

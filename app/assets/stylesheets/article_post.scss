@@ -29,8 +29,9 @@
         background:#fff;
         z-index:2;
         border-radius: 5px;
+        position: relative;
         .pick-form {
-          margin: 20px;
+          margin: 25px 20px;
           .message {
             text-align: center;
             font-size: 145%;
@@ -40,42 +41,48 @@
             #url-pick-box{
               width: 100%;
               height: 40px;
+              border-radius: 5px;
+              border: 0.5px solid;
+              border-color: #ccc;
+              padding: 8px;
+              resize: none;
             }
-          }
-          .notfound {
-            color: red;
-            margin: 20px 0;
-            display: none;
-          }
-          .urlpick-dialog-content{
-            .pick-site{
-              .pageinfo{
-                margin: 15px 0;
-                .page-thumbnail{
+            .notfound {
+              color: red;
+              margin: 20px 0;
+              display: none;
+            }
+            .urlpick-dialog-content{
+              .article_input{
+                display: none;
+              }
+              .pick-site{
+                .pageinfo{
+                  margin: 15px 0;
+                  .page-thumbnail{
+                    float: left;
+                  }
+                  .texts{
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    margin: 5px 0 5px 5px;
+                    .title_ellipsised{
+                      font-weight: bold;
+                      font-size: 18px;
+                    }
+                    .summary_ellipsised{
+                      font-size: 14px;
+                      margin-top: 10px;
+                    }
+                  }
+                }
+              }
+              .cover-controls{
+                display: none;
+                margin-top: 25px;
+                .cover{
                   float: left;
                 }
-                .texts{
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  margin: 5px 0 5px 5px;
-                  .title_ellipsised{
-                    font-weight: bold;
-                    font-size: 18px;
-                  }
-                  .summary_ellipsised{
-                    font-size: 14px;
-                    margin-top: 10px;
-                  }
-                }
-              }
-            }
-            .cover-controls{
-              display: none;
-              margin-top: 25px;
-              .cover{
-                float: left;
-              }
-              form{
                 .comment-container{
                   float: right;
                   .comment{
@@ -98,6 +105,7 @@
                   display: flex;
                   justify-content: flex-end;
                   padding-top: 10px;
+                  margin-right: 90px;
                   .description{
                     margin-left: 10px;
                   }
@@ -107,16 +115,20 @@
                   .sns.facebook{
                     margin-left: 10px;
                   }
-                  .pick{
-                    margin-left: 10px;
-                    .pick-font{
-                      padding: 10px 25px;
-                      border-color: #27375c;
-                      background-color: #27375c;
-                      color: #FFF;
-                    }
-                  }
                 }
+              }
+            }
+            .pick{
+              margin-left: 10px;
+              position: absolute;
+              right: 40px;
+              bottom: 20px;
+              display: none;
+              .pick-font{
+                padding: 10px 25px;
+                border-color: #27375c;
+                background-color: #27375c;
+                color: #FFF;
               }
             }
           }
@@ -124,5 +136,4 @@
       }
     }
   }
-
 }
