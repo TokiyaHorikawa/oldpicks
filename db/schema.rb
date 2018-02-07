@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205022701) do
+ActiveRecord::Schema.define(version: 20180206105215) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "url",         null: false
@@ -21,16 +21,17 @@ ActiveRecord::Schema.define(version: 20180205022701) do
     t.string   "description", null: false
     t.string   "image",       null: false
     t.string   "site_name",   null: false
+    t.integer  "pick_counts"
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "content",     limit: 65535, null: false
+    t.text     "content",    limit: 65535, null: false
     t.integer  "user_id"
-    t.integer  "articles_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.index ["articles_id"], name: "index_comments_on_articles_id", using: :btree
+    t.integer  "article_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["article_id"], name: "index_comments_on_article_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
@@ -66,7 +67,7 @@ ActiveRecord::Schema.define(version: 20180205022701) do
   end
 
   add_foreign_key "articles", "users"
-  add_foreign_key "comments", "articles", column: "articles_id"
+  add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "articles"
   add_foreign_key "likes", "comments"

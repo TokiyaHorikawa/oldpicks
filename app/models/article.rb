@@ -2,6 +2,7 @@ class Article < ApplicationRecord
   require 'date'
 
   has_many :comments
+  belongs_to :user
 
   def before_time
     article_time = self.created_at.in_time_zone('Tokyo')
