@@ -22,7 +22,16 @@
 
     .col-md-4.sub
       .top
-        = image_tag @articles[2][:image], { class: 'top-image'}
+        = image_tag @articles[1][:image], { class: 'top-image'}
+        .capture
+          .special
+            特集
+          .about
+            トーク
+          .title
+            = @articles[1][:title]
+      .bottom
+        = image_tag @articles[2][:image], { class: 'bottom-image'}
         .capture
           .special
             特集
@@ -30,15 +39,6 @@
             トーク
           .title
             = @articles[2][:title]
-      .bottom
-        = image_tag @articles[3][:image], { class: 'bottom-image'}
-        .capture
-          .special
-            特集
-          .about
-            トーク
-          .title
-            = @articles[3][:title]
 
   .topic
     .top-topic
