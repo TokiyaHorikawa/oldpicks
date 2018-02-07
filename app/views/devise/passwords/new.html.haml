@@ -1,10 +1,14 @@
-%h2 Forgot your password?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .actions
-    = f.submit "Send me reset password instructions"
-= render "devise/shared/links"
+.password-container
+  %span.logo Old Picks
+  %h4 パスワードをリセットする
+  %span.infomation OldPicksに登録したメールアドレスを入力してください。パスワードを入力するURLをお送りします。
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    = devise_error_messages!
+    .field#password-form
+      = f.label :email, class: 'control-label'
+      %br/
+      = f.email_field :email, autofocus: true, autocomplete: "email",placeholder: 'メールアドレスを入力してください', class: 'new-password'
+    .actions
+      = f.submit "送信", class: 'btn-default'
+  = link_to 'ログインへ戻る', new_user_session_path, {id: 'return-login'}
+  = link_to '新規登録へ', new_user_registration_path, {id: 'return-login'}
