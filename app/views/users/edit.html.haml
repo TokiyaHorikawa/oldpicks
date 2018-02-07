@@ -8,7 +8,7 @@
         .user-icon
           = image_tag 'user-image.png'
         .user-name
-        #{current_user.name}
+          #{current_user.name}
       .setting-items
         %span.menu-header アカウント
         = link_to 'ユーザー情報', '#', {class: 'user-menu-item'}
