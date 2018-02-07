@@ -21,6 +21,7 @@
         = image_tag 'flag.png', {class: 'flag-icon', id: 'flag_button'}
       .pick
         = image_tag 'pick.png', {class: 'pick-icon', id: 'pick_button'}
+    = render partial: "articles/article_post"
 
     .user-menu-container
       .nozzle-border
@@ -44,8 +45,6 @@
           = link_to 'キーワード設定/編集'
       .content
         .nothing-content お知らせはありません
-        
-    = render partial: "articles/article_post"
 
   - else
     .col-md-2.right-items
