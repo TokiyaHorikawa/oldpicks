@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129054159) do
+ActiveRecord::Schema.define(version: 20180206085229) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "url",        null: false
+    t.string   "url",            null: false
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "comment_counts"
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
   end
 
@@ -26,36 +27,38 @@ ActiveRecord::Schema.define(version: 20180129054159) do
     t.integer  "articles_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "like_counts"
     t.index ["articles_id"], name: "index_comments_on_articles_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
-    t.integer  "article_id"
     t.integer  "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_likes_on_article_id", using: :btree
     t.index ["comment_id"], name: "index_likes_on_comment_id", using: :btree
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                                null: false
+    t.string   "name",                                              null: false
     t.string   "avatar_image"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                                default: "", null: false
+    t.string   "encrypted_password",                   default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                        default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "company"
+    t.string   "position"
+    t.text     "profile",                limit: 65535
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["name"], name: "index_users_on_name", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -64,7 +67,6 @@ ActiveRecord::Schema.define(version: 20180129054159) do
   add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles", column: "articles_id"
   add_foreign_key "comments", "users"
-  add_foreign_key "likes", "articles"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "users"
 end
