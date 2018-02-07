@@ -4,7 +4,7 @@
       / -@method.each do ||
       /    = link_to '#', { class: 'slide-link'} do
       /      - if article.image?
-      = image_tag 'sky.jpg', { class: 'slide-image'}
+      = image_tag @articles[0][:image], { class: 'slide-image'}
       /       - else article.image?
       /         =
       .capture
@@ -13,48 +13,43 @@
           .small-letter
             Picks
         .title
-          ニュース
+          = @articles[0][:title]
         .detail
           .source
-            毎日新聞
+            = @articles[0][:site_name]
           .time
             12時
 
     .col-md-4.sub
       .top
-        = image_tag 'sky.jpg', { class: 'top-image'}
+        = image_tag @articles[2][:image], { class: 'top-image'}
         .capture
           .special
             特集
           .about
             トーク
           .title
-            ニュース
+            = @articles[2][:title]
       .bottom
-        = image_tag 'sky.jpg', { class: 'bottom-image'}
+        = image_tag @articles[3][:image], { class: 'bottom-image'}
         .capture
           .special
             特集
           .about
             トーク
           .title
-            ニュース
+            = @articles[3][:title]
 
   .topic
     .top-topic
       .top-article-block
-        / - @articles.limit(4).each do |article|
-        = render partial: 'article'
-        = render partial: 'article'
-        = render partial: 'article'
-        = render partial: 'article'
+        = render partial: 'articles/article', collection: @articles, as: :article
+        -# - @articles.each do |article|
+        -#   = render partial: 'articles/article'
       .latest-article-block
         = render partial: 'latest-news'
       .bottom-article-block
-        / - @articles.limit(3).each do |article|
-        = render partial: 'article'
-        = render partial: 'article'
-        = render partial: 'article'
+        -# = render partial: 'article', collection: @articles.find(5, 6, 7)
 
     .innovation-topic
       .innovation-block
@@ -77,80 +72,80 @@
         = link_to "テクノロジー  一覧を見る", '#', { class: 'genre-link'}
         .article-box
           / - @articles.limit(3).each do |article|
-          = render partial: 'article'
-          = render partial: 'article'
-          = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
 
       .genreblock
         %h4.title ビジネス
         = link_to "ビジネス　 一覧を見る", '#', { class: 'genre-link'}
         .article-box
           / - @articles.limit(3).each do |article|
-          = render partial: 'article'
-          = render partial: 'article'
-          = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
 
       .genreblock
         %h4.title 政治・経済
         = link_to "政治・経済　 一覧を見る", '#', { class: 'genre-link'}
         .article-box
           / - @articles.limit(3).each do |article|
-          = render partial: 'article'
-          = render partial: 'article'
-          = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
 
       .genreblock
         %h4.title 金融・マーケット
         = link_to "金融・マーケット　 一覧を見る", '#', { class: 'genre-link'}
         .article-box
           / - @articles.limit(3).each do |article|
-          = render partial: 'article'
-          = render partial: 'article'
-          = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
 
       .genreblock
         %h4.title キャリア・教育
         = link_to "キャリア・教育　 一覧を見る", '#', { class: 'genre-link'}
         .article-box
           / - @articles.limit(3).each do |article|
-          = render partial: 'article'
-          = render partial: 'article'
-          = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
 
       .genreblock
         %h4.title 社会・スポーツ
         = link_to "社会・スポーツ　 一覧を見る", '#', { class: 'genre-link'}
         .article-box
           / - @articles.limit(3).each do |article|
-          = render partial: 'article'
-          = render partial: 'article'
-          = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
 
       .genreblock
         %h4.title ジョブオファー
         = link_to "ジョブオファー　 一覧を見る", '#', { class: 'genre-link'}
         .article-box
           / - @articles.limit(3).each do |article|
-          = render partial: 'article'
-          = render partial: 'article'
-          = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
 
       .genreblock
         %h4.title 過去の人気特集
         .article-box
           / - @articles.limit(3).each do |article|
-          = render partial: 'article'
-          = render partial: 'article'
-          = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
 
       .genreblock
         %h4.title アナリシス
         %h5.description アナリストによる解説記事
         .article-box
           / - @articles.limit(3).each do |article|
-          = render partial: 'article'
-          = render partial: 'article'
-          = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
+          / = render partial: 'article'
 
     .user-ranking
       %h4.title ユーザーランキング
