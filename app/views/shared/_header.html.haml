@@ -21,33 +21,35 @@
         = image_tag 'flag.png', {class: 'flag-icon', id: 'flag_button'}
       .pick
         = image_tag 'pick.png', {class: 'pick-icon', id: 'pick_button'}
-    / modal
+
+    .user-menu-container
+      .nozzle-border
+      .nozzle
+      .user-menu
+        = link_to 'マイピックス', root_path, {class: 'menu-item'}
+        = link_to 'ユーザーを探す', root_path, {class: 'menu-item'}
+        %hr.border
+        = link_to 'アカデミア', root_path, {class: 'menu-item'}
+        = link_to '有料サービスについて', root_path, {class: 'menu-item'}
+        %hr.border
+        = link_to 'ユーザー設定', edit_user_path(current_user), {class: 'menu-item'}
+        = link_to 'お問い合わせ', root_path, {class: 'menu-item'}
+        = link_to 'ログアウト', destroy_user_session_path, {class: 'menu-item', method: :delete}
+
+    .notification-container
+      .nozzle-border
+      .notification-header
+        .title お知らせ
+        .link
+          = link_to 'キーワード設定/編集'
+      .content
+        .nothing-content お知らせはありません
+        
     = render partial: "articles/article_post"
+
   - else
     .col-md-2.right-items
       .register-or-login-items
       = link_to 'アカウント登録', new_user_registration_path, {class: 'register'}
+
       = link_to 'ログイン', new_user_session_path, {class: 'login'}
-
-.user-menu-container
-  .nozzle-border
-  .nozzle
-  .user-menu
-    = link_to 'マイピックス', root_path, {class: 'menu-item'}
-    = link_to 'ユーザーを探す', root_path, {class: 'menu-item'}
-    %hr.border
-    = link_to 'アカデミア', root_path, {class: 'menu-item'}
-    = link_to '有料サービスについて', root_path, {class: 'menu-item'}
-    %hr.border
-    = link_to '設定', root_path, {class: 'menu-item'}
-    = link_to 'お問い合わせ', root_path, {class: 'menu-item'}
-    = link_to 'ログアウト', destroy_user_session_path, {class: 'menu-item', method: :delete}
-
-.notification-container
-  .nozzle-border
-  .notification-header
-    .title お知らせ
-    .link
-      = link_to 'キーワード設定/編集'
-  .content
-    .nothing-content お知らせはありません

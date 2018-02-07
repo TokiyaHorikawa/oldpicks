@@ -1,0 +1,64 @@
+= render "shared/header"
+= render "shared/main-menu"
+
+.contents-container
+  .page-content-wide
+    .setting-menu
+      .profile
+        .user-icon
+          = image_tag 'user-image.png'
+        .user-name
+        #{current_user.name}
+      .setting-items
+        %span.menu-header アカウント
+        = link_to 'ユーザー情報', '#', {class: 'user-menu-item'}
+        = link_to 'パスワード設定', edit_user_registration_path(@user), {class: 'user-menu-item'}
+
+        %span.menu-header 有料サービス
+        = link_to '登録中のプラン', '#', {class: 'user-menu-item'}
+
+        %span.menu-header 機能設定
+        = link_to '非表示コメント', '#', {class: 'user-menu-item'}
+        = link_to '外部サービス設定', '#', {class: 'user-menu-item'}
+        = link_to 'キーワード設定', '#', {class: 'user-menu-item'}
+        = link_to 'メールマガジン購読設定', '#', {class: 'user-menu-item'}
+        = link_to '求人応募情報', '#', {class: 'user-menu-item'}
+
+    .setting-profile
+      .setting-verify-alert
+        .row-left
+          %p.main 実名登録が終了していません
+          %p.sub 登録すると自分のコメントを自分のフォロワー以外にも公開できます。
+        .row-right
+          #user-register-button 実名登録をする
+      .setting-container
+        = form_for @user do |f|
+          %h1 アカウント設定
+          .setting-form
+            .cover-form
+              %label アイコン
+              = f.label :avatar_image do
+                = image_tag 'user-image.png'
+                = f.file_field :avatar_image, {id: 'user_avatar_image'}
+                %buttun.edit-button 変更する
+            .user-form
+              %label.edit-form 名前
+              = f.text_field :name, {id: 'user_name'}
+            .user-form
+              %label.edit-form メールアドレス
+              = f.text_field :email, {id: 'user_e-mail'}
+            .user-form
+              %label.edit-form 会社
+              = f.text_field :company, {id: 'user_campany'}
+            .user-form
+              %label.edit-form 役職
+              = f.text_field :position, {id: 'user_position'}
+            .user-form
+              %label.edit-form プロフィール
+              = f.text_area :profile, {id: 'user_profile'}
+              .setting-button
+                = f.submit '保存する', {class: 'update-btn'}
+              %hr
+            .unregister-link-wrapper
+              = link_to 'OldPicksのアカウントを完全に削除する', '#', {class: 'unregister-link-enabled '}
+

@@ -5,9 +5,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 8000;
   .background{
-    position:relative;
     position: fixed;
     background: #15274D;
     width: 100%;
@@ -36,7 +34,7 @@
       border-radius: 3px;
       text-align: center;
       transition: all .1s linear;
-      .close-btn{
+      #close-btn{
         position: absolute;
         top: -30px;
         right: -30px;
@@ -114,15 +112,14 @@
       input{
         width: 100%;
         height: 40px;
+        color: black;
         font-size: 12px;
         margin-top: 15px;
-        transition: all .1s linear;
         &#submit{
         border: 1px solid #15274d;
         background-color: #15274d;
         color: #FFF;
         border-radius: 2px;
-        transition: all .1s linear;
         }
       }
       .description{
@@ -151,11 +148,67 @@
         background: #FFF;
         padding: 32px 40px;
         width: 400px;
-        height: 500px;
+        height: 550px;
         border-radius: 3px;
         text-align: center;
         transition: all .1s linear;
+        z-index: 1;
       }
     }
+  }
+}
+.password-container{
+  color: white;
+  min-height: 100vh;
+  background-color: #14284b;
+  padding-top: 20px;
+  padding-left: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  .logo{
+    font-size: 35px;
+    font-family: 'cursive';
+    border-top: solid 4px;
+    border-bottom: solid 4px;
+  }
+  h4{
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  .infomation{
+    margin: 0 0 10px;
+  }
+  #password-form{
+  .control-label{
+    display: inline-block;
+    margin: 15px 0;
+    font-weight: bold;
+  }
+  .new-password{
+    display: block;
+    width: 50%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  }
+  .btn-default{
+    margin: 10px 0;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  #return-login{
+    color: #FFF;
   }
 }
