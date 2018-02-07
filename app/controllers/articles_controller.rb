@@ -1,8 +1,10 @@
 class ArticlesController < ApplicationController
+  # 繰り返し使われる変数はbefore_actionに定義する
 
   def index
-    @articles = Article.new
-    @comments = Comment.new
+    @article = Article.new
+    @comment = Comment.new
+    @articles = Article.where(params[:id]).limit(4)
   end
 
   def new

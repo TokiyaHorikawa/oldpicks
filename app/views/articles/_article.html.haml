@@ -2,7 +2,7 @@
   = link_to root_path do       #仮置きのリンク
     .article-image
       / - if article.image.present?
-      = image_tag 'sky.jpg', { class: 'image'}
+      = image_tag article.image, { class: 'image' }
       / - else
 
     .picks
@@ -18,7 +18,7 @@
     .article-user
       .user-icon
         / - if article.image.present?
-        = image_tag 'sky.jpg', { class: 'icon-image'}
+        = image_tag 'sky.jpg', { class: 'icon-image' }
         / - else
 
       .user-info
@@ -32,8 +32,8 @@
       .comment-text
         オーディオブックには 以前から期待しています。実際 自分でも購入して 聴いた事もあります。ただ 続きませんでした。
       .comment-user
-        = image_tag 'sky.jpg', { class: 'comment-icon'}
-        = image_tag 'sky.jpg', { class: 'comment-icon'}
+        = image_tag 'sky.jpg', { class: 'comment-icon' }
+        = image_tag 'sky.jpg', { class: 'comment-icon' }
 
   .footer
     .publisher
