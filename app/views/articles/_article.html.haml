@@ -2,7 +2,6 @@
   = link_to root_path do       #仮置きのリンク
     .article-image
       / - if article.image.present?
-      - binding.pry
       = image_tag article.image, { class: 'image' }
       / - else
 
