@@ -1,5 +1,5 @@
 .article
-  = link_to root_path do       #仮置きのリンク
+  = link_to article_path(article.id) do       #仮置きのリンク
     .article-image
       / - if article.image.present?
       = image_tag article.image, { class: 'image' }

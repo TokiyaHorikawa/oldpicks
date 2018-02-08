@@ -1,12 +1,8 @@
 .content
   .eyecatch-container
     .col-md-8.slide
-      / -@method.each do ||
-      /    = link_to '#', { class: 'slide-link'} do
-      /      - if article.image?
       = image_tag @top_articles[0][:image], { class: 'slide-image'}
-      /       - else article.image?
-      /         =
+
       .capture
         .picks
           45

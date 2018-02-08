@@ -41,6 +41,7 @@
           padding-left: 10px;
           font-size: 32px;
           margin-bottom: 5px;
+          color: white;
         }
         .detail{
           padding-left: 15px;
@@ -48,6 +49,7 @@
           .source{
             display: inline-block;
             float: left;
+            colot: white;
           }
           .time{
             display: inline-block;
@@ -66,15 +68,15 @@
       .top{
         height: calc( ( 100vw - 185px ) * 0.3 * 0.5);
         min-height: calc( ( 910px - 220px) * 0.3 * 0.5);
+        position: relative;
         .top-image{
           width: 100%;
           height: calc( ( 100vw - 185px ) * 0.3 * 0.5);
           min-height: calc( ( 910px - 220px) * 0.3 * 0.5);
           border-bottom: 1px white solid;
-          position: absolute;
         }
         .capture{
-          position: relative;
+          position: absolute;
           bottom: 0;
           margin-left: 15px;
           .special{
@@ -93,6 +95,7 @@
           .title{
             padding: 10px 0 0 5px;
             font-size: 20px;
+            color: white;
           }
         }
       }
@@ -123,6 +126,7 @@
           .title{
             padding: 10px 0 0 5px;
             font-size: 20px;
+            color: white;
           }
         }
       }
@@ -415,7 +419,3 @@
     }
   }
 }
-
-
-
-
