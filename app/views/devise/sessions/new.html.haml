@@ -2,7 +2,8 @@
   .background
   .content-wrapper
     .dialog#login
-      = link_to '戻る', root_path, {id: 'close-btn'}
+      = link_to root_path do
+        = image_tag 'xxx.png', {id: 'close-btn'}
       .register-message ログイン
       .go-logon
       %span.go アカウントをお持ちでない方は
