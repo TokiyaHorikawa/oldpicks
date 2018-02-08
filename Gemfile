@@ -22,6 +22,8 @@ gem "font-awesome-rails"
 gem 'devise'
 gem 'metainspector'
 gem 'nokogiri'
+gem 'carrierwave'
+gem 'rmagick'
 
 
 

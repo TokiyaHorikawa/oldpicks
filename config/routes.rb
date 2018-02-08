@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     end
   end
   resources :get_urls, only: [:index]
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update, :destroy]
 end

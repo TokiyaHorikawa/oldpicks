@@ -1,0 +1,23 @@
+.contents-container
+  .page-content-wide
+    .setting-menu
+      .profile
+        .user-icon
+          = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', {class: 'user-icon'}
+        .user-name
+        #{current_user.name}
+        .user-title #{current_user.company.truncate(20)}  #{current_user.position.truncate(20)}
+      .setting-items
+        %span.menu-header アカウント
+        = link_to 'ユーザー情報', edit_user_path(current_user), {class: 'user-menu-item'}
+        = link_to 'パスワード設定', edit_user_registration_path(@user), {class: 'user-menu-item'}
+
+        %span.menu-header 有料サービス
+        = link_to '登録中のプラン', '#', {class: 'user-menu-item'}
+
+        %span.menu-header 機能設定
+        = link_to '非表示コメント', '#', {class: 'user-menu-item'}
+        = link_to '外部サービス設定', '#', {class: 'user-menu-item'}
+        = link_to 'キーワード設定', '#', {class: 'user-menu-item'}
+        = link_to 'メールマガジン購読設定', '#', {class: 'user-menu-item'}
+        = link_to '求人応募情報', '#', {class: 'user-menu-item'}
