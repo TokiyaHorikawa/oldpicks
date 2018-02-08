@@ -1,9 +1,7 @@
 .article
-  = link_to article_path(article.id) do       #仮置きのリンク
+  = link_to article_path(article.id) do
     .article-image
-      / - if article.image.present?
       = image_tag article.image, { class: 'image' }
-      / - else
 
     .picks
       .count
@@ -14,12 +12,10 @@
     .title_ellipsised
       = article.title.truncate(50)
 
-  = link_to root_path do       #仮置きのリンク
+  = link_to root_path do
     .article-user
       .user-icon
-        / - if article.image.present?
         = image_tag 'sky.jpg', { class: 'icon-image' }
-        / - else
 
       .user-info
         .user-name
@@ -27,7 +23,7 @@
         .user-status
           = article.user.position
 
-  = link_to root_path do       #仮置きのリンク
+  = link_to article_path(article.id) do
     .article-comment
       .comment-text
         = article.comments.first.content

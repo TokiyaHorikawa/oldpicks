@@ -7,6 +7,9 @@
   float: left;
   margin-top: 10px;
   margin-left: 23px;
+  a{
+    text-decoration: none;
+  }
   .article-image{
     box-sizing: border-box;
     height: 25%;
@@ -14,6 +17,9 @@
     .image{
       height: 100%;
       width: 100%;
+      &:hover{
+        opacity: .8;
+      }
     }
   }
   .picks{
@@ -52,6 +58,9 @@
     color: black;
     // white-space: nowrap;
     // text-overflow: ellipsis;
+    &:hover{
+      color: #337ab7;
+    }
   }
   .article-user{
     margin-top: 20px;
