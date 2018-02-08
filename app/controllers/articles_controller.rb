@@ -4,7 +4,17 @@ class ArticlesController < ApplicationController
   def index
     @article = Article.new
     @comment = Comment.new
-    @articles = Article.where(params[:id]).limit(4)
+    @top_articles = Article.where(params[:id]).limit(4)
+    @latest_articles = Article.order('created_at DESC').limit(8)
+    @tech_articles = Article.where(params[:id]).limit(3)
+    @business_articles = Article.where(params[:id]).limit(3)
+    @economy_articles = Article.where(params[:id]).limit(3)
+    @finance_articles = Article.where(params[:id]).limit(3)
+    @career_articles = Article.where(params[:id]).limit(3)
+    @society_articles = Article.where(params[:id]).limit(3)
+    @job_articles = Article.where(params[:id]).limit(3)
+    @back_number_articles = Article.where(params[:id]).limit(3)
+    @analysis_articles = Article.where(params[:id]).limit(3)
   end
 
   def new

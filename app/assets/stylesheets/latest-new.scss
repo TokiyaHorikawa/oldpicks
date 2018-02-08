@@ -19,7 +19,7 @@
     .news-title-list{
       display: block;
       box-sizing: border-box;
-      padding: 20px 15px 0;
+      padding: 17px 15px 0;
     &:hover{
       background-color: #eaeaea;
     }
@@ -29,11 +29,12 @@
         font-size: 14px;
         font-weight: 700;
         float: left;
+        color: black;
       }
       .meta{
         display: inline-block;
         clear: both;
-        padding: 10px 20px;
+        padding: 10px 0;
         .publisher{
           display: inline-block;
           font-size: 12px;
@@ -41,7 +42,7 @@
         }
         .published{
           display: inline-block;
-          font-size: 12px;
+          font-size: 10px;
           padding-left: 10px;
           color: #AAA;
         }
