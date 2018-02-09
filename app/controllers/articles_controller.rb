@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new
-    @your_comment = Comment.where(user_id: current_user.id, article_id: @article.id)
+    @your_comment = Comment.find_by(user_id: current_user.id, article_id: @article.id)
     @comments = @article.comments.includes(:user).order("like_counts DESC").limit(3)
   end
 

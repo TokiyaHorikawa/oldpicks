@@ -120,15 +120,28 @@
                         .your-comment-drop-button
                           ▼
                           .your-comment-drop-menu
-                            .edit-drop-menu
-                              = link_to '編集', comment_path(@your_comment.ids[0]), method: :patch
+                            #edit-drop-button.edit-drop-menu
+                              編集
                             .delete-drop-menu
-                              = link_to '削除', comment_path(@your_comment.ids[0]), method: :delete
+                              = link_to '削除', comment_path(@your_comment.id), method: :delete
                       .comment-box
-                        .comment
+                        #your-comment.comment
                           - current_user.comments.each do |m|
                             = m.content
-                        .like-panel
+                        .edit-comment-box
+                          = form_for [@your_comment] do |f|
+                            = f.text_area :content, { class: 'your-comment-form' }
+                            .pick-control
+                              .description
+                                シェアする
+                              .sns-twitter
+                                = image_tag 'twitter-gray', { class: 'twitter-mark' }
+                              .sns-facebook
+                                = image_tag 'facebook-gray', { class: 'facebook-mark' }
+                              = f.submit 'Pick', class: 'pick-button'
+                              .cancel-button
+                                キャンセル
+                        #your-like.like-panel
                           = image_tag 'like-gray', { class: 'like-icon' }
                           / = image_tag 'like-red', { class: 'like-mark' }
                           .like-count-box
