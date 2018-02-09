@@ -68,11 +68,9 @@
         }
         .news{
           width: 660px;
-          height: 160px;
           padding: 15px 25px;
           background-color: white;
           .title-bordered-editor{
-            height: 33px;
             font-size: 24px;
             font-weight: 700;
             overflow: hidden;
@@ -102,6 +100,7 @@
           }
           .read-more-center{
             margin-top: 5px;
+            margin-bottom: 10px;
             display: block;
             font-size: 16px;
             padding: 10px;
@@ -222,7 +221,7 @@
             }
           }
           .comments{
-            padding: 0 25px 30px;
+            padding: 0 25px 0;
             width: 660px;
             display: inline-block;
             .populars{
@@ -239,7 +238,7 @@
                 width: 635px;
                 display: inline-block;
                 .comment-row-no-border{
-                  max-height: 250px;
+                  min-height: 200px;
                   display: inline-block;
                   padding-top: 20px;
                   border-bottom: 1px solid #ccc;
@@ -275,17 +274,26 @@
                         float: left;
                       }
                     }
-                    .popular-drop-down-button{
-                      width: 30px;
-                      height: 28px;
-                      cursor: pointer;
-                      font-size: 18px;
-                      color: #999;
-                      text-align: center;
-                      display: inline-block;
-                      float: left;
-                      &:hover{
-                        background-color: #eaeaea;
+                    .dropdown{
+                      .drop-menu{
+                        .menu-item{
+                          display: inline-block;
+                          float: left;
+                          width: 300px;
+                          cursor: pointer;
+                          padding: 5px 5px 5px 5px;
+                          font-size: 16px;
+                          color: #666;
+                          transition: all .15s linear;
+                        }
+                        .drop-icon{
+                          width: 24px;
+                          height: 24px;
+                          display: inline-block;
+                          padding-top: 5px;
+                          float: left;
+                          margin-left: 20px;
+                        }
                       }
                     }
                   }
@@ -296,12 +304,11 @@
                     float: left;
                     .comment{
                       width: 510px;
-                      max-height: 200px;
                       line-height: 26px;
                       box-sizing: border-box;
                       float: left;
-                      padding: 20px 0 15px 60px;
-                      overflow: auto;
+                      padding: 20px 0 0 60px;
+                      overflow: hidden;
                     }
                     .like-panel{
                       display: inline-block;
@@ -311,7 +318,6 @@
                       .like-icon{
                         width: 15px;
                         height: 15px;
-                        margin-top: 45%;
                         margin-left: 63px;
                         cursor: pointer;
                       }
@@ -334,33 +340,158 @@
                       }
                     }
                   }
-                  .popular-drop-menus{
-                    width: 320px;
-                    margin: 16px 0;
-                    border: solid 1px #EAEAEA;
-                    border-bottom: none;
-                    background-color: white;
-                    float: left;
-                    z-index: 1;
-                    position: relative;
-                    display: none;
-                    bottom: 220px;
-                    left: 280px;
-                    .drop-menu{
-                      border-bottom: solid 1px #EAEAEA;
-                      .menu-item{
-                        display: inline-block;
-                        width: 270px;
-                        cursor: pointer;
-                        padding: 16px 20px 16px 32px;
-                        color: #666;
-                        transition: all .15s linear;
+                }
+              }
+            }
+            .follow-comment{
+              margin: 20px 0;
+              display: inline-block;
+              width: 610px;
+              .section-header{
+                color: #00133A;
+                font-size: 12px;
+                font-weight: 700;
+                height: 30px;
+              }
+              .comment-container{
+                width: 635px;
+                display: inline-block;
+                .comment-row-no-border{
+                  min-height: 200px;
+                  display: inline-block;
+                  padding-top: 20px;
+                  border-bottom: 1px solid #ccc;
+                  .user-bar{
+                    .user-cover{
+                      padding-right: 20px;
+                      float: left;
+                      .user-icon{
+                        width: 40px;
+                        height: 40px;
                       }
-                      .drop-icon{
-                        width: 24px;
-                        height: 24px;
+                    }
+                    .user-profile{
+                      width: 510px;
+                      height: 45px;
+                      float: left;
+                      .user-name{
+                        color: #15274D;
+                        font-size: 16px;
+                        font-weight: 700;
                         display: inline-block;
-                        margin-left: 20px;
+                        float: left;
+                      }
+                      .follower-only{
+                        margin-top: 5px;
+                        .follower-only-icon{
+                          margin-left: 15px;
+                          width: 16px;
+                          height: 16px;
+                          display: inline-block;
+                          float: left;
+                        }
+                        .follower-only-text{
+                          font-size: 12px;
+                          color: #999;
+                          margin-left: 3px;
+                          display: inline-block;
+                          float: left;
+                        }
+                      }
+                      .user-job{
+                        margin-top: 3px;
+                        font-size: 12px;
+                        color: #999;
+                        float: left;
+                        clear: both;
+                      }
+                      .pick-time{
+                        margin-top: 3px;
+                        margin-left: 15px;
+                        font-size: 12px;
+                        color: #999;
+                        float: left;
+                      }
+                    }
+                    .your-comment-drop-button{
+                      width: 30px;
+                      height: 20px;
+                      cursor: pointer;
+                      font-size: 14px;
+                      color: #999;
+                      text-align: center;
+                      display: inline-block;
+                      float: left;
+                      &:hover{
+                        background-color: #eaeaea;
+                      }
+                      .your-comment-drop-menu{
+                        width: 50px;
+                        margin: 16px 0;
+                        background-color: white;
+                        float: left;
+                        z-index: 1;
+                        position: relative;
+                        right: 20px;
+                        bottom: 15px;
+                        display: none;
+                        .edit-drop-menu{
+                          border: solid 1px #EAEAEA;
+                          padding: 5px;
+                          &:hover{
+                            background-color: #eaeaea;
+                          }
+                        }
+                        .delete-drop-menu{
+                          border: solid 1px #EAEAEA;
+                          padding: 5px;
+                          &:hover{
+                            background-color: #eaeaea;
+                          }
+                        }
+                      }
+                    }
+                  }
+                  .comment-box{
+                    width: 600px;
+                    margin-bottom: 20px;
+                    display: inline-block;
+                    float: left;
+                    .comment{
+                      width: 510px;
+                      line-height: 26px;
+                      box-sizing: border-box;
+                      float: left;
+                      padding: 20px 0 0 60px;
+                      overflow: hidden;
+                    }
+                    .like-panel{
+                      display: inline-block;
+                      float: left;
+                      width: 90px;
+                      padding-top: 20px;
+                      .like-icon{
+                        width: 15px;
+                        height: 15px;
+                        margin-left: 63px;
+                        cursor: pointer;
+                      }
+                      .like-count-box{
+                        margin-top: 5px;
+                        margin-left: 50px;
+                        .like-count{
+                          font-size: 14px;
+                          color: #999;
+                          text-align: center;
+                          cursor: pointer;
+                        }
+                      }
+                      .like-label{
+                        font-size: 14px;
+                        color: #999;
+                        margin-top: 5px;
+                        margin-left: 55px;
+                        cursor: pointer;
                       }
                     }
                   }
@@ -509,6 +640,7 @@
               }
             }
             .load-all{
+              margin-bottom: 50px;
               .show-other-pick{
                 display: inline-block;
                 padding: 16px 32px;

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_article
+  before_action :set_article, only: [:create]
 
   def create
     @comment = Comment.new(comment_params)
@@ -10,9 +10,15 @@ class CommentsController < ApplicationController
   end
 
   def update
+    @comment = Comment.find(params[:id])
+    # @comment.update(comment_params)
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy if @comment.user_id == current_user.id
+    @article = @comment.article_id
+    redirect_to article_path(@article)
   end
 
   private

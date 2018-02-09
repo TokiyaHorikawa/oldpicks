@@ -5,9 +5,9 @@ class Article < ApplicationRecord
   belongs_to :user
 
   def before_time
-    article_time = self.created_at.in_time_zone('Tokyo')
+    article_time = self.created_at
     now_time = DateTime.now
-    difference = now_time.to_i - article_time.to_i + (9 * 60 * 60)
+    difference = now_time.to_i - article_time.to_i
     seconds = difference
     minutes = difference / 60
     hours = difference / 60 /60
