@@ -1,4 +1,4 @@
-= link_to root_path do      #仮置きのリンク
+= link_to article_path(article.id) do
   .news-title-list
     .title
       = article.title.truncate(50)

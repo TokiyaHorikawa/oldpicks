@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function() {
+
   $(function() {
     $('.self').on('click',function(){
       $('.user-menu-container').toggle();
@@ -12,4 +13,13 @@ $(document).on('turbolinks:load', function() {
       $('.menu').toggle();
     });
   });
-})
+
+  $('.slide').slick({
+      autoplay: true,
+      autoplaySpeed: 3000,
+      pauseOnHover: true,
+      dots: false,
+      arrows: false
+    });
+
+});
