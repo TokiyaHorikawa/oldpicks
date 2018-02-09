@@ -1,9 +1,7 @@
 .article
-  = link_to root_path do       #仮置きのリンク
+  = link_to article_path(article.id) do
     .article-image
-      / - if article.image.present?
       = image_tag article.image, { class: 'image' }
-      / - else
 
     .picks
       .count
@@ -12,31 +10,29 @@
         Picks
 
     .title_ellipsised
-      ネット広告市場に忍び寄るアマゾンの脅威　 eコマースの巨人、すでにツイッターを上回る広告収入
+      = article.title.truncate(50)
 
-  = link_to root_path do       #仮置きのリンク
+  = link_to root_path do
     .article-user
       .user-icon
-        / - if article.image.present?
         = image_tag 'sky.jpg', { class: 'icon-image' }
-        / - else
 
       .user-info
         .user-name
-          鈴木　太郎
+          = article.user.name
         .user-status
-          代表取締役社長
+          = article.user.position
 
-  = link_to root_path do       #仮置きのリンク
+  = link_to article_path(article.id) do
     .article-comment
       .comment-text
-        オーディオブックには 以前から期待しています。実際 自分でも購入して 聴いた事もあります。ただ 続きませんでした。
+        = article.comments.first.content
       .comment-user
         = image_tag 'sky.jpg', { class: 'comment-icon' }
         = image_tag 'sky.jpg', { class: 'comment-icon' }
 
   .footer
     .publisher
-      ITmedia ビジネスオンライン
+      = article.site_name.truncate(20)
     .published
       10時間前
