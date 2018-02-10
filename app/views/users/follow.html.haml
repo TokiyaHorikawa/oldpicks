@@ -1,0 +1,29 @@
+.contents-container
+  .page-content-wide
+    = render "user-show"
+    = render "shared/header"
+    = render "shared/main-menu"
+
+    .tab-contents
+      .picks-tab-content-selected
+        .items
+          = link_to root_path, {class: 'user-tile'} do
+            .wrapper
+              = image_tag current_user.avatar_image
+              .profile-container
+                .name-wrapper
+                  .user-name 織田信長
+                .user-title 戦国
+                .user-title 武将
+              .user-follow-counts
+                .user-relation
+                  %span.unit フォロー
+                  %br
+                  %span.follow-counts 100
+                .vr
+                .user-relation
+                  %span.unit フォロワー
+                  %br
+                  %span.follow-counts 150
+                .show-follow-btn
+                  = image_tag 'follow-button.png'

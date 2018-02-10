@@ -1,0 +1,112 @@
+.contents-container
+  .page-content-wide
+    = render "user-show"
+    = render "shared/header"
+    = render "shared/main-menu"
+
+    .tab-contents
+      .picks-tab-content-selected
+        .items
+          = link_to root_path, {class: 'user-tile'} do
+            .wrapper
+              = image_tag current_user.avatar_image
+              .profile-container
+                .name-wrapper
+                  .user-name 織田信長
+                .user-title 戦国
+                .user-title 武将
+              .user-follow-counts
+                .user-relation
+                  %span.unit フォロー
+                  %br
+                  %span.follow-counts 100
+                .vr
+                .user-relation
+                  %span.unit フォロワー
+                  %br
+                  %span.follow-counts 150
+                .show-follow-btn
+                  = image_tag 'follow-button.png'
+          = link_to root_path, {class: 'user-tile'} do
+            .wrapper
+              = image_tag current_user.avatar_image
+              .profile-container
+                .name-wrapper
+                  .user-name 織田信長
+                .user-title 戦国
+                .user-title 武将
+              .user-follow-counts
+                .user-relation
+                  %span.unit フォロー
+                  %br
+                  %span.follow-counts 100
+                .vr
+                .user-relation
+                  %span.unit フォロワー
+                  %br
+                  %span.follow-counts 150
+                .show-follow-btn
+                  = image_tag 'follow-button.png'
+          = link_to root_path, {class: 'user-tile'} do
+            .wrapper
+              = image_tag current_user.avatar_image
+              .profile-container
+                .name-wrapper
+                  .user-name 織田信長
+                .user-title 戦国
+                .user-title 武将
+              .user-follow-counts
+                .user-relation
+                  %span.unit フォロー
+                  %br
+                  %span.follow-counts 100
+                .vr
+                .user-relation
+                  %span.unit フォロワー
+                  %br
+                  %span.follow-counts 150
+                .show-follow-btn
+                  = image_tag 'follow-button.png'
+.user-show-modal
+  .background
+  .modal-content-wrapper
+    .modal-content.dialog
+      = link_to user_path(current_user) do
+        = image_tag 'xxx.png', { class: 'show-close-btn' }
+      .user-profile-container
+        .user-profile
+          .detail
+            = link_to user_path(current_user) do
+              = image_tag current_user.avatar_image
+              .labels
+                .user-name
+                  #{current_user.name}
+                .ellipsis-job
+                  #{current_user.company}
+                  %br
+                  #{current_user.position}
+                .extra-info
+                  %span.picker-likes 総 Like 数: 0
+                .profile-ellipsised
+                  #{current_user.profile}
+      .operation-section
+        .tab-container
+          = link_to user_path(current_user) do
+            %span.tab-title Picks
+          .tab-item-follows
+            = link_to follow_users_path do
+              .count 0
+              .unit フォロー
+          .tab-item-followers
+            = link_to follower_users_path do
+              .count 0
+              .unit フォロワー
+        .show-follow-btn
+          = image_tag 'follow-button.png'
+      .user-picks
+        = render "user-article", collection: @articles, as: :article
+      .user-footer
+        = link_to 'プロフィールをもっと見る', user_path(current_user), {class: 'more-profile'}
+
+
+
