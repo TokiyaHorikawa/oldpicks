@@ -1,13 +1,14 @@
-= image_tag article.image, { class: 'slide-image'}
 .capture
-  .picks
-    45
-    .small-letter
-      Picks
-  .title
-    = article.title.truncate(50)
-  .detail
-    .source
-      = article.site_name.truncate(20)
-    .time
-      12時
+  = image_tag article.image, { class: 'slide-image'}
+  .capture_string
+    .picks
+      45
+      .small-letter
+        Picks
+    .title
+      = article.title.truncate(30)
+    .detail
+      .source
+        = article.site_name.truncate(20)
+      .time
+        12時

@@ -15,11 +15,12 @@ $(document).on('turbolinks:load', function() {
   });
 
   $('.slide').slick({
-      autoplay: true,
-      autoplaySpeed: 3000,
+      // autoplay: true,
+      // autoplaySpeed: 3000,
       pauseOnHover: true,
-      dots: false,
-      arrows: false
+      dots: true,
+      arrows: true,
+      accessibility: true,
     });
 
 });
