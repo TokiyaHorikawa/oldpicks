@@ -18,8 +18,10 @@ class Article < ApplicationRecord
       return "#{hours}時間前"
     elsif minutes != 0
       return "#{minutes}分前"
-    else
+    elsif seconds != 0
       return "#{seconds}秒前"
+    else
+      return "たった今"
     end
   end
 end

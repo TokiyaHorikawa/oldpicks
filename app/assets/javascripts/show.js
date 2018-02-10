@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function() {
       $('.your-comment-drop-menu').toggle();
     })
 
-    $('#edit-drop-button').on('click',function(){
+    $('.edit-drop-menu').on('click',function(){
       $('#your-comment').hide();
       $('#your-like').hide();
       $('.edit-comment-box').show();

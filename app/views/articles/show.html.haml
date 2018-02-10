@@ -38,16 +38,29 @@
               .comment-area
                 = image_tag 'sky.jpg', { class: 'cover' }
                 .comment-container
-                  = form_for [@article, @comment], html: { id: "comment_form", name: "#{@comment.id}", } do |f|
-                    = f.text_field :content, { class: 'form-comment', placeholder: "コメントを書く" }
-                    .pick-control
-                      .description
-                        シェアする
-                      .sns-twitter
-                        = image_tag 'twitter-gray', { class: 'twitter-mark' }
-                      .sns-facebook
-                        = image_tag 'facebook-gray', { class: 'facebook-mark' }
-                    = f.submit 'Pick', class: 'pick-button'
+                  - if @your_comment.present?
+                    = form_for [@article, @comment], html: { id: "update_comment_form", name: "#{@comment.id}", } do |f|
+                      = f.text_field :content, { class: 'comment-form-area', placeholder: "コメントを書く" }
+                      .pick-control
+                        .description
+                          シェアする
+                        .sns-twitter
+                          = image_tag 'twitter-gray', { class: 'twitter-mark' }
+                        .sns-facebook
+                          = image_tag 'facebook-gray', { class: 'facebook-mark' }
+                      #update_comment.pick-button
+                        Pick
+                  -else
+                    = form_for [@article, @comment], html: { id: "comment_form", name: "#{@comment.id}", } do |f|
+                      = f.text_field :content, { class: 'comment-form-area', placeholder: "コメントを書く" }
+                      .pick-control
+                        .description
+                          シェアする
+                        .sns-twitter
+                          = image_tag 'twitter-gray', { class: 'twitter-mark' }
+                        .sns-facebook
+                          = image_tag 'facebook-gray', { class: 'facebook-mark' }
+                      = f.submit 'Pick', class: 'pick-button', id:'new_comment'
 
 
             .comments
@@ -95,8 +108,8 @@
                           .like-label
                             Likes
 
-              - if @your_comment.present?
-                .follow-comment
+              .follow-comment
+                - if @your_comment.present?
                   .section-header
                     フォローしているユーザーのコメント
                   .comment-container
@@ -117,13 +130,17 @@
                           .pick-time
                             - current_user.comments.each do |m|
                               = m.before_time
-                        .your-comment-drop-button
-                          ▼
-                          .your-comment-drop-menu
-                            #edit-drop-button.edit-drop-menu
-                              編集
-                            .delete-drop-menu
-                              = link_to '削除', comment_path(@your_comment.id), method: :delete
+
+                        .dropdown
+                          %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                            ▼
+                          .dropdown-menu{"aria-labelledby" => "dropdownMenuButton"}
+                            %a.dropdown-item
+                              #edit-drop-button.edit-drop-menu
+                                編集
+                            %a.dropdown-item
+                              .delete-drop-menu
+                                = link_to '削除', comment_path(@your_comment.id), method: :delete
                       .comment-box
                         #your-comment.comment
                           - current_user.comments.each do |m|

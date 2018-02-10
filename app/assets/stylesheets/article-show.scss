@@ -146,7 +146,7 @@
                   margin-left: 10px;
                   overflow: auto;
                 }
-                .form-comment{
+                .comment-form-area{
                   box-sizing: border-box;
                   float: left;
                 }
@@ -220,7 +220,7 @@
             width: 660px;
             display: inline-block;
             .populars{
-              margin: 20px 0;
+              margin: 20px 0 0;
               display: inline-block;
               width: 610px;
               .section-header{
@@ -364,6 +364,7 @@
                 font-size: 12px;
                 font-weight: 700;
                 height: 30px;
+                margin-top: 20px;
               }
               .comment-container{
                 width: 635px;
@@ -425,7 +426,7 @@
                         float: left;
                       }
                     }
-                    .your-comment-drop-button{
+                    .dropdown{
                       width: 30px;
                       height: 20px;
                       cursor: pointer;
@@ -434,34 +435,43 @@
                       text-align: center;
                       display: inline-block;
                       float: left;
-                      &:hover{
-                        background-color: #eaeaea;
-                      }
-                      .your-comment-drop-menu{
-                        width: 50px;
-                        margin: 16px 0;
-                        background-color: white;
-                        float: left;
-                        z-index: 1;
-                        position: relative;
-                        right: 20px;
-                        bottom: 15px;
-                        display: none;
-                        .edit-drop-menu{
-                          border: solid 1px #EAEAEA;
-                          padding: 5px;
-                          &:hover{
-                            background-color: #eaeaea;
+                      .dropdown-menu{
+                        min-width: 50px;
+                        margin-top: 15px;
+                        text-align: center;
+                        .dropdown-item{
+                          .edit-drop-menu{
+                            width: 50px;
                           }
-                        }
-                        .delete-drop-menu{
-                          border: solid 1px #EAEAEA;
-                          padding: 5px;
-                          &:hover{
-                            background-color: #eaeaea;
+                          .delete-drop-menu{
+                            width: 50px;
                           }
                         }
                       }
+                      // .your-comment-drop-menu{
+                      //   width: 50px;
+                      //   margin: 16px 0;
+                      //   background-color: white;
+                      //   float: left;
+                      //   z-index: 1;
+                      //   position: relative;
+                      //   right: 20px;
+                      //   display: none;
+                      //   .edit-drop-menu{
+                      //     border: solid 1px #EAEAEA;
+                      //     padding: 5px;
+                      //     &:hover{
+                      //       background-color: #eaeaea;
+                      //     }
+                      //   }
+                      //   .delete-drop-menu{
+                      //     border: solid 1px #EAEAEA;
+                      //     padding: 5px;
+                      //     &:hover{
+                      //       background-color: #eaeaea;
+                      //     }
+                      //   }
+                      // }
                     }
                   }
                   .comment-box{
