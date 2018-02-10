@@ -18,8 +18,9 @@ $(document).on('turbolinks:load', function() {
       autoplay: true,
       autoplaySpeed: 5000,
       pauseOnHover: true,
+      pauseOnFocus: false,
       dots: true,
-      arrows: true,
+      arrows:true,
       accessibility: true,
     });
 
