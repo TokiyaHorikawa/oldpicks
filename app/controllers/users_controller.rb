@@ -3,6 +3,22 @@ class UsersController < ApplicationController
 before_action :authenticate_user!
 
   def show
+    @article = Article.new
+    @comment = Comment.new
+    @articles = Article.order('created_at DESC').limit(8)
+    @user = User.find(params[:id])
+  end
+
+  def follow
+    @article = Article.new
+    @comment = Comment.new
+    @articles = Article.order('created_at DESC').limit(8)
+  end
+
+  def follower
+    @article = Article.new
+    @comment = Comment.new
+    @articles = Article.order('created_at DESC').limit(2)
   end
 
   def edit
