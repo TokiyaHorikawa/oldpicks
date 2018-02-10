@@ -15,8 +15,8 @@ $(document).on('turbolinks:load', function() {
   });
 
   $('.slide').slick({
-      // autoplay: true,
-      // autoplaySpeed: 3000,
+      autoplay: true,
+      autoplaySpeed: 5000,
       pauseOnHover: true,
       dots: true,
       arrows: true,
