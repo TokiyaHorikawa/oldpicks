@@ -12,7 +12,7 @@
   - if user_signed_in?
     .col-md-2.right-items
       .self
-        = image_tag 'user-image.png', {class: 'user-image'}
+        = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', class: 'user-image'
         .name-block
           %span.display-name #{current_user.name}
           %span.plan アカデミック

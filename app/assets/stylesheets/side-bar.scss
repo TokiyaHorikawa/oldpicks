@@ -59,27 +59,28 @@
 
   .user{
     padding-top: 24px;
-    height: 190px;
+    height: 240px;
     .user-header{
       padding-bottom: 12px;
     .user-icon{
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       margin: 0 auto;
     }
     .user-name{
       width: 100%;
       font-size: 20px;
       text-align: center;
-      font-style: bold;
+      font-weight: 700;
     }
     .user-title{
       color: #666;
       width: 100%;
-      margin: 3px auto 0;
-      height: 28px;
+      margin: 5px auto 0;
+      height: 40px;
       text-align: center;
       word-break: break-word;
+      font-size: 10px;
       border-bottom: solid 1px #EAEAEA;
     }
     .button_to{
@@ -172,7 +173,7 @@
       position: absolute;
       overflow-y: auto;
       background-color: #FCFCFC;
-      top: 228px;
+      top: 240px;
       transition: top 1000ms 0s ease;
       left: 0;
       right: 0;

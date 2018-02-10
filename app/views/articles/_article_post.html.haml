@@ -10,7 +10,7 @@
             %br
             おすすめの記事を共有しましょう
           .url-group
-            = form_for @articles do |f|
+            = form_for @article do |f|
               = f.text_area :url, placeholder: "URLを入力してください", class: "url-value", id: "url-pick-box"
               .notfound
                 指定されたページがありません。
@@ -24,7 +24,7 @@
                 .cover-controls
                   .cover
                     Icon
-                  = fields_for @comments do |o|
+                  = fields_for @comment do |o|
                     .comment-container
                       = o.text_area :content, placeholder: "コメントを書く（任意）", class: "comment"
                     .pick-control

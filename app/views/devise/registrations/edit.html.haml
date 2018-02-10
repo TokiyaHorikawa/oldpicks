@@ -1,12 +1,67 @@
-= render "shared/header"
+= render "shared/main-menu"
+.header
+  .col-md-1.open-menu
+    = image_tag 'menu.png', {class: 'menu-list', id: 'menu_bar_button'}
+  .col-md-1.search-box
+    = form_tag( method: :get ) do
+      = image_tag 'glass.svg', { class: 'glass' }
+      = text_field  :body, nil, { placeholder: "検索する", class: "text" }
+
+  .col-md-4.logo
+    = link_to "Old PICKS", root_path, { class: 'logo-mark'}
+
+  - if user_signed_in?
+    .col-md-2.right-items
+      .self
+        = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', class: 'user-image'
+        .name-block
+          %span.display-name #{current_user.name}
+          %span.plan アカデミック
+        %span.caret
+      .flag
+        = image_tag 'flag.png', {class: 'flag-icon', id: 'flag_button'}
+      .pick
+        = image_tag 'pick.png', {class: 'pick-icon', id: 'pick_button'}
+
+    .user-menu-container
+      .nozzle-border
+      .nozzle
+      .user-menu
+        = link_to 'マイピックス', root_path, {class: 'menu-item'}
+        = link_to 'ユーザーを探す', root_path, {class: 'menu-item'}
+        %hr.border
+        = link_to 'アカデミア', root_path, {class: 'menu-item'}
+        = link_to '有料サービスについて', root_path, {class: 'menu-item'}
+        %hr.border
+        = link_to 'ユーザー設定', edit_user_path(current_user), {class: 'menu-item'}
+        = link_to 'お問い合わせ', root_path, {class: 'menu-item'}
+        = link_to 'ログアウト', destroy_user_session_path, {class: 'menu-item', method: :delete}
+
+    .notification-container
+      .nozzle-border
+      .notification-header
+        .title お知らせ
+        .link
+          = link_to 'キーワード設定/編集'
+      .content
+        .nothing-content お知らせはありません
+
+  - else
+    .col-md-2.right-items
+      .register-or-login-items
+      = link_to 'アカウント登録', new_user_registration_path, {class: 'register'}
+
+      = link_to 'ログイン', new_user_session_path, {class: 'login'}
+
 .contents-container
   .page-content-wide
     .setting-menu
       .profile
         .user-icon
-          = image_tag 'user-image.png'
+          = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', {class: 'user-icon'}
         .user-name
         #{current_user.name}
+        .user-title #{current_user.company.truncate(20)}  #{current_user.position.truncate(20)}
       .setting-items
         %span.menu-header アカウント
         = link_to 'ユーザー情報', edit_user_path(current_user), {class: 'user-menu-item'}

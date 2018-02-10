@@ -1,0 +1,9 @@
+= link_to root_path do      #仮置きのリンク
+  .news-title-list
+    .title
+      = article.title.truncate(50)
+    .meta
+      .publisher
+        = article.site_name.truncate(20)
+      .published
+        1年前
