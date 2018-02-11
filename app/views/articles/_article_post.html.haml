@@ -12,6 +12,8 @@
           .url-group
             = form_for @article do |f|
               = f.text_area :url, placeholder: "URLを入力してください", class: "url-value", id: "url-pick-box"
+              .tag
+                = f.text_area :tag_list, placeholder: "管理者用タグ付け , で区切る", value: @article.tag_list.join(','), class: 'tag-list'
               .notfound
                 指定されたページがありません。
               .urlpick-dialog-content

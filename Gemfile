@@ -24,6 +24,7 @@ gem 'metainspector'
 gem 'nokogiri'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'acts-as-taggable-on', '~> 4.0'
 
 
 
