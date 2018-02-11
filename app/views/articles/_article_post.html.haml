@@ -13,7 +13,7 @@
             = form_for @article do |f|
               = f.text_area :url, placeholder: "URLを入力してください", class: "url-value", id: "url-pick-box"
               .tag
-                = f.text_area :tag_list, placeholder: "管理者用タグ付け , で区切る", value: @article.tag_list.join(','), class: 'tag-list'
+                = f.text_area :tag_list, placeholder: "[選択]テクノロジー,ビジネス,政治,金融,キャリア,社会,ジョブ,過去記事,アナリスト", value: @article.tag_list.join(','), class: 'tag-list'
               .notfound
                 指定されたページがありません。
               .urlpick-dialog-content
