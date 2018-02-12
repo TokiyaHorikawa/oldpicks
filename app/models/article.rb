@@ -7,6 +7,7 @@ class Article < ApplicationRecord
   # タグ付け
   acts_as_taggable
 
+  # 時間表示
   def before_time
     article_time = self.created_at.in_time_zone('Tokyo')
     now_time = DateTime.now
