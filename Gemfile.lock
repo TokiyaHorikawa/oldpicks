@@ -297,7 +297,6 @@ DEPENDENCIES
   listen (~> 3.0.5)
   metainspector
   mysql2 (~> 0.3.18)
-  nokogiri
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.6)

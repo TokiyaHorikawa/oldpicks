@@ -21,7 +21,7 @@ gem 'bootstrap-sass'
 gem "font-awesome-rails"
 gem 'devise'
 gem 'metainspector'
-gem 'nokogiri'
+# gem 'nokogiri'
 gem 'carrierwave'
 gem 'rmagick'
 # タグ付け
