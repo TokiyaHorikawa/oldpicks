@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 20180211081940) do
     t.text     "content",     limit: 65535, null: false
     t.integer  "user_id"
     t.integer  "article_id"
+    t.integer  "like_counts"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.integer  "like_counts"
     t.index ["article_id"], name: "index_comments_on_article_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
