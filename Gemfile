@@ -20,12 +20,12 @@ gem 'erb2haml'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
 gem 'devise'
-gem 'metainspector'
-gem 'nokogiri'
-gem 'carrierwave'
-gem 'rmagick'
-# タグ付け
-gem 'acts-as-taggable-on', '~> 4.0'
+# gem 'metainspector'
+# gem 'nokogiri'
+# gem 'carrierwave'
+# gem 'rmagick'
+# # タグ付け
+# gem 'acts-as-taggable-on', '~> 4.0'
 
 
 
