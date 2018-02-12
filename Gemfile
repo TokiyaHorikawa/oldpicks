@@ -20,7 +20,7 @@ gem 'erb2haml'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
 gem 'devise'
-gem 'metainspector'
+gem 'metainspector', '~> 5.3.1'
 # gem 'nokogiri'
 gem 'carrierwave'
 gem 'rmagick'
