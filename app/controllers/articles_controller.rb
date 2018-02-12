@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
   def index
     @article = Article.new
     @comment = Comment.new
+    @head_articles = Article.where(params[:id]).limit(2)
     @top_articles = Article.where(params[:id]).limit(4)
     @latest_articles = Article.order('created_at DESC').limit(8)
     @tech_articles = Article.tagged_with("テクノロジー").limit(3)
