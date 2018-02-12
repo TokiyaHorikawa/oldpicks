@@ -39,7 +39,7 @@
                 = image_tag 'sky.jpg', { class: 'cover' }
                 .comment-container
                   - if @your_comment.present?
-                    = form_for [@article, @comment], html: { id: "update_comment_form", name: "#{@comment.id}", } do |f|
+                    = form_for [@your_comment], html: { id: "update_comment_form", name: "#{@your_comment.id}", } do |f|
                       = f.text_field :content, { class: 'comment-form-area', placeholder: "コメントを書く" }
                       .pick-control
                         .description
@@ -48,8 +48,22 @@
                           = image_tag 'twitter-gray', { class: 'twitter-mark' }
                         .sns-facebook
                           = image_tag 'facebook-gray', { class: 'facebook-mark' }
-                      #update_comment.pick-button
-                        Pick
+                        #update_comment.pick-button
+                          Pick
+                        .comment-update-modal
+                          .background
+                            .modal-content-wrapper
+                              .message-box
+                                .labels
+                                  .alert-title
+                                    Pickを上書きしてもよろしいですか？
+                                  .alert-message
+                                    %p すでにPickしたことがあるニュースです。
+                                    %p 再度Pickするとコメントが上書きされます。
+                                  .alert-buttons
+                                    #cancel_update.negative-button
+                                      キャンセル
+                                    = f.submit 'OK', class: 'positive-button'
                   -else
                     = form_for [@article, @comment], html: { id: "comment_form", name: "#{@comment.id}", } do |f|
                       = f.text_field :content, { class: 'comment-form-area', placeholder: "コメントを書く" }
@@ -136,11 +150,25 @@
                             ▼
                           .dropdown-menu{"aria-labelledby" => "dropdownMenuButton"}
                             %a.dropdown-item
-                              #edit-drop-button.edit-drop-menu
+                              .edit-drop-menu
                                 編集
                             %a.dropdown-item
-                              .delete-drop-menu
-                                = link_to '削除', comment_path(@your_comment.id), method: :delete
+                              #delete-drop-button.delete-drop-menu
+                                削除
+                        .comment-delete-modal
+                          .background
+                            .modal-content-wrapper
+                              .message-box
+                                .labels
+                                  .alert-title
+                                    Pickを削除してもよろしいですか？
+                                  .alert-message
+                                    Pickを削除すると元に戻すことは出来ません。
+                                  .alert-buttons
+                                    #cancel_delete.negative-button
+                                      キャンセル
+                                    = link_to 'Pickを削除する', comment_path(@your_comment.id), {method: :delete, class: 'delete-button'}
+
                       .comment-box
                         #your-comment.comment
                           - current_user.comments.each do |m|

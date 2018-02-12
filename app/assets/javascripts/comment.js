@@ -39,13 +39,34 @@ $(function(){
                             </div>
                           </a>
                           <a class="dropdown-item">
+                            <div class="delete-drop-menu" id="delete-drop-button" >
+                              削除
+                            </div>
                           </a>
-                          <div class="delete-drop-menu">
-                          <a class="dropdown-item">
-                          </a>
-                          <a rel="nofollow" data-method="delete" href="/comments/${comment.id}">
-                            削除
-                          </a>
+                        </div>
+                      </div>
+                      <div class="comment-delete-modal">
+                        <div class="background">
+                          <div class="modal-content-wrapper">
+                            <div class="message-box">
+                              <div class="labels">
+                                <div class="alert-title">
+                                  Pickを削除してもよろしいですか？
+                                </div>
+                                <div class="alert-message">
+                                  Pickを削除すると元に戻すことは出来ません。
+                                </div>
+                                <div class="alert-buttons">
+                                  <div class="negative-button" id="cancel_delete">
+                                    キャンセル
+                                  </div>
+                                  <a class="delete-button" rel="nofollow" data-method="delete" href="/comments/${comment.id}">
+                                    Pickを削除する
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
