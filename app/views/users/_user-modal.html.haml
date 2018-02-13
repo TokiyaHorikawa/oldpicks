@@ -35,6 +35,6 @@
         .show-follow-btn
           = image_tag 'follow-button.png'
       .user-picks
-        / 
+        = render partial: "user-article", collection: @modal_articles, as: :article
       .user-footer
         = link_to 'プロフィールをもっと見る', user_path(current_user), {class: 'more-profile'}

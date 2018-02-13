@@ -1,41 +1,31 @@
 class UsersController < ApplicationController
 
 before_action :authenticate_user!
+before_action :set_user_article, only: [:show, :follow, :follower, :edit]
+before_action :set_user_modal, only: [:show, :follow, :follower]
+before_action :set_current_user, only: [:edit, :update, :destroy]
 
   def show
-    @article = Article.new
-    @comment = Comment.new
-    @articles = Article.order('created_at DESC').limit(8)
     @user = User.find(params[:id])
+    @articles = Article.order('created_at DESC').limit(8)
   end
 
   def follow
-    @article = Article.new
-    @comment = Comment.new
-    @articles = Article.order('created_at DESC').limit(8)
   end
 
   def follower
-    @article = Article.new
-    @comment = Comment.new
-    @articles = Article.order('created_at DESC').limit(2)
   end
 
   def edit
-    @user = User.find(current_user)
-    @article = Article.new
-    @comment = Comment.new
   end
 
   def update
-    @user = User.find(current_user)
     @user.update(user_params)
     redirect_to :root
   end
 
   def destroy
-    user = User.find(current_user)
-    user.destroy
+    @user.destroy
     redirect_to :root, notice: 'アカウントの削除が完了しました'
   end
   private
@@ -49,6 +39,19 @@ before_action :authenticate_user!
         :profile,
         :avatar_image
       )
+    end
+
+    def set_user_article
+      @article = Article.new
+      @comment = Comment.new
+    end
+
+    def set_user_modal
+      @modal_articles = Article.order('created_at DESC').limit(2)
+    end
+
+    def set_current_user
+      @user = User.find(current_user)
     end
 
 end
