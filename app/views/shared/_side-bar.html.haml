@@ -21,9 +21,9 @@
     .user
       - if user_signed_in?
         .user-header
-          .user-icon
+          .index-user-icon
             = link_to user_path(current_user) do
-              = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', {class: 'user-icon'}
+              = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', {class: 'index-user-icon'}
           .user-name #{current_user.name}
           .user-title
             #{current_user.user_profile}
