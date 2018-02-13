@@ -1,0 +1,11 @@
+.contents-container
+  .page-content-wide
+    = render "user-show"
+    = render "user-modal"
+    = render "shared/header"
+    = render "shared/main-menu"
+
+    .tab-contents
+      .picks-tab-content-selected
+        .items
+          = render partial: 'articles/article', collection: @articles, as: :article

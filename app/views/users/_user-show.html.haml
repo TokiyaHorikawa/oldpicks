@@ -1,0 +1,32 @@
+.user-page
+  .white-box-profile
+    .user-profile-show
+      .detail
+        .show-cover
+          = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png'
+        .show-labels
+          .user-name #{current_user.name}
+          .ellipsis-job #{current_user.user_profile}
+          .extra-info
+            .picker-likes 総 Like 数: 0
+          .user-profile-detail #{current_user.profile}
+  .white-box
+    .relative-box
+      .tab-container
+        .tab-item
+          = link_to user_path(current_user) do
+            %span.tab-title Picks
+        .tab-item-follows
+          = link_to follow_users_path do
+            %span.count 0
+            %span.unit フォロー
+        .tab-item-followers
+          = link_to follower_users_path do
+            %span.count 0
+            %span.unit フォロワー
+      .search-mypicks
+        .search-box
+          = image_tag 'glass.svg'
+          .search-wrapper
+            = text_field  :body, nil, { placeholder: "自分のPickを検索", class: 'input-search-box'}
+        .right-box
