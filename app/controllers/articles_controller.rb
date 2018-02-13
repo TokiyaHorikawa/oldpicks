@@ -6,15 +6,15 @@ class ArticlesController < ApplicationController
     @comment = Comment.new
     @top_articles = Article.where(params[:id]).limit(4)
     @latest_articles = Article.order('created_at DESC').limit(8)
-    @tech_articles = Article.where(params[:id]).limit(3)
-    @business_articles = Article.where(params[:id]).limit(3)
-    @economy_articles = Article.where(params[:id]).limit(3)
-    @finance_articles = Article.where(params[:id]).limit(3)
-    @career_articles = Article.where(params[:id]).limit(3)
-    @society_articles = Article.where(params[:id]).limit(3)
-    @job_articles = Article.where(params[:id]).limit(3)
-    @back_number_articles = Article.where(params[:id]).limit(3)
-    @analysis_articles = Article.where(params[:id]).limit(3)
+    @tech_articles = Article.tagged_with("テクノロジー").limit(3)
+    @business_articles = Article.tagged_with("ビジネス").limit(3)
+    @economy_articles = Article.tagged_with("政治").limit(3)
+    @finance_articles = Article.tagged_with("金融").limit(3)
+    @career_articles = Article.tagged_with("キャリア").limit(3)
+    @society_articles = Article.tagged_with("社会").limit(3)
+    @job_articles = Article.tagged_with("ジョブ").limit(3)
+    @back_number_articles = Article.tagged_with("過去記事").limit(3)
+    @analysis_articles = Article.tagged_with("アナリスト").limit(3)
   end
 
   def new
@@ -49,7 +49,7 @@ class ArticlesController < ApplicationController
   private
 
     def article_params
-      params.require(:article).permit(:url, :title, :description, :image, :site_name).merge(user_id: current_user.id)
+      params.require(:article).permit(:url, :title, :description, :image, :site_name, :tag_list).merge(user_id: current_user.id)
     end
 
 

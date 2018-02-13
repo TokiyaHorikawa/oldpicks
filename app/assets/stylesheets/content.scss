@@ -16,6 +16,8 @@
       float: left;
       min-width: 500px;
       padding: 0;
+      // スライダー矢印表示のためz
+      z-index: 1;
       .slide-image{
         width: 100%;
         height: 100%;

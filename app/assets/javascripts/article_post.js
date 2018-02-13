@@ -4,17 +4,17 @@ $(document).on('turbolinks:load', function() {
 
     function buildPageinfo(page) {
       // 記事概要HTML生成
-      var html = `<div class="pageinfo">
-                    <div class="page-thumbnail" style="background-image: url(${ page.image }); background-size: contain; height: 120px; width: 120px;"></div>
-                    <div class="texts">
-                      <div class="title_ellipsised" style="overflow: initial;">
-                      <span>${ page.title }</span>
-                      </div>
-                      <div class="summary_ellipsised" title="${ page.title }" style="overflow: initial;">
-                        <span>${ page.description }</span>
-                      </div>
-                    </div>
-                  </div>`
+      var html = '<div class="pageinfo">' +
+                    '<div class="page-thumbnail" style="background-image: url(' + page.image + '); background-size: contain; height: 120px; width: 120px;"></div>' +
+                    '<div class="texts">' +
+                      '<div class="title_ellipsised" style="overflow: initial;">' +
+                      '<span> ' + page.title + '}</span>' +
+                      '</div>' +
+                      '<div class="summary_ellipsised" title="${ page.title }" style="overflow: initial;">' +
+                        '<span> ' + page.description + ' }</span>' +
+                       '</div>' +
+                    '</div>' +
+                  '</div>'
           return html;
     }
 
