@@ -111,16 +111,7 @@
                         .comment
                           = comment.content
                         .like-panel
-                          = image_tag 'like-gray', { class: 'like-icon' }
-                          / = image_tag 'like-red', { class: 'like-mark' }
-                          .like-count-box
-                            .like-count
-                              - if comment.like_counts == nil
-                                0
-                              - else
-                                = comment.like_counts
-                          .like-label
-                            Likes
+                          = render partial: 'likes/like', locals: {comment: comment}
 
               .follow-comment
                 - if @your_comment.present?

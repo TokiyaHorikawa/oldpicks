@@ -48,6 +48,7 @@ $(function() {
     $('.comment-delete-modal').toggle();
   })
 
+  // 非同期時のログインユーザーのコメント削除の確認画面で"キャンセル"をクリックした時の動作
   $('.follow-comment').on('click','#cancel_delete',function(){
     $('.comment-delete-modal').toggle();
   })

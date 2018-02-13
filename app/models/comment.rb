@@ -3,6 +3,7 @@ class Comment < ApplicationRecord
 
   belongs_to :user
   belongs_to :article
+  has_many :likes, dependent: :destroy
 
   def before_time
     comment_time = self.created_at.in_time_zone('Tokyo')
@@ -24,4 +25,9 @@ class Comment < ApplicationRecord
       return "たった今"
     end
   end
+
+  def like_user(user_id)
+    likes.find_by(user_id: user_id)
+  end
+
 end
