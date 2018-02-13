@@ -1,0 +1,44 @@
+.user-show-modal
+  .background
+  .modal-content-wrapper
+    .modal-content.dialog
+      = link_to user_path(current_user) do
+        = image_tag 'xxx.png', { class: 'show-close-btn' }
+      .user-profile-container
+        .user-profile
+          .detail
+            = link_to user_path(current_user) do
+              = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png'
+              .labels
+                .user-name
+                  #{current_user.name}
+                .ellipsis-job
+                  #{current_user.company}
+                  %br
+                  #{current_user.position}
+                .extra-info
+                  %span.picker-likes 総 Like 数: 0
+                .profile-ellipsised
+                  #{current_user.profile}
+      .operation-section
+        .tab-container
+          = link_to user_path(current_user) do
+            %span.tab-title Picks
+          .tab-item-follows
+            = link_to follow_users_path do
+              .count 0
+              .unit フォロー
+          .tab-item-followers
+            = link_to follower_users_path do
+              .count 0
+              .unit フォロワー
+        .show-follow-btn
+          = image_tag 'follow-button.png'
+      - if @modal_articles.present?
+        .user-picks
+          = render partial: "user-article", collection: @modal_articles, as: :article
+      - else
+        .user-picks
+          記事はまだありません
+      .user-footer
+        = link_to 'プロフィールをもっと見る', user_path(current_user), {class: 'more-profile'}
