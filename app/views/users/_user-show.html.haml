@@ -3,7 +3,7 @@
     .user-profile-show
       .detail
         .show-cover
-          = image_tag current_user.avatar_image
+          = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png'
         .show-labels
           .user-name #{current_user.name}
           .ellipsis-job #{current_user.user_profile}

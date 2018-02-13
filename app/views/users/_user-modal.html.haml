@@ -8,7 +8,7 @@
         .user-profile
           .detail
             = link_to user_path(current_user) do
-              = image_tag current_user.avatar_image
+              = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png'
               .labels
                 .user-name
                   #{current_user.name}
@@ -34,7 +34,11 @@
               .unit フォロワー
         .show-follow-btn
           = image_tag 'follow-button.png'
-      .user-picks
-        = render partial: "user-article", collection: @modal_articles, as: :article
+      - if @modal_articles.present?
+        .user-picks
+          = render partial: "user-article", collection: @modal_articles, as: :article
+      - else
+        .user-picks
+          記事はまだありません
       .user-footer
         = link_to 'プロフィールをもっと見る', user_path(current_user), {class: 'more-profile'}
