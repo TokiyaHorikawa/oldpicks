@@ -1,7 +1,8 @@
 json.id             @comment.id
+json.user_id        @comment.user.id
 json.name           @comment.user.name
 json.content        @comment.content
-json.image          @comment.user.avatar_image
+json.avatar_image   @comment.user.avatar_image.url
 json.company        @comment.user.company
 json.position       @comment.user.position
 json.time           @comment.before_time

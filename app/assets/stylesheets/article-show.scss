@@ -323,22 +323,21 @@
                     .like-panel{
                       display: inline-block;
                       float: left;
-                      width: 90px;
+                      margin-left: 45px;
+                      width: 40px;
                       padding-top: 20px;
                       button{
                         border: none;
-                        width: 90px;
+                        width: 40px;
                       }
                       .like-icon{
                         width: 15px;
                         height: 15px;
-                        margin-left: 50px;
                         cursor: pointer;
                         text-align: center;
                       }
                       .like-count-box{
                         margin-top: 5px;
-                        margin-left: 48px;
                         .like-count{
                           font-size: 14px;
                           color: #999;
@@ -578,7 +577,7 @@
                 }
               }
             }
-            .recommend{
+            .recommend-new{
               margin-top: 5px;
               display: inline-block;
               width: 610px;
@@ -592,7 +591,7 @@
                 width: 635px;
                 display: inline-block;
                 .comment-row-no-border{
-                  max-height: 250px;
+                  min-height: 250px;
                   display: inline-block;
                   padding: 20px 0;
                   border-bottom: 1px solid #ccc;
@@ -674,40 +673,40 @@
                     float: left;
                     .comment{
                       width: 510px;
-                      max-height: 200px;
                       line-height: 26px;
                       box-sizing: border-box;
                       float: left;
                       padding: 20px 0 15px 60px;
-                      overflow: auto;
                     }
                     .like-panel{
                       display: inline-block;
                       float: left;
-                      width: 90px;
+                      margin-left: 45px;
+                      width: 40px;
                       padding-top: 20px;
+                      button{
+                        border: none;
+                        width: 40px;
+                      }
                       .like-icon{
                         width: 15px;
                         height: 15px;
-                        margin-top: 45%;
-                        margin-left: 63px;
                         cursor: pointer;
+                        text-align: center;
                       }
                       .like-count-box{
                         margin-top: 5px;
-                        margin-left: 50px;
-                        cursor: pointer;
                         .like-count{
                           font-size: 14px;
                           color: #999;
                           text-align: center;
+                          cursor: pointer;
                         }
                       }
                       .like-label{
                         font-size: 14px;
                         color: #999;
                         margin-top: 5px;
-                        margin-left: 55px;
                         cursor: pointer;
                       }
                     }
@@ -809,6 +808,7 @@
           width: 340px;
           height: 220px;
           margin-top: 20px;
+          margin-bottom: 20px;
           background-color: white;
           display: inline-block;
           float: left;

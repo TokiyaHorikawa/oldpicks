@@ -39,7 +39,7 @@ $(function() {
   })
 
   // 非同期時のログインユーザーのコメント欄にある"▼"をクリックして出てくる"削除"をクリックした時の動作
-  $('.follow-comment').on('click','#delete-drop-button',function(){
+  $('.follow-comment').on('click','#delete-drop-js-button',function(){
     $('.comment-delete-modal').toggle();
   })
 

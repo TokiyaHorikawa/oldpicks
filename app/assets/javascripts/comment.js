@@ -8,7 +8,7 @@ $(function(){
                   <div class="comment-row-no-border">
                     <div class="user-bar">
                       <div class="user-cover">
-                        <img class="user-icon" src="/assets/${comment.image}">
+                        <img class="user-icon" src="${comment.avatar_image}">
                       </div>
                       <div class="user-profile">
                         <div class="user-name">
@@ -39,7 +39,7 @@ $(function(){
                             </div>
                           </a>
                           <a class="dropdown-item">
-                            <div class="delete-drop-menu" id="delete-drop-button" >
+                            <div class="delete-drop-menu" id="delete-drop-js-button" >
                               削除
                             </div>
                           </a>
@@ -129,6 +129,7 @@ $(function(){
     })
     .done(function(data) {
       var html = buildHTML(data);
+      console.log(data);
       $('.follow-comment').append(html);
       $('.comment-form-area').val("");
     })
