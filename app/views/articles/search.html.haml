@@ -1,0 +1,59 @@
+.wrapper
+  = render partial: "shared/header"
+  = render partial: "shared/side-bar"
+  = render partial: "search-parts/search-header"
+  .tab-contents
+    .top.tab-content.selected{ style: "display:block;" }
+      .search-tool-bar
+        .search-tools
+          .search-tool
+            .search-tool-button
+              .tool-title
+                PICK数:
+              .tool-value.not-default
+                指定なし
+              = image_tag 'arrow_bottom.svg', { class: "arrow_bottom" }
+          .search-tool
+            .search-tool-button
+              .tool-title
+                期間:
+              .tool-value.not-default
+                指定なし
+              = image_tag 'arrow_bottom.svg', { class: "arrow_bottom" }
+          .search-tool
+            .search-tool-button
+              .tool-title
+                ソート順:
+              .tool-value.not-default
+                おすすめ
+              = image_tag 'arrow_bottom.svg', { class: "arrow_bottom" }
+      .items
+        .main-container
+          .news-card-list
+            .top-news-section
+              .top-news-title
+                トップニュース
+              .search-result-card
+                .news-card.horizontal
+                  = link_to '#',  do
+                    .news-thumbnail{ style: "background-image:url(https://contents.newspicks.com/images/news/2817739?updatedAt=20180212205640)" }
+                      .pick-count.small.black
+                        .picks-cover
+                        .labels
+                          .value
+                            130
+                          .unit
+                            Picks
+                    .news-information
+                      .meta
+                        .publisher-container
+                          .publisher._ellipsised{ style: "overflow: initial;" }
+                            出展
+                          .separator |
+                          .published 1時間前
+                      .news-summary
+                        .summary._ellipsised
+                          ニュースですニュースですニュースですニュースですニュースですニュースですニュースです
+          .loading.center.invisible
+        .right-container
+      .loading-cover.center.invisible

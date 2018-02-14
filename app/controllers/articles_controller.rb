@@ -46,6 +46,11 @@ class ArticlesController < ApplicationController
   def destroy
   end
 
+  def search
+    @article = Article.new
+    @comment = Comment.new
+  end
+
   private
 
     def article_params

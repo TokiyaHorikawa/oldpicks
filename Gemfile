@@ -26,6 +26,8 @@ gem 'carrierwave'
 gem 'rmagick'
 # タグ付け
 gem 'acts-as-taggable-on', '~> 4.0'
+# 検索機能
+gem 'ransack'
 
 
 
