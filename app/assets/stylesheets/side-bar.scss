@@ -15,7 +15,7 @@
   bottom: 10px;
   box-shadow: 2px 2px 8px #CCC;
   display: none;
-  z-index: 1;
+  z-index: 2;
   overflow-y: auto;
 
   .main-menu{
@@ -62,7 +62,7 @@
     height: 240px;
     .user-header{
       padding-bottom: 12px;
-    .user-icon{
+    .index-user-icon{
       width: 50px;
       height: 50px;
       margin: 0 auto;

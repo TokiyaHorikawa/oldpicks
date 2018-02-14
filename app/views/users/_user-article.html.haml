@@ -1,0 +1,31 @@
+.news-card
+  = link_to article_path(article.id) do
+    .show-thumbnail
+      / = image_tag 'sky.jpg', {id: 'thumbnail-image'}
+      = image_tag article.image, { id: 'thumbnail-image' }
+    .picks-block
+      %span.pick-counts
+        10
+        %span.small-letter
+        Picks
+    .show-title_ellipsised
+      = article.title
+  = link_to root_path do
+    .details
+      .user-icon
+        = image_tag 'sky.jpg', { class: 'user-icon' }
+      .user-info
+        .user-name
+          = article.user.name
+        .user-status
+          = article.user.user_profile
+  = link_to root_path do
+    .user-show-comment
+      .comment-text
+        / ロボット、てゆうとくくりが広過ぎる  掃除ロボ、産業ロボ、倉庫搬送ロボ、ピザ宅配ロボなどはすでに実用商業化していて非常に強いプロダクト 今後は警備ロボ、ドローン物流、自動運転車、オート建機など、いわゆる泥くさい仕事のロボット化が期待されているだろう
+        = article.comments.first.content
+  .show-footer
+    .publisher
+      = article.site_name.truncate(20)
+    %span.published
+      = article.before_time

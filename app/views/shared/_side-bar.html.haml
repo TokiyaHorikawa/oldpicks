@@ -21,9 +21,9 @@
     .user
       - if user_signed_in?
         .user-header
-          .user-icon
-            = link_to root_path do
-              = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', {class: 'user-icon'}
+          .index-user-icon
+            = link_to user_path(current_user) do
+              = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', {class: 'index-user-icon'}
           .user-name #{current_user.name}
           .user-title
             #{current_user.user_profile}
@@ -41,9 +41,9 @@
               .time-line-sub-caption 興味に合わせてカスタマイズ
       -else
         .user-header
-          .user-icon
+          .index-user-icon
             = link_to new_user_registration_path do
-              = image_tag 'user-image.png'
+              = image_tag 'user-image.png', {class: '.index-user-icon'}
           .user-name No Account
           = button_to 'アカウントを作成する', new_user_registration_path, {class: 'create-account', method: :get}
           .follow
