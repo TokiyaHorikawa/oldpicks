@@ -35,7 +35,7 @@
                 トップニュース
               .search-result-card
                 .news-card.horizontal
-                  = link_to '#',  do
+                  = link_to '#' do
                     .news-thumbnail{ style: "background-image:url(https://contents.newspicks.com/images/news/2817739?updatedAt=20180212205640)" }
                       .pick-count.small.black
                         .picks-cover
@@ -45,6 +45,35 @@
                           .unit
                             Picks
                     .news-information
+                      = link_to '#' do
+                        .news-title._ellipsised
+                          タイトルがここに入るよ〜ん！
+                      .meta
+                        .publisher-container
+                          .publisher._ellipsised{ style: "overflow: initial;" }
+                            出展
+                          .separator
+                            |
+                          .published 1時間前
+                      .news-summary
+                        .summary._ellipsised
+                          ニュースですニュースですニュースですニュースですニュースですニュースですニュースです
+              -# 仮置き（renderする）
+              .search-result-card
+                .news-card.horizontal
+                  = link_to '#' do
+                    .news-thumbnail{ style: "background-image:url(https://contents.newspicks.com/images/news/2817739?updatedAt=20180212205640)" }
+                      .pick-count.small.black
+                        .picks-cover
+                        .labels
+                          .value
+                            130
+                          .unit
+                            Picks
+                    .news-information
+                      = link_to '#' do
+                        .news-title._ellipsised
+                          タイトルがここに入るよ〜ん！
                       .meta
                         .publisher-container
                           .publisher._ellipsised{ style: "overflow: initial;" }
@@ -54,6 +83,39 @@
                       .news-summary
                         .summary._ellipsised
                           ニュースですニュースですニュースですニュースですニュースですニュースですニュースです
-          .loading.center.invisible
+
         .right-container
-      .loading-cover.center.invisible
+          .related-comment-container
+            .related-comment-caption 関連するコメント
+            .related-comment-result
+              .search-result-card.comment-card
+                -# ユーザーリンク
+                = link_to '#' do
+                  .user-profile
+                    = image_tag 'https://contents.newspicks.com/images/news/2817739?updatedAt=20180212205640', { class: "user-icon square-icon"}
+                    .user-info
+                      .name-wrapper
+                        .user-name._tab-ellipsis
+                          ゴーン 社長
+                      .user-title._ellipsised{ style: "overflow: initial;" }
+                        株式会社 日産自動車　社長
+                      .pick-time
+                        10時間前
+                .comment-content-wrapper
+                  -# 記事リンク
+                  = link_to '#' do
+                    .user-comment
+                      .comment-value
+                        ここにコメントを表示して記事リンクをつけます。また、企業情報系統は入手の方法が無いので作成しません。
+                .meta
+                  -# 記事リンク
+                  = link_to '#' do
+                    .news-title._ellipsised
+                      ここにニュースタイトルを表示して記事リンク付与。
+                  .publisher-container
+                    .publisher._tab-ellipsis
+                      出展
+                    .separator
+                      |
+                    .published
+                      9999年99月99日
