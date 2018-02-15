@@ -202,9 +202,11 @@
           margin: 0 15px 15px 0;
           display: block;
           background-color: #FFF;
+          a{
           color: inherit;
           text-decoration: none;
           outline: 0;
+          }
           .wrapper{
             width: 344px;
             height: 131px;
@@ -279,22 +281,6 @@
                 }
               }
             }
-          }
-        }
-        .show-follow-btn{
-          cursor: pointer;
-          a{
-            position: relative;
-          }
-          img{
-            position: absolute;
-            top: 90px;
-            right: 30px;
-            width: 75px;
-            height: 28px;
-            transition: all .1s linear;
-            vertical-align: middle;
-            outline: 0;
           }
         }
       }
