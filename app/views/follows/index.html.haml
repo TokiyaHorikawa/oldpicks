@@ -1,0 +1,36 @@
+.contents-container
+  .page-content-wide
+    = render "users/user-show"
+    = render "users/user-modal"
+    = render "shared/header"
+    = render "shared/main-menu"
+
+    .tab-contents
+      .picks-tab-content-selected
+        .items
+          - @user.all_following.each do |user|
+            = link_to user_path(user.id), {class: 'user-tile', remote: true} do
+              .wrapper
+                = image_tag user.avatar_image.present? ? user.avatar_image : 'user-image.png', {class: 'user-icon'}
+                .profile-container
+                  .name-wrapper
+                    .user-name  #{user.name}
+                  .user-title  #{user.user_profile}
+                .user-follow-counts
+                  .user-relation
+                    %span.unit フォロー
+                    %br
+                    %span.follow-counts #{user.follow_count}
+                  .vr
+                  .user-relation
+                    %span.unit フォロワー
+                    %br
+                    %span.follow-counts  #{user.followers_count}
+            - if current_user.following? user
+              .show-follow-btn
+                = link_to user_follow_path(user.id, @follower), {method: :delete} do
+                  = image_tag 'following-btn.png'
+            - else
+              .show-follow-btn
+                = link_to user_follows_path(user.id), {method: :post} do
+                  = image_tag 'follow-button.png', {class: 'show-follow-btn'}
