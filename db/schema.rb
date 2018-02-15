@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211081940) do
+ActiveRecord::Schema.define(version: 20180213062658) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "url",            null: false
     t.integer  "user_id"
-    t.integer  "comment_counts"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "title",          null: false
     t.string   "description",    null: false
     t.string   "image",          null: false
     t.string   "site_name",      null: false
+    t.integer  "comment_counts"
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
   end
 
@@ -29,11 +29,23 @@ ActiveRecord::Schema.define(version: 20180211081940) do
     t.text     "content",     limit: 65535, null: false
     t.integer  "user_id"
     t.integer  "article_id"
-    t.integer  "like_counts"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "like_counts"
     t.index ["article_id"], name: "index_comments_on_article_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "follows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "followable_type",                 null: false
+    t.integer  "followable_id",                   null: false
+    t.string   "follower_type",                   null: false
+    t.integer  "follower_id",                     null: false
+    t.boolean  "blocked",         default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["followable_id", "followable_type"], name: "fk_followables", using: :btree
+    t.index ["follower_id", "follower_type"], name: "fk_follows", using: :btree
   end
 
   create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
