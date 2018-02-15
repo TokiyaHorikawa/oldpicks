@@ -173,6 +173,15 @@
               }
             }
           }
+          .right-box{
+            position: absolute;
+            right: 0;
+            top: 50%;
+            margin-top: -14.5px;
+            img{
+              width: 80px;
+            }
+          }
         }
       }
     }
@@ -236,7 +245,7 @@
               }
             }
            .user-follow-counts{
-              margin-top: 16px;
+              margin-top: 20px;
               .user-relation{
                 text-align: center;
                 display: inline-block;
@@ -270,6 +279,22 @@
                 }
               }
             }
+          }
+        }
+        .show-follow-btn{
+          cursor: pointer;
+          a{
+            position: relative;
+          }
+          img{
+            position: absolute;
+            top: 90px;
+            right: 30px;
+            width: 75px;
+            height: 28px;
+            transition: all .1s linear;
+            vertical-align: middle;
+            outline: 0;
           }
         }
       }
