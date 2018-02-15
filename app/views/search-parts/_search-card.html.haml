@@ -1,0 +1,26 @@
+.search-result-card
+  .news-card.horizontal
+    = link_to article_path(article.id) do
+      .news-thumbnail{ style: "background-image:url(#{article.image})" }
+        .pick-count.small.black
+          .picks-cover
+          .labels
+            .value
+              130
+            .unit
+              Picks
+      .news-information
+        = link_to article_path(article.id) do
+          .news-title._ellipsised
+            = article.title
+        .meta
+          .publisher-container
+            .publisher._ellipsised{ style: "overflow: initial;" }
+              = article.site_name
+            .separator
+              |
+            .published
+              = article.before_time
+        .news-summary
+          .summary._ellipsised
+            = article.description

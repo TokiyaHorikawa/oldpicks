@@ -35,7 +35,6 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @comment = Comment.new
     @comments = @article.comments.includes(:user)
-
   end
 
   def edit
@@ -50,6 +49,8 @@ class ArticlesController < ApplicationController
   def search
     @article = Article.new
     @comment = Comment.new
+    @articles = Article.search(params[:title][0])
+    # @comments = Comment.search(params[:content][0])
   end
 
   private

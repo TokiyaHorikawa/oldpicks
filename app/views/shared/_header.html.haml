@@ -2,10 +2,9 @@
   .col-md-1.open-menu
     = image_tag 'menu.png', {class: 'menu-list', id: 'menu_bar_button'}
   .col-md-1.search-box
-    = form_tag( method: :get ) do
+    = form_tag( search_articles_path, method: :get ) do
       = image_tag 'glass.svg', { class: 'glass' }
-      = text_field  :body, nil, { placeholder: "検索する", class: "text" }
-
+      = text_field :title, params[:title], { placeholder: "検索する", class: "text" }
   .col-md-4.logo
     = link_to "Old PICKS", root_path, { class: 'logo-mark'}
 

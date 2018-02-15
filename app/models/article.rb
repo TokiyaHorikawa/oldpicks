@@ -7,6 +7,16 @@ class Article < ApplicationRecord
   # タグ付け
   acts_as_taggable
 
+  # 検索機能
+  def self.search(title)
+    if title
+      Article.where(['title LIKE ?', "%#{title}%"])
+      # Comment.where(['content LIKE ?', "%#{title}%"])
+    else
+      Article.all
+    end
+  end
+
   # 時間表示
   def before_time
     article_time = self.created_at.in_time_zone('Tokyo')
