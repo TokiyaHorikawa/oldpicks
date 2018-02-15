@@ -1,0 +1,5 @@
+$(".user-show-modal").html("<%= j(render partial: 'users/user-modal') %>");
+$(".user-show-modal").show();
+$('.show-close-btn').on('click', function() {
+  history.back();
+})
