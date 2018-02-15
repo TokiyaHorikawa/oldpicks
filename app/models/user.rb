@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
+  acts_as_followable # フォロワー機能
+  acts_as_follower   # フォロー機能
 
   validates :name, presence: true
 
