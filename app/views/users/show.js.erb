@@ -1,5 +1,6 @@
 $(".user-show-modal").html("<%= j(render partial: 'users/user-modal') %>");
 $(".user-show-modal").show();
-$('.show-close-btn').on('click', function() {
-  history.back();
+$('.show-close-btn').on('click', function(e) {
+  e.preventDefault();
+  $(".user-show-modal").hide();
 })
