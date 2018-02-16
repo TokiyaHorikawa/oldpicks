@@ -12,10 +12,10 @@
     .title_ellipsised
       = article.title.truncate(50)
 
-  = link_to root_path do
+  = link_to user_path("#{article.user.id}") do
     .article-user
       .user-icon
-        = image_tag 'sky.jpg', { class: 'icon-image' }
+        = image_tag article.user.avatar_image, { class: 'icon-image'}
 
       .user-info
         .user-name
@@ -35,4 +35,4 @@
     .publisher
       = article.site_name.truncate(20)
     .published
-      10時間前
+      = article.before_time

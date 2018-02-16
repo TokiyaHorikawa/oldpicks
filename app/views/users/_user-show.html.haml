@@ -1,0 +1,43 @@
+.user-page
+  .white-box-profile
+    .user-profile-show
+      .detail
+        .show-cover
+          = image_tag @user.avatar_image.present? ? @user.avatar_image : 'user-image.png'
+        .show-labels
+          .user-name #{@user.name}
+          .ellipsis-job #{@user.user_profile}
+          .extra-info
+            .picker-likes 総 Like 数: 0
+          .user-profile-detail #{@user.profile}
+  .white-box
+    .relative-box
+      .tab-container
+        .tab-item
+          = link_to user_path(@user) do
+            %span.tab-title Picks
+        .tab-item-follows
+          = link_to user_follows_path(@user) do
+            %span.count #{@user.follow_count}
+            %span.unit フォロー
+        .tab-item-followers
+          = link_to user_followers_path(@user) do
+            %span.count #{@user.followers_count}
+            %span.unit フォロワー
+      - if current_user.id == @user.id
+        .search-mypicks
+          .search-box
+            = image_tag 'glass.svg'
+            .search-wrapper
+              = text_field  :body, nil, { placeholder: "自分のPickを検索", class: 'input-search-box'}
+          .right-box
+      - else
+        .right-box
+          - if current_user.following? @user
+            .show-follow-btn
+              = link_to user_follow_path(@user.id, @follower), {method: :delete} do
+                = image_tag 'following-btn.png'
+          - else
+            .show-follow-btn
+              = link_to user_follows_path(@user.id), {method: :post} do
+                = image_tag 'follow-button.png', {class: 'show-follow-btn'}

@@ -20,10 +20,13 @@ gem 'erb2haml'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
 gem 'devise'
-gem 'metainspector'
-gem 'nokogiri'
+gem 'metainspector', '~> 5.3.1'
+# gem 'nokogiri'
 gem 'carrierwave'
 gem 'rmagick'
+# タグ付け
+gem 'acts-as-taggable-on', '~> 4.0'
+gem "acts_as_follower", github: "tcocca/acts_as_follower"
 
 
 

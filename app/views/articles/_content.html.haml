@@ -1,41 +1,34 @@
 .content
   .eyecatch-container
     .col-md-8.slide
-      = image_tag @top_articles[0][:image], { class: 'slide-image'}
-
-      .capture
-        .picks
-          45
-          .small-letter
-            Picks
-        .title
-          = @top_articles[0][:title]
-        .detail
-          .source
-            = @top_articles[0][:site_name]
-          .time
-            12時
+      = render partial: "slider", collection: @top_articles, as: :article
 
     .col-md-4.sub
       .top
-        = image_tag @top_articles[1][:image], { class: 'top-image'}
-        .capture
-          .special
-            特集
-          .about
-            トーク
-          .title
-            = @top_articles[1][:title]
-      .bottom
-        = image_tag @top_articles[2][:image], { class: 'bottom-image'}
-        .capture
-          .special
-            特集
-          .about
-            トーク
-          .title
-            = @top_articles[2][:title]
+        - if @head_articles.present?
+          = image_tag @head_articles[0][:image], { class: 'top-image'}
+          .capture
+            .special
+              特集
+            .about
+              トーク
+            .title
+              = @head_articles[0][:title]
+        - else
+          %p No Article
 
+      .bottom
+        - if @head_articles[1].present?
+          = image_tag @head_articles[1][:image], { class: 'bottom-image'}
+          .capture
+            .special
+              特集
+            .about
+              トーク
+            .title
+              = @head_articles[1][:title]
+        - else
+          %p No Article
   .topic
     .top-topic
       .top-article-block
@@ -74,7 +67,7 @@
         %h4.title ビジネス
         = link_to "ビジネス　 一覧を見る", '#', { class: 'genre-link'}
         .article-box
-          = render partial: 'article', collection: @tech_articles, as: :article
+          = render partial: 'article', collection: @business_articles, as: :article
 
       .genreblock
         %h4.title 政治・経済

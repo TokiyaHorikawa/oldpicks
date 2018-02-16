@@ -21,18 +21,18 @@
     .user
       - if user_signed_in?
         .user-header
-          .user-icon
-            = link_to root_path do
-              = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', {class: 'user-icon'}
+          .index-user-icon
+            = link_to user_path(current_user) do
+              = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', {class: 'index-user-icon'}
           .user-name #{current_user.name}
           .user-title
             #{current_user.user_profile}
           .follow
-            = link_to root_path, {class: 'follow-info'} do
-              .follow-count 20
+            = link_to user_follows_path(current_user), {class: 'follow-info'} do
+              .follow-count #{current_user.follow_count}
               .follow-caption フォロー
-            = link_to root_path, {class: 'follower-info'} do
-              .follower-count 50
+            = link_to user_followers_path(current_user), {class: 'follower-info'} do
+              .follower-count #{current_user.followers_count}
               .follower-caption フォロワー
           .time-line
             = link_to root_path do
@@ -41,9 +41,9 @@
               .time-line-sub-caption 興味に合わせてカスタマイズ
       -else
         .user-header
-          .user-icon
+          .index-user-icon
             = link_to new_user_registration_path do
-              = image_tag 'user-image.png'
+              = image_tag 'user-image.png', {class: '.index-user-icon'}
           .user-name No Account
           = button_to 'アカウントを作成する', new_user_registration_path, {class: 'create-account', method: :get}
           .follow
