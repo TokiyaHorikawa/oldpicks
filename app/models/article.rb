@@ -8,10 +8,9 @@ class Article < ApplicationRecord
   acts_as_taggable
 
   # 検索機能
-  def self.search(title)
-    if title
-      Article.where(['title LIKE ?', "%#{title}%"])
-      # Comment.where(['content LIKE ?', "%#{title}%"])
+  def self.search(key)
+    if key
+      Article.where(['title LIKE ?', "%#{key}%"])
     else
       Article.all
     end

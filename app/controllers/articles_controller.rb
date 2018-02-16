@@ -49,8 +49,7 @@ class ArticlesController < ApplicationController
   def search
     @article = Article.new
     @comment = Comment.new
-    @articles = Article.search(params[:title][0])
-    # @comments = Comment.search(params[:content][0])
+    @articles = Article.search(params[:key].first)
   end
 
   private
