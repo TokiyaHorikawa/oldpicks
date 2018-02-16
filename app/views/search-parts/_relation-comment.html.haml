@@ -1,32 +1,38 @@
 .related-comment-result
   .search-result-card.comment-card
-    -# ユーザーリンク
-    = link_to user_path(article.comments.first.user.id) do
-      .user-profile
-        = image_tag article.comments.first.user.avatar_image, { class: "user-icon square-icon"}
-        .user-info
-          .name-wrapper
-            .user-name._tab-ellipsis
-              = article.comments.first.user.name
-          .user-title._ellipsised{ style: "overflow: initial;" }
-            = (article.comments.first.user.company) + " " + (article.comments.first.user.position)
-          .pick-time
-            コメント時間
-    .comment-content-wrapper
-      -# 記事リンク
-      = link_to article_path(article.id) do
-        .user-comment
-          .comment-value
-            = article.comments.first.content
-    .meta
-      -# 記事リンク
-      = link_to article_path(article.id) do
-        .news-title._ellipsised
-          = article.title
-      .publisher-container
-        .publisher._tab-ellipsis
-          = article.site_name
-        .separator
-          |
-        .published
-          = article.before_time
+    - if article.comments.first.present?
+      -# ユーザーリンク
+      = link_to user_path(article.comments.first.user.id) do
+        .user-profile
+          - if article.comments.first.user.avatar_image.present?
+            = image_tag article.comments.first.user.avatar_image, { class: "user-icon square-icon"}
+          - else
+            = image_tag 'user-image.png', { class: "user-icon square-icon"}
+          .user-info
+            .name-wrapper
+              .user-name._tab-ellipsis
+                = article.comments.first.user.name.present? ? article.comments.first.user.name : "未登録"
+            .user-title._ellipsised{ style: "overflow: initial;" }
+              = (article.comments.first.user.company) + " " + (article.comments.first.user.position)
+            .pick-time
+              コメント時間
+      .comment-content-wrapper
+        -# 記事リンク
+        = link_to article_path(article.id) do
+          .user-comment
+            .comment-value
+              = article.comments.first.content.present? ? article.comments.first.content : "コメントはありません"
+      .meta
+        -# 記事リンク
+        = link_to article_path(article.id) do
+          .news-title._ellipsised
+            = article.title
+        .publisher-container
+          .publisher._tab-ellipsis
+            = article.site_name
+          .separator
+            |
+          .published
+            = article.before_time
+    - else
+      %p コメントなし
