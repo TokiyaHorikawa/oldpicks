@@ -43,7 +43,7 @@
                 .comment-container
                   - if @your_comment.present?
                     = form_for [@your_comment], html: { id: "update_comment_form", name: "#{@your_comment.id}", } do |f|
-                      = f.text_field :content, { class: 'comment-form-area', placeholder: "コメントを書く" }
+                      = f.text_area :content, { class: 'comment-form-area', placeholder: "コメントを書く" }
                       .pick-control
                         .description
                           シェアする
@@ -69,7 +69,7 @@
                                     = f.submit 'OK', class: 'positive-button'
                   -else
                     = form_for [@article, @comment], html: { id: "comment_form", name: "#{@comment.id}", } do |f|
-                      = f.text_field :content, { class: 'comment-form-area', placeholder: "コメントを書く" }
+                      = f.text_area :content, { class: 'comment-form-area', placeholder: "コメントを書く" }
                       .pick-control
                         .description
                           シェアする
@@ -98,9 +98,9 @@
                           .pick-time
                             = comment.before_time
                         .dropdown
-                          %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                          %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
                             ⋮
-                          .dropdown-menu{"aria-labelledby" => "dropdownMenuButton"}
+                          .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
                             %a.dropdown-item
                               = image_tag 'follow', { class: 'drop-icon' }
                               このユーザーをフォロー
@@ -139,9 +139,9 @@
                             = @your_comment.before_time
 
                         .dropdown
-                          %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                          %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
                             ▼
-                          .dropdown-menu{"aria-labelledby" => "dropdownMenuButton"}
+                          .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
                             %a.dropdown-item
                               .edit-drop-menu
                                 編集
@@ -196,36 +196,68 @@
                   新着のコメント
                 .comment-container
                   - @new_comments.each do |comment|
-                    - if @comments.ids.group_by{|i| i == comment.id}[true] != [comment.id] && comment.id != current_user.comments.ids[0]
-                      .comment-row-no-border
-                        .user-bar
-                          .user-cover
-                            = image_tag comment.user.avatar_image, { class: 'user-icon' }
-                          .user-profile
-                            .user-name
-                              = comment.user.name
-                            .user-job
-                              = "#{comment.user.company} #{comment.user.position}".truncate(12)
-                            .pick-time
-                              = comment.before_time
-                          .dropdown
-                            %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-                              ⋮
-                            .dropdown-menu{"aria-labelledby" => "dropdownMenuButton"}
-                              %a.dropdown-item
-                                = image_tag 'follow', { class: 'drop-icon' }
-                                このユーザーをフォロー
-                              %a.dropdown-item
-                                = image_tag 'mute-icon', { class: 'drop-icon' }
-                                このユーザーのコメントを非表示
-                              %a.dropdown-item
-                                = image_tag 'report-icon', { class: 'drop-icon' }
-                                問題を報告
-                        .comment-box
-                          .comment
-                            = comment.content
-                          .like-panel
-                            = render partial: 'likes/like', locals: {comment: comment}
+                    - if @your_comment.present?
+                      - if @comments.ids.group_by{|i| i == comment.id}[true] != [comment.id] && comment.id != @your_comment.id
+                        .comment-row-no-border
+                          .user-bar
+                            .user-cover
+                              = image_tag comment.user.avatar_image, { class: 'user-icon' }
+                            .user-profile
+                              .user-name
+                                = comment.user.name
+                              .user-job
+                                = "#{comment.user.company} #{comment.user.position}".truncate(12)
+                              .pick-time
+                                = comment.before_time
+                            .dropdown
+                              %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+                                ⋮
+                              .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
+                                %a.dropdown-item
+                                  = image_tag 'follow', { class: 'drop-icon' }
+                                  このユーザーをフォロー
+                                %a.dropdown-item
+                                  = image_tag 'mute-icon', { class: 'drop-icon' }
+                                  このユーザーのコメントを非表示
+                                %a.dropdown-item
+                                  = image_tag 'report-icon', { class: 'drop-icon' }
+                                  問題を報告
+                          .comment-box
+                            .comment
+                              = comment.content
+                            .like-panel
+                              = render partial: 'likes/like', locals: {comment: comment}
+                    - else
+                      - if @comments.ids.group_by{|i| i == comment.id}[true] != [comment.id]
+                        .comment-row-no-border
+                          .user-bar
+                            .user-cover
+                              = image_tag comment.user.avatar_image, { class: 'user-icon' }
+                            .user-profile
+                              .user-name
+                                = comment.user.name
+                              .user-job
+                                = "#{comment.user.company} #{comment.user.position}".truncate(12)
+                              .pick-time
+                                = comment.before_time
+                            .dropdown
+                              %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+                                ⋮
+                              .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
+                                %a.dropdown-item
+                                  = image_tag 'follow', { class: 'drop-icon' }
+                                  このユーザーをフォロー
+                                %a.dropdown-item
+                                  = image_tag 'mute-icon', { class: 'drop-icon' }
+                                  このユーザーのコメントを非表示
+                                %a.dropdown-item
+                                  = image_tag 'report-icon', { class: 'drop-icon' }
+                                  問題を報告
+                          .comment-box
+                            .comment
+                              = comment.content
+                            .like-panel
+                              = render partial: 'likes/like', locals: {comment: comment}
               .load-all
                 .show-other-pick
                   .other-pick-text
@@ -251,7 +283,7 @@
           新着記事一覧
         - @articles.each do |article|
           .side-contents
-            = link_to article.url do       #仮置きのリンク
+            = link_to article.url do
               .side-article-image
                 / - if article.image.present?
                 = image_tag article.image, { class: 'show-image' }
