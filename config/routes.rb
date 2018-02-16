@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :get_urls, only: [:index]
   resources :users, only: [:show, :edit, :update, :destroy]
 
-  post '/comments/:comment_id/like' => 'likes#create', as: 'like'
-  delete '/comments/:comment_id/unlike' => 'likes#destroy', as: 'unlike'
+  post '/comments/:comment_id/like', to: 'likes#create', as: 'like'
+  delete '/comments/:comment_id/unlike', to: 'likes#destroy', as: 'unlike'
 end

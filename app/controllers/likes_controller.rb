@@ -14,7 +14,9 @@ class LikesController < ApplicationController
 
   def set_variables
     @comment = Comment.find(params[:comment_id])
-    @id_name = "#like-#{@comment.id}"
-    @id_image = "#image-#{@comment.id}"
+
+  # like機能の非同期時に使用する変数
+    # @id_name = "#like-#{@comment.id}"
+    # @id_image = "#image-#{@comment.id}"
   end
 end

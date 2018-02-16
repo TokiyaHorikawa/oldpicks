@@ -2,7 +2,10 @@ $(function(){
 
   function buildHTML(comment) {
 
+  // フォームにデータを送る際に作成されるトークンの定義
     var name = $('meta[name="csrf-token"]');
+
+  // フォームのデータ送信時にログインユーザーのコメント表示部分に差し込むhtml
     var html =  '<div class = "section-header">' +
                   'フォローしているユーザーのコメント' +
                 '</div>' +
@@ -17,7 +20,7 @@ $(function(){
                           comment.name +
                         '</div>' +
                         '<div class="follower-only">' +
-                          '<img class="follower-only-icon" src="/assets/follower-only-19cf0037d2930e3a5b4d47da299dd15c1e9019057240cc3563236644a9c2955e.png" alt="Follower only">' +
+                          '<img class="follower-only-icon" src="/assets/follower-only.png" alt="Follower only">' +
                           '<div class="follower-only-text">' +
                             'フォロワーのみ' +
                           '</div>' +
@@ -89,10 +92,10 @@ $(function(){
                               'シェアする' +
                             '</div>' +
                             '<div class="sns-twitter">' +
-                              '<img class="twitter-mark" src="/assets/twitter-gray-c7cebd873d4771c8442ec644380f577b8ac09a594e4a92f4e18535f469c7599d.png" alt="Twitter gray">' +
+                              '<img class="twitter-mark" src="/assets/twitter-gray.png" alt="Twitter gray">' +
                             '</div>' +
                             '<div class="sns-facebook">' +
-                              '<img class="facebook-mark" src="/assets/facebook-gray-2b75406167b8fb8857eddda4f40d4b97fd8a19931c9ee8469a7c5541939a55e6.png" alt="Facebook gray">' +
+                              '<img class="facebook-mark" src="/assets/facebook-gray.png" alt="Facebook gray">' +
                             '</div>' +
                             '<input type="submit" name="commit" value="Pick" class="pick-button" data-disable-with="Pick">' +
                             '<div class="cancel-button">' +
@@ -102,7 +105,7 @@ $(function(){
                         '</form>' +
                       '</div>' +
                       '<div class="like-panel" id="your-like">' +
-                        '<img class="like-icon" src="/assets/like-gray-dc70bbc9521df64bd3a62275608a9210d7dd3a7167918dd5a2540fa86c873859.png" alt="Like gray">' +
+                        '<img class="like-icon" src="/assets/like-gray.png" alt="Like gray">' +
                         '<div class="like-count-box">' +
                         '<div class="like-count">' +
                           '0' +
