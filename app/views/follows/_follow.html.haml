@@ -1,6 +1,6 @@
 - if current_user.following? user
   .show-follow-btn
-    = link_to user_follow_path(user.id, follower), {id: 'show-follow-btn', method: :delete} do
+    = link_to user_follow_path(user.id, follow), {id: 'show-follow-btn', method: :delete} do
       = image_tag 'following-btn.png'
 - else
   .show-follow-btn
