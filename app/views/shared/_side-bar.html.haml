@@ -28,11 +28,11 @@
           .user-title
             #{current_user.user_profile}
           .follow
-            = link_to root_path, {class: 'follow-info'} do
-              .follow-count 20
+            = link_to user_follows_path(current_user), {class: 'follow-info'} do
+              .follow-count #{current_user.follow_count}
               .follow-caption フォロー
-            = link_to root_path, {class: 'follower-info'} do
-              .follower-count 50
+            = link_to user_followers_path(current_user), {class: 'follower-info'} do
+              .follower-count #{current_user.followers_count}
               .follower-caption フォロワー
           .time-line
             = link_to root_path do

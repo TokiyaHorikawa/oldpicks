@@ -2,43 +2,49 @@
   .background
   .modal-content-wrapper
     .modal-content.dialog
-      = link_to user_path(current_user) do
+      = link_to user_path(@user) do
         = image_tag 'xxx.png', { class: 'show-close-btn' }
       .user-profile-container
         .user-profile
           .detail
-            = link_to user_path(current_user) do
-              = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png'
+            = link_to user_path(@user) do
+              = image_tag @user.avatar_image.present? ? @user.avatar_image : 'user-image.png'
               .labels
                 .user-name
-                  #{current_user.name}
+                  #{@user.name}
                 .ellipsis-job
-                  #{current_user.company}
+                  #{@user.company}
                   %br
-                  #{current_user.position}
+                  #{@user.position}
                 .extra-info
                   %span.picker-likes 総 Like 数: 0
                 .profile-ellipsised
-                  #{current_user.profile}
+                  #{@user.profile}
       .operation-section
         .tab-container
-          = link_to user_path(current_user) do
+          = link_to user_path(@user) do
             %span.tab-title Picks
           .tab-item-follows
-            = link_to follow_users_path do
-              .count 0
+            = link_to user_follows_path(@user) do
+              .count #{@user.follow_count}
               .unit フォロー
           .tab-item-followers
-            = link_to follower_users_path do
-              .count 0
+            = link_to user_followers_path(@user) do
+              .count #{@user.followers.count}
               .unit フォロワー
-        .show-follow-btn
-          = image_tag 'follow-button.png'
+        - if current_user.following? @user
+          .show-follow-btn
+            = link_to user_follow_path(@user, @follower), {method: :delete} do
+              = image_tag 'following-btn.png'
+        - else
+          .show-follow-btn
+            = link_to user_follows_path(@user), {method: :post} do
+              = image_tag 'follow-button.png'
       - if @modal_articles.present?
         .user-picks
-          = render partial: "user-article", collection: @modal_articles, as: :article
+          = render partial: "users/user-article", collection: @modal_articles, as: :article
       - else
         .user-picks
           記事はまだありません
       .user-footer
-        = link_to 'プロフィールをもっと見る', user_path(current_user), {class: 'more-profile'}
+        = link_to 'プロフィールをもっと見る', user_path(@user), {class: 'more-profile'}

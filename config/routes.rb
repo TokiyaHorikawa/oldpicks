@@ -10,9 +10,10 @@ Rails.application.routes.draw do
   end
   resources :get_urls, only: [:index]
   resources :users, only: [:show, :edit, :update, :destroy] do
-    collection do
-      get 'follow'
-      get 'follower'
-    end
+    resources :follows, only: [:index, :create, :destroy]
+    resources :followers, only: [:index]
   end
+  post '/comments/:comment_id/like', to: 'likes#create', as: 'like'
+  delete '/comments/:comment_id/unlike', to: 'likes#destroy', as: 'unlike'
+
 end

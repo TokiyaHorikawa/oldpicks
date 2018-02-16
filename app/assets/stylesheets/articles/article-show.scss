@@ -68,11 +68,9 @@
         }
         .news{
           width: 660px;
-          height: 160px;
           padding: 15px 25px;
           background-color: white;
           .title-bordered-editor{
-            height: 33px;
             font-size: 24px;
             font-weight: 700;
             overflow: hidden;
@@ -102,6 +100,7 @@
           }
           .read-more-center{
             margin-top: 5px;
+            margin-bottom: 10px;
             display: block;
             font-size: 16px;
             padding: 10px;
@@ -140,15 +139,13 @@
               .comment-container{
                 display: inline-block;
                 margin: 20px 0 0 10px;
-                input{
+                .comment-form-area{
+                  box-sizing: border-box;
                   width: 270px;
                   height: 40px;
                   padding-left: 15px;
                   margin-left: 10px;
                   overflow: auto;
-                }
-                .form-comment{
-                  box-sizing: border-box;
                   float: left;
                 }
                 .pick-button{
@@ -213,20 +210,15 @@
                 border-color: #27375c;
                 background-color: #27375c;
                 cursor: pointer;
-                .pick{
-                  font-size: 16px;
-                  color: white;
-                  padding: 8px 25px;
-                }
               }
             }
           }
           .comments{
-            padding: 0 25px 30px;
+            padding: 0 25px 0;
             width: 660px;
             display: inline-block;
             .populars{
-              margin: 20px 0;
+              margin: 20px 0 0;
               display: inline-block;
               width: 610px;
               .section-header{
@@ -239,7 +231,7 @@
                 width: 635px;
                 display: inline-block;
                 .comment-row-no-border{
-                  max-height: 250px;
+                  min-height: 200px;
                   display: inline-block;
                   padding-top: 20px;
                   border-bottom: 1px solid #ccc;
@@ -275,17 +267,43 @@
                         float: left;
                       }
                     }
-                    .popular-drop-down-button{
-                      width: 30px;
-                      height: 28px;
-                      cursor: pointer;
-                      font-size: 18px;
-                      color: #999;
-                      text-align: center;
-                      display: inline-block;
+                    .dropdown{
                       float: left;
-                      &:hover{
-                        background-color: #eaeaea;
+                      .btn.btn-secondary.dropdown-toggle{
+                        display: inline-block;
+                        margin-bottom: 0;
+                        font-weight: normal;
+                        text-align: center;
+                        vertical-align: middle;
+                        touch-action: manipulation;
+                        cursor: pointer;
+                        background-image: none;
+                        border: 1px solid transparent;
+                        white-space: nowrap;
+                        padding: 6px 12px;
+                        font-size: 14px;
+                        line-height: 1.428571429;
+                        border-radius: 4px;
+                      }
+                      .dropdown-menu{
+                        .dropdown-item{
+                          display: inline-block;
+                          float: left;
+                          width: 300px;
+                          cursor: pointer;
+                          padding: 10px 15px 5px 5px;
+                          font-size: 14px;
+                          color: #666;
+                          border-bottom: solid 1px #EAEAEA;
+                          transition: all .15s linear;
+                        }
+                        .drop-icon{
+                          width: 24px;
+                          height: 24px;
+                          display: inline-block;
+                          float: left;
+                          margin: 0 20px 0 10px;
+                        }
                       }
                     }
                   }
@@ -296,12 +314,235 @@
                     float: left;
                     .comment{
                       width: 510px;
-                      max-height: 200px;
                       line-height: 26px;
                       box-sizing: border-box;
                       float: left;
-                      padding: 20px 0 15px 60px;
-                      overflow: auto;
+                      padding: 20px 0 0 60px;
+                      overflow: hidden;
+                    }
+                    .like-panel{
+                      display: inline-block;
+                      float: left;
+                      margin-left: 45px;
+                      width: 40px;
+                      padding-top: 20px;
+                      button{
+                        border: none;
+                        width: 40px;
+                      }
+                      .like-icon{
+                        width: 15px;
+                        height: 15px;
+                        cursor: pointer;
+                        text-align: center;
+                      }
+                      .like-count-box{
+                        margin-top: 5px;
+                        .like-count{
+                          font-size: 14px;
+                          color: #999;
+                          text-align: center;
+                          cursor: pointer;
+                        }
+                      }
+                      .like-label{
+                        font-size: 14px;
+                        color: #999;
+                        margin-top: 5px;
+                        cursor: pointer;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            .follow-comment{
+              margin: 20px 0;
+              display: inline-block;
+              width: 610px;
+              .section-header{
+                color: #00133A;
+                font-size: 12px;
+                font-weight: 700;
+                height: 30px;
+                margin-top: 20px;
+              }
+              .comment-container{
+                width: 635px;
+                display: inline-block;
+                .comment-row-no-border{
+                  min-height: 200px;
+                  display: inline-block;
+                  padding-top: 20px;
+                  border-bottom: 1px solid #ccc;
+                  .user-bar{
+                    .user-cover{
+                      padding-right: 20px;
+                      float: left;
+                      .user-icon{
+                        width: 40px;
+                        height: 40px;
+                      }
+                    }
+                    .user-profile{
+                      width: 510px;
+                      height: 45px;
+                      float: left;
+                      .user-name{
+                        color: #15274D;
+                        font-size: 16px;
+                        font-weight: 700;
+                        display: inline-block;
+                        float: left;
+                      }
+                      .follower-only{
+                        margin-top: 5px;
+                        .follower-only-icon{
+                          margin-left: 15px;
+                          width: 16px;
+                          height: 16px;
+                          display: inline-block;
+                          float: left;
+                        }
+                        .follower-only-text{
+                          font-size: 12px;
+                          color: #999;
+                          margin-left: 3px;
+                          display: inline-block;
+                          float: left;
+                        }
+                      }
+                      .user-job{
+                        margin-top: 3px;
+                        font-size: 12px;
+                        color: #999;
+                        float: left;
+                        clear: both;
+                      }
+                      .pick-time{
+                        margin-top: 3px;
+                        margin-left: 15px;
+                        font-size: 12px;
+                        color: #999;
+                        float: left;
+                      }
+                    }
+                    .dropdown{
+                      width: 30px;
+                      height: 20px;
+                      cursor: pointer;
+                      font-size: 14px;
+                      color: #999;
+                      text-align: center;
+                      display: inline-block;
+                      float: left;
+                      .dropdown-menu{
+                        min-width: 50px;
+                        margin-top: 15px;
+                        text-align: center;
+                        .dropdown-item{
+                          .edit-drop-menu{
+                            width: 50px;
+                            padding: 3px;
+                            cursor: pointer;
+                            border-bottom: 1px solid #ccc;
+                          }
+                          .delete-drop-menu{
+                            width: 50px;
+                            padding: 3px;
+                          }
+                        }
+                      }
+                    }
+                  }
+                  .comment-box{
+                    width: 600px;
+                    margin-bottom: 20px;
+                    display: inline-block;
+                    float: left;
+                    .comment{
+                      width: 510px;
+                      line-height: 26px;
+                      box-sizing: border-box;
+                      float: left;
+                      padding: 20px 0 0 60px;
+                      overflow: hidden;
+                    }
+                    .edit-comment-box{
+                      width: 510px;
+                      line-height: 26px;
+                      box-sizing: border-box;
+                      float: left;
+                      padding: 20px 0 0 60px;
+                      display: none;
+                      .your-comment-form{
+                        width: 100%;
+                        height: 120px;
+                        border: solid 1px #d9d9d9
+                      }
+                      .pick-control{
+                        margin: 15px 0 10px 15px;
+                        display: inline-block;
+                        float: right;
+                        .description{
+                          font-size: 12px;
+                          color: #999;
+                          margin-top: 10px;
+                          padding: 0 15px;
+                          display: inline-block;
+                          float: left;
+                        }
+                        .sns-twitter{
+                          color: #999;
+                          display: inline-block;
+                          float: left;
+                          width: 25px;
+                          height: 25px;
+                          margin-top: 6px;
+                          margin-left: 7px;
+                          cursor: pointer;
+                          .twitter-mark{
+                            width: 16px;
+                            height: 16px;
+                          }
+                        }
+                        .sns-facebook{
+                          color: #999;
+                          display: inline-block;
+                          float: left;
+                          margin-top: 6px;
+                          margin-left: 10px;
+                          cursor: pointer;
+                          .facebook-mark{
+                            width: 16px;
+                            height: 16px;
+                          }
+                        }
+                        .pick-button{
+                          display: inline-block;
+                          float: left;
+                          width: 80px;
+                          height: 40px;
+                          color: white;
+                          margin-left: 25px;
+                          border-color: #27375c;
+                          background-color: #27375c;
+                          cursor: pointer;
+                        }
+                        .cancel-button{
+                          display: inline-block;
+                          float: left;
+                          width: 90px;
+                          height: 40px;
+                          color: #666;
+                          text-align: center;
+                          padding: 5px;
+                          margin-left: 25px;
+                          border: 1px solid #EFEFEF;
+                          background-color: #EFEFEF;
+                          cursor: pointer;
+                        }
+                      }
                     }
                     .like-panel{
                       display: inline-block;
@@ -311,7 +552,6 @@
                       .like-icon{
                         width: 15px;
                         height: 15px;
-                        margin-top: 45%;
                         margin-left: 63px;
                         cursor: pointer;
                       }
@@ -334,40 +574,10 @@
                       }
                     }
                   }
-                  .popular-drop-menus{
-                    width: 320px;
-                    margin: 16px 0;
-                    border: solid 1px #EAEAEA;
-                    border-bottom: none;
-                    background-color: white;
-                    float: left;
-                    z-index: 1;
-                    position: relative;
-                    display: none;
-                    bottom: 220px;
-                    left: 280px;
-                    .drop-menu{
-                      border-bottom: solid 1px #EAEAEA;
-                      .menu-item{
-                        display: inline-block;
-                        width: 270px;
-                        cursor: pointer;
-                        padding: 16px 20px 16px 32px;
-                        color: #666;
-                        transition: all .15s linear;
-                      }
-                      .drop-icon{
-                        width: 24px;
-                        height: 24px;
-                        display: inline-block;
-                        margin-left: 20px;
-                      }
-                    }
-                  }
                 }
               }
             }
-            .recommend{
+            .recommend-new{
               margin-top: 5px;
               display: inline-block;
               width: 610px;
@@ -381,7 +591,7 @@
                 width: 635px;
                 display: inline-block;
                 .comment-row-no-border{
-                  max-height: 250px;
+                  min-height: 250px;
                   display: inline-block;
                   padding: 20px 0;
                   border-bottom: 1px solid #ccc;
@@ -417,17 +627,43 @@
                         float: left;
                       }
                     }
-                    .recommend-drop-down-button{
-                      width: 30px;
-                      height: 28px;
-                      cursor: pointer;
-                      font-size: 18px;
-                      color: #999;
-                      text-align: center;
-                      display: inline-block;
+                    .dropdown{
                       float: left;
-                      &:hover{
-                        background-color: #eaeaea;
+                      .btn.btn-secondary.dropdown-toggle{
+                        display: inline-block;
+                        margin-bottom: 0;
+                        font-weight: normal;
+                        text-align: center;
+                        vertical-align: middle;
+                        touch-action: manipulation;
+                        cursor: pointer;
+                        background-image: none;
+                        border: 1px solid transparent;
+                        white-space: nowrap;
+                        padding: 6px 12px;
+                        font-size: 14px;
+                        line-height: 1.428571429;
+                        border-radius: 4px;
+                      }
+                      .dropdown-menu{
+                        .dropdown-item{
+                          display: inline-block;
+                          float: left;
+                          width: 300px;
+                          cursor: pointer;
+                          padding: 10px 15px 5px 5px;
+                          font-size: 14px;
+                          color: #666;
+                          border-bottom: solid 1px #EAEAEA;
+                          transition: all .15s linear;
+                        }
+                        .drop-icon{
+                          width: 24px;
+                          height: 24px;
+                          display: inline-block;
+                          float: left;
+                          margin: 0 20px 0 10px;
+                        }
                       }
                     }
                   }
@@ -437,71 +673,41 @@
                     float: left;
                     .comment{
                       width: 510px;
-                      max-height: 200px;
                       line-height: 26px;
                       box-sizing: border-box;
                       float: left;
                       padding: 20px 0 15px 60px;
-                      overflow: auto;
                     }
                     .like-panel{
                       display: inline-block;
                       float: left;
-                      width: 90px;
+                      margin-left: 45px;
+                      width: 40px;
                       padding-top: 20px;
+                      button{
+                        border: none;
+                        width: 40px;
+                      }
                       .like-icon{
                         width: 15px;
                         height: 15px;
-                        margin-top: 45%;
-                        margin-left: 63px;
                         cursor: pointer;
+                        text-align: center;
                       }
                       .like-count-box{
                         margin-top: 5px;
-                        margin-left: 50px;
-                        cursor: pointer;
                         .like-count{
                           font-size: 14px;
                           color: #999;
                           text-align: center;
+                          cursor: pointer;
                         }
                       }
                       .like-label{
                         font-size: 14px;
                         color: #999;
                         margin-top: 5px;
-                        margin-left: 55px;
                         cursor: pointer;
-                      }
-                    }
-                  }
-                  .recommend-drop-menus{
-                    width: 320px;
-                    margin: 16px 0;
-                    border: solid 1px #EAEAEA;
-                    border-bottom: none;
-                    background-color: white;
-                    float: left;
-                    z-index: 1;
-                    position: relative;
-                    display: none;
-                    bottom: 200px;
-                    left: 280px;
-                    .drop-menu{
-                      border-bottom: solid 1px #EAEAEA;
-                      .menu-item{
-                        display: inline-block;
-                        width: 270px;
-                        cursor: pointer;
-                        padding: 16px 20px 16px 32px;
-                        color: #666;
-                        transition: all .15s linear;
-                      }
-                      .drop-icon{
-                        width: 24px;
-                        height: 24px;
-                        display: inline-block;
-                        margin-left: 20px;
                       }
                     }
                   }
@@ -509,6 +715,7 @@
               }
             }
             .load-all{
+              margin-bottom: 50px;
               .show-other-pick{
                 display: inline-block;
                 padding: 16px 32px;
@@ -601,6 +808,7 @@
           width: 340px;
           height: 220px;
           margin-top: 20px;
+          margin-bottom: 20px;
           background-color: white;
           display: inline-block;
           float: left;
@@ -664,5 +872,154 @@
     }
   }
 }
-
-
+.comment-update-modal{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  display: none;
+  .background{
+    position: fixed;
+    background: #15274D;
+    width: 100%;
+    height: 100%;
+    filter: alpha(Opacity=90);
+    opacity: .9;
+  }
+  .modal-content-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    text-align: center;
+    overflow-y: auto;
+    height: 100%;
+    .message-box{
+      display: inline-block;
+      background: #FFF;
+      padding-top: 56px;
+      -webkit-border-radius: 5px;
+      color: #222;
+      margin: auto;
+      text-align: center;
+      .labels{
+        margin: 0 56px;
+        .alert-title{
+        font-weight: 700;
+        font-size: 20px;
+        }
+        .alert-message{
+          font-size: 14px;
+          margin-top: 48px;
+        }
+      }
+      .alert-buttons{
+        border-top: 1px solid #D9D9D9;
+        margin-top: 48px;
+        padding: 16px 0;
+        .negative-button{
+          border-right: 1px solid #D9D9D9;
+          color: #15274D;
+          font-weight: 700;
+          display: inline-block;
+          width: 49%;
+          text-align: center;
+          padding: 2px 0;
+          cursor: pointer;
+        }
+        .positive-button{
+          color: #15274D;
+          width: 100px;
+          font-weight: 700;
+          display: inline-block;
+          text-align: center;
+          padding: 5px 10px;
+          margin-left: 25px;
+          cursor: pointer;
+          border: none;
+          &:hover{
+            background-color: #F76666;
+            border-color: #F76666;
+            color: #FFF;
+          }
+        }
+      }
+    }
+  }
+}
+.comment-delete-modal{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 110;
+  display: none;
+  .background{
+    position: fixed;
+    background: #15274D;
+    width: 100%;
+    height: 100%;
+    filter: alpha(Opacity=90);
+    opacity: .9;
+  }
+  .modal-content-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    text-align: center;
+    overflow-y: auto;
+    height: 100%;
+    .message-box{
+      display: inline-block;
+      background: #FFF;
+      padding-top: 56px;
+      -webkit-border-radius: 5px;
+      color: #222;
+      margin: auto;
+      text-align: center;
+      .labels{
+        margin: 0 56px;
+        .alert-title{
+        font-weight: 700;
+        font-size: 20px;
+        }
+        .alert-message{
+          font-size: 14px;
+          margin-top: 48px;
+        }
+      }
+      .alert-buttons{
+        border-top: 1px solid #D9D9D9;
+        margin-top: 48px;
+        padding: 16px 0;
+        .negative-button{
+          border-right: 1px solid #D9D9D9;
+          color: #15274D;
+          font-weight: 700;
+          display: inline-block;
+          width: 49%;
+          text-align: center;
+          padding: 2px 0;
+          cursor: pointer;
+        }
+        .delete-button{
+          color: #15274D;
+          font-weight: 700;
+          display: inline-block;
+          text-align: center;
+          padding: 5px 10px;
+          margin-left: 25px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

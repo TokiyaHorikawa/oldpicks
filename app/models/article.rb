@@ -18,9 +18,9 @@ class Article < ApplicationRecord
 
   # 時間表示
   def before_time
-    article_time = self.created_at.in_time_zone('Tokyo')
+    article_time = self.created_at
     now_time = DateTime.now
-    difference = now_time.to_i - article_time.to_i + (9 * 60 * 60)
+    difference = now_time.to_i - article_time.to_i
     seconds = difference
     minutes = difference / 60
     hours = difference / 60 /60
@@ -31,8 +31,10 @@ class Article < ApplicationRecord
       return "#{hours}時間前"
     elsif minutes != 0
       return "#{minutes}分前"
-    else
+    elsif seconds != 0
       return "#{seconds}秒前"
+    else
+      return "たった今"
     end
   end
 end
