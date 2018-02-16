@@ -28,11 +28,3 @@
                       %br
                       %span.follow-counts  #{user.followers_count}
                     = render partial: "follows/follow", locals: {user: user, follow: @follow, follower: @follower}
-            / - if current_user.following? user
-            /   .show-follow-btn
-            /     = link_to user_follow_path(user.id, @follower), {method: :delete} do
-            /       = image_tag 'following-btn.png'
-            / - else
-            /   .show-follow-btn
-            /     = link_to user_follows_path(user.id), {method: :post} do
-            /       = image_tag 'follow-button.png', {class: 'show-follow-btn'}
