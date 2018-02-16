@@ -14,10 +14,18 @@ $(document).on('turbolinks:load', function() {
     $('.user-icon').on('click', function(){
       $('.user-show-modal').show();
       return false;
-    })
+    });
     $('.show-close-btn').on('click', function() {
       $('.user-show-modal').hide();
       return false;
     });
+    // $('.user-tile').on('click', function(){
+    //   $('.user-show-modal').show();
+    //   return false;
+    // });
+    // $('.show-close-btn').on('click', function() {
+    //   $('.user-show-modal').hide();
+    //   return false;
+    // });
   });
 });

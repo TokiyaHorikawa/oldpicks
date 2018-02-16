@@ -9,9 +9,7 @@ Rails.application.routes.draw do
   end
   resources :get_urls, only: [:index]
   resources :users, only: [:show, :edit, :update, :destroy] do
-    collection do
-      get 'follow'
-      get 'follower'
-    end
+    resources :follows, only: [:index, :create, :destroy]
+    resources :followers, only: [:index]
   end
 end

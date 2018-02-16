@@ -10,10 +10,10 @@
         Picks
     .show-title_ellipsised
       = article.title
-  = link_to root_path do
+  = link_to user_path(@user) do
     .details
       .user-icon
-        = image_tag 'sky.jpg', { class: 'user-icon' }
+        = image_tag 'sky.jpg', { class: 'user-icon'}
       .user-info
         .user-name
           = article.user.name
