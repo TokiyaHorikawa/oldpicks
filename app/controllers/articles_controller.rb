@@ -33,9 +33,11 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @articles = Article.where(params[:id]).order("created_at DESC").limit(6)
     @comment = Comment.new
-    @comments = @article.comments.includes(:user)
-
+    @your_comment = Comment.find_by(user_id: current_user.id, article_id: @article.id)
+    @comments = @article.comments.includes(:user).order("like_counts DESC").limit(3)
+    @new_comments = @article.comments.includes(:user).order("created_at DESC").limit(12)
   end
 
   def edit

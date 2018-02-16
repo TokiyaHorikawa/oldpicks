@@ -5,49 +5,79 @@
   .show-content
     .breadcrumbs
       .link-wrapper
-        = link_to articles_path do
+        = link_to root_path do
           = image_tag 'arrow-left.png', { class: 'arrow-left' }
           総合トップ
 
     .show-contents
       .main-contents-area
-        = link_to root_path do       #仮置きのリンク
+        = link_to @article.url do
           .show-article-image
             = image_tag @article.image, { class: 'show-image' }
             .show-picks
               .show-count
-                = @article.comment_counts
+                - if @article.comment_counts == nil
+                  0
+                - else
+                  = @article.comment_counts
               %span.show-small-letter
                 Picks
 
           .news
             = link_to @article.url do
               .title-bordered-editor
-                = @article.title
+                = @article.title.truncate(50)
             .meta
               = image_tag 'publisher.png', { class: 'icon-image' }
               .caption
-                = @article.site_name
+                = @article.site_name.truncate(10)
               = image_tag 'published.png', { class: 'icon-image' }
               .caption
-                = "#{@article.before_time}"
+                = @article.before_time
             = link_to '続きを読む', @article.url, { class: 'read-more-center' }
 
           .news-comment
             .pick-editor
               .comment-area
-                = image_tag 'sky.jpg', { class: 'cover' }
+                = image_tag current_user.avatar_image, { class: 'cover' }
                 .comment-container
-                  = form_for [@article, @comment], html: { id: "comment_form", name: "#{@comment.id}", } do |f|
-                    = f.text_field :content, { class: 'form-comment', placeholder: "コメントを書く" }
-                    .pick-control
-                      .description
-                        シェアする
-                      .sns-twitter
-                        = image_tag 'twitter-gray.png', { class: 'twitter-mark' }
-                      .sns-facebook
-                        = image_tag 'facebook-gray.png', { class: 'facebook-mark' }
-                    = f.submit 'Pick', class: 'pick-button'
+                  - if @your_comment.present?
+                    = form_for [@your_comment], html: { id: "update_comment_form", name: "#{@your_comment.id}", } do |f|
+                      = f.text_area :content, { class: 'comment-form-area', placeholder: "コメントを書く" }
+                      .pick-control
+                        .description
+                          シェアする
+                        .sns-twitter
+                          = image_tag 'twitter-gray', { class: 'twitter-mark' }
+                        .sns-facebook
+                          = image_tag 'facebook-gray', { class: 'facebook-mark' }
+                        #update_comment.pick-button
+                          Pick
+                        .comment-update-modal
+                          .background
+                            .modal-content-wrapper
+                              .message-box
+                                .labels
+                                  .alert-title
+                                    Pickを上書きしてもよろしいですか？
+                                  .alert-message
+                                    %p すでにPickしたことがあるニュースです。
+                                    %p 再度Pickするとコメントが上書きされます。
+                                  .alert-buttons
+                                    #cancel_update.negative-button
+                                      キャンセル
+                                    = f.submit 'OK', class: 'positive-button'
+                  -else
+                    = form_for [@article, @comment], html: { id: "comment_form", name: "#{@comment.id}", } do |f|
+                      = f.text_area :content, { class: 'comment-form-area', placeholder: "コメントを書く" }
+                      .pick-control
+                        .description
+                          シェアする
+                        .sns-twitter
+                          = image_tag 'twitter-gray', { class: 'twitter-mark' }
+                        .sns-facebook
+                          = image_tag 'facebook-gray', { class: 'facebook-mark' }
+                      = f.submit 'Pick', class: 'pick-button', id:'new_comment'
 
 
             .comments
@@ -55,141 +85,186 @@
                 .section-header
                   注目のコメント
                 .comment-container
-                  - @article.comments.each do |comment|
+                  - @comments.each do |comment|
                     .comment-row-no-border
                       .user-bar
                         .user-cover
-                          = image_tag 'user-image.png', { class: 'user-icon' }
+                          = image_tag comment.user.avatar_image, { class: 'user-icon' }
                         .user-profile
                           .user-name
                             = comment.user.name
                           .user-job
-                            ユーザベース SPEEDAアナリスト
+                            = "#{comment.user.company} #{comment.user.position}".truncate(12)
                           .pick-time
-                            4時間前
-                        .popular-drop-down-button
-                          ⋮
+                            = comment.before_time
+                        .dropdown
+                          %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+                            ⋮
+                          .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
+                            %a.dropdown-item
+                              = image_tag 'follow', { class: 'drop-icon' }
+                              このユーザーをフォロー
+                            %a.dropdown-item
+                              = image_tag 'mute-icon', { class: 'drop-icon' }
+                              このユーザーのコメントを非表示
+                            %a.dropdown-item
+                              = image_tag 'report-icon', { class: 'drop-icon' }
+                              問題を報告
                       .comment-box
                         .comment
                           = comment.content
                         .like-panel
-                          = image_tag 'like-gray.png', { class: 'like-icon' }
+                          = render partial: 'likes/like', locals: {comment: comment}
+
+              .follow-comment
+                - if @your_comment.present?
+                  .section-header
+                    フォローしているユーザーのコメント
+                  .comment-container
+                    .comment-row-no-border
+                      .user-bar
+                        .user-cover
+                          = image_tag current_user.avatar_image, { class: 'user-icon' }
+                        .user-profile
+                          .user-name
+                            = current_user.name
+                          .follower-only
+                            = image_tag 'follower-only.png', { class: 'follower-only-icon'}
+                            .follower-only-text
+                              フォロワーのみ
+                          .user-job
+                            = current_user.company
+                            = current_user.position
+                          .pick-time
+                            = @your_comment.before_time
+
+                        .dropdown
+                          %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+                            ▼
+                          .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
+                            %a.dropdown-item
+                              .edit-drop-menu
+                                編集
+                            %a.dropdown-item
+                              #delete-drop-button.delete-drop-menu
+                                削除
+                        .comment-delete-modal
+                          .background
+                            .modal-content-wrapper
+                              .message-box
+                                .labels
+                                  .alert-title
+                                    Pickを削除してもよろしいですか？
+                                  .alert-message
+                                    Pickを削除すると元に戻すことは出来ません。
+                                  .alert-buttons
+                                    #cancel_delete.negative-button
+                                      キャンセル
+                                    = link_to 'Pickを削除する', comment_path(@your_comment.id), {method: :delete, class: 'delete-button'}
+
+                      .comment-box
+                        #your-comment.comment
+                          = @your_comment.content
+                        .edit-comment-box
+                          = form_for [@your_comment] do |f|
+                            = f.text_area :content, { class: 'your-comment-form' }
+                            .pick-control
+                              .description
+                                シェアする
+                              .sns-twitter
+                                = image_tag 'twitter-gray', { class: 'twitter-mark' }
+                              .sns-facebook
+                                = image_tag 'facebook-gray', { class: 'facebook-mark' }
+                              = f.submit 'Pick', class: 'pick-button'
+                              .cancel-button
+                                キャンセル
+                        #your-like.like-panel
+                          = image_tag 'like-gray', { class: 'like-icon' }
                           / = image_tag 'like-red', { class: 'like-mark' }
                           .like-count-box
                             .like-count
-                              0
+                              - if @your_comment.like_counts == nil
+                                0
+                              -else
+                                = @your_comment.like_counts
                           .like-label
                             Likes
-                      .popular-drop-menus
-                        .drop-menu
-                          = image_tag 'follow.png', { class: 'drop-icon' }
-                          = link_to  'このユーザーをフォロー', root_path, { class: 'menu-item' }
-                        .drop-menu
-                          = image_tag 'mute-icon.png', { class: 'drop-icon' }
-                          = link_to 'このユーザーのコメントを非表示', root_path, { class: 'menu-item' }
-                        .drop-menu
-                          = image_tag 'report-icon.png', { class: 'drop-icon' }
-                          = link_to '問題を報告', root_path, { class: 'menu-item' }
 
 
-                  / .comment-row-no-border
-                  /   .user-bar
-                  /     .user-cover
-                  /       = image_tag 'sky.jpg', { class: 'user-icon'}
-                  /     .user-profile
-                  /       .user-name
-                  /         Fuji Kentaro
-                  /       .user-job
-                  /         ユーザベース SPEEDAアナリスト
-                  /       .pick-time
-                  /         4時間前
-                  /     .drop-down-button
-                  /       ⋮
-                  /   .comment-box
-                  /     .comment
-                  /       バブル崩壊から30年近く、アジア通貨危機・日本の金融危機からほぼ20年、リーマンショックから10年ですから、日々のマーケットの動きとは波長の違う大きな波がそろそろやって来るのかも知れません。人工知能の時代でもマーケットを動かすのは人間の心理。人間は常に高所恐怖症です。金利上昇の波に襲われると日本はかなり辛いです
-                  /     .like-panel
-                  /       = image_tag 'like-gray', { class: 'like-mark'}
-                  /       / = image_tag 'like-red', { class: 'like-mark'}
-                  /       .like-count-box
-                  /         .like-count
-                  /           0
-                  /       .like-label
-                  /         Likes
-
-                  / .comment-row-no-border
-                  /   .user-bar
-                  /     .user-cover
-                  /       = image_tag 'sky.jpg', { class: 'user-icon'}
-                  /     .user-profile
-                  /       .user-name
-                  /         Fuji Kentaro
-                  /       .user-job
-                  /         ユーザベース SPEEDAアナリスト
-                  /       .pick-time
-                  /         4時間前
-                  /     .drop-down-button
-                  /       ⋮
-                  /   .comment-box
-                  /     .comment
-                  /       バブル崩壊から30年近く、アジア通貨危機・日本の金融危機からほぼ20年、リーマンショックから10年ですから、日々のマーケットの動きとは波長の違う大きな波がそろそろやって来るのかも知れません。人工知能の時代でもマーケットを動かすのは人間の心理。人間は常に高所恐怖症です。金利上昇の波に襲われると日本はかなり辛いです
-                  /     .like-panel
-                  /       = image_tag 'like-gray', { class: 'like-mark'}
-                  /       / = image_tag 'like-red', { class: 'like-mark'}
-                  /       .like-count-box
-                  /         .like-count
-                  /           0
-                  /       .like-label
-                  /         Likes
-
-              .recommend
+              .recommend-new
                 .section-header
-                  おすすめのコメント
+                  新着のコメント
                 .comment-container
-                  / - @article.each do |comment|
-                  .comment-row-no-border
-                    .user-bar
-                      .user-cover
-                        = image_tag 'sky.jpg', { class: 'user-icon' }
-                      .user-profile
-                        .user-name
-                          豊臣秀吉
-                        .user-job
-                          ユーザベース SPEEDAアナリスト
-                        .pick-time
-                          4時間前
-                      .recommend-drop-down-button
-                        ⋮
-                    .comment-box
-                      .comment
-                        バブル崩壊から30年近く、アジア通貨危機・日本の金融危機からほぼ20年、リーマンショックから10年ですから、日々のマーケットの動きとは波長の違う大きな波がそろそろやって来るのかも知れません。人工知能の時代でもマーケットを動かすのは人間の心理。人間は常に高所恐怖症です。金利上昇の波に襲われると日本はかなり辛いです
-                      .like-panel
-                        = image_tag 'like-gray', { class: 'like-icon' }
-                        / = image_tag 'like-red', { class: 'like-mark'}
-                        .like-count-box
-                          .like-count
-                            0
-                        .like-label
-                          Likes
-                    .recommend-drop-menus
-                      .drop-menu
-                        = image_tag 'follow', { class: 'drop-icon'}
-                        = link_to  'このユーザーをフォロー', root_path, { class: 'menu-item' }
-                      .drop-menu
-                        = image_tag 'mute-icon', { class: 'drop-icon'}
-                        = link_to 'このユーザーのコメントを非表示', root_path, { class: 'menu-item' }
-                      .drop-menu
-                        = image_tag 'report-icon', { class: 'drop-icon' }
-                        = link_to '問題を報告', root_path, { class: 'menu-item' }
-
-
+                  - @new_comments.each do |comment|
+                    - if @your_comment.present?
+                      - if @comments.ids.group_by{|i| i == comment.id}[true] != [comment.id] && comment.id != @your_comment.id
+                        .comment-row-no-border
+                          .user-bar
+                            .user-cover
+                              = image_tag comment.user.avatar_image, { class: 'user-icon' }
+                            .user-profile
+                              .user-name
+                                = comment.user.name
+                              .user-job
+                                = "#{comment.user.company} #{comment.user.position}".truncate(12)
+                              .pick-time
+                                = comment.before_time
+                            .dropdown
+                              %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+                                ⋮
+                              .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
+                                %a.dropdown-item
+                                  = image_tag 'follow', { class: 'drop-icon' }
+                                  このユーザーをフォロー
+                                %a.dropdown-item
+                                  = image_tag 'mute-icon', { class: 'drop-icon' }
+                                  このユーザーのコメントを非表示
+                                %a.dropdown-item
+                                  = image_tag 'report-icon', { class: 'drop-icon' }
+                                  問題を報告
+                          .comment-box
+                            .comment
+                              = comment.content
+                            .like-panel
+                              = render partial: 'likes/like', locals: {comment: comment}
+                    - else
+                      - if @comments.ids.group_by{|i| i == comment.id}[true] != [comment.id]
+                        .comment-row-no-border
+                          .user-bar
+                            .user-cover
+                              = image_tag comment.user.avatar_image, { class: 'user-icon' }
+                            .user-profile
+                              .user-name
+                                = comment.user.name
+                              .user-job
+                                = "#{comment.user.company} #{comment.user.position}".truncate(12)
+                              .pick-time
+                                = comment.before_time
+                            .dropdown
+                              %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+                                ⋮
+                              .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
+                                %a.dropdown-item
+                                  = image_tag 'follow', { class: 'drop-icon' }
+                                  このユーザーをフォロー
+                                %a.dropdown-item
+                                  = image_tag 'mute-icon', { class: 'drop-icon' }
+                                  このユーザーのコメントを非表示
+                                %a.dropdown-item
+                                  = image_tag 'report-icon', { class: 'drop-icon' }
+                                  問題を報告
+                          .comment-box
+                            .comment
+                              = comment.content
+                            .like-panel
+                              = render partial: 'likes/like', locals: {comment: comment}
               .load-all
                 .show-other-pick
                   .other-pick-text
                     .other-pick-label
                       他
                     .remaining-count
-                      1
+                      0
                     .other-pick-label
                       件の Pickを表示
 
@@ -200,30 +275,34 @@
           .related-user
             = image_tag 'sky.jpg', { class: 'transmit-source-icon' }
             .related-user-name
-              毎日新聞
+              = @article.site_name
             = image_tag 'follow-button.png', { class: 'follow-btn' }
 
       .side-news-wrapper
         .side-news-section-title
-          関連記事一覧
-        .side-contents
-          = link_to root_path do       #仮置きのリンク
-            .side-article-image
-              / - if article.image.present?
-              = image_tag 'sky.jpg', { class: 'show-image' }
-              / - else
+          新着記事一覧
+        - @articles.each do |article|
+          .side-contents
+            = link_to article.url do
+              .side-article-image
+                / - if article.image.present?
+                = image_tag article.image, { class: 'show-image' }
+                / - else
 
-              .show-picks
-                .show-count
-                  10
-                %span.show-small-letter
-                  Picks
+                .show-picks
+                  .show-count
+                    - if article.comment_counts == nil
+                      0
+                    - else
+                      = article.comment_counts
+                  %span.show-small-letter
+                    Picks
 
-            .news-detail
-              .title-bordered-editor
-                ネット広告市場に忍び寄るアマゾンの脅威　 eコマースの巨人、すでにツイッターを上回る広告収入
-            .meta
-              .caption-publisher
-                Reuters
-              .caption-published
-                8時間前
+              .news-detail
+                .title-bordered-editor
+                  = article.title
+              .meta
+                .caption-publisher
+                  = article.site_name
+                .caption-published
+                  = article.before_time
