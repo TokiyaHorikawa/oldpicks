@@ -26,7 +26,8 @@ gem 'carrierwave'
 gem 'rmagick'
 # タグ付け
 gem 'acts-as-taggable-on', '~> 4.0'
-gem "acts_as_follower", github: "tcocca/acts_as_follower"
+# 検索機能
+gem 'ransack'
 
 
 

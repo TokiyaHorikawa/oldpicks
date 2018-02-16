@@ -7,6 +7,15 @@ class Article < ApplicationRecord
   # タグ付け
   acts_as_taggable
 
+  # 検索機能
+  def self.search(key)
+    if key
+      Article.where(['title LIKE ?', "%#{key}%"])
+    else
+      Article.all
+    end
+  end
+
   # 時間表示
   def before_time
     article_time = self.created_at

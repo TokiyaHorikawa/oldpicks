@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root "articles#index"
 
   resources :articles, shallow: true do
-    resources :comments, only: [:create, :edit, :update, :destroy]
+    get 'search', on: :collection
+    resources :comments, only: [:create, :edit, :update, :destroy] do
+      resources :likes, only: [:create, :destroy]
+    end
   end
   resources :get_urls, only: [:index]
   resources :users, only: [:show, :edit, :update, :destroy] do

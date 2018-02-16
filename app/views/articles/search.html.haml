@@ -1,0 +1,20 @@
+.wrapper
+  = render partial: "shared/header"
+  = render partial: "shared/side-bar"
+  = render partial: "search-parts/search-header"
+  .tab-contents
+    .top.tab-content.selected{ style: "display:block;" }
+      = render partial: 'search-parts/tool-bar'
+
+      .items
+        .main-container
+          .news-card-list
+            .top-news-section
+              .top-news-title
+                トップニュース
+              = render partial: "search-parts/search-card", collection: @articles, as: :article
+
+        .right-container
+          .related-comment-container
+            .related-comment-caption キーワードに関連するコメント
+            = render partial: "search-parts/relation-comment", collection: @articles, as: :article

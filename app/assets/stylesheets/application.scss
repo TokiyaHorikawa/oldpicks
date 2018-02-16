@@ -4,12 +4,10 @@
 @import "./header";
 @import "./side-bar";
 @import "./content";
-@import "./article";
-@import "./article_post";
+@import "articles/*";
 @import "./latest-new";
 @import "./innovation-box";
 @import "./comment-ranking";
-@import "./article-show";
-@import "./flash";
 @import "slicks/*";
+@import "searchs/*";
 @import "users/*";
