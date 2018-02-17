@@ -1,0 +1,29 @@
+.ranking-wrapper
+  = render partial: "shared/header"
+  = render partial: "shared/side-bar"
+
+  .ranking-library-page
+    .ranking-header
+      = render partial: "ranking-header"
+    .ranking-main-container
+      .ranking-selected
+        .items
+          - @users.each do |user|
+            = link_to root_path, {class: 'user-tile'} do
+              .wrapper
+                = image_tag user.avatar_image.present? ? user.avatar_image : 'user-image.png', {class: 'user-icon'}
+                .profile-container
+                  .name-wrapper
+                    .user-name  #{user.name}
+                  .user-title  #{user.company} #{user.position}
+                .user-follow-counts
+                  .user-relation
+                    %span.unit フォロー
+                    %br
+                    %span.follow-counts 10
+                  .vr
+                  .user-relation
+                    %span.unit フォロワー
+                    %br
+                    %span.follow-counts  10
+

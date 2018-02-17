@@ -1,29 +1,43 @@
-.comment-ranking-card
-  .comment-ranking-header
-    .ranking-order
-      .ranking-ribon
-        = image_tag 'rank_ribon_first.png', { class: 'ranking-ribon-image'}
-        .rank
-          1
-    .user-cover
-      = image_tag 'sky.jpg', { class: 'user-icon'}
-    .user-meta
-      .name-wrapper
-        坂本龍馬
-      .title_ellipsised
-        海援隊隊長
-    .likes
-      .like-count
-        200
-      .small-letter
-        Likes
-    .follow
-      = image_tag 'follow-button.png', { class: 'follow-btn'}
-  .comment-box
-    .comment-text
-      通貨とはそもそも色がなく、トラッキングできないことが非常に都合がよくて、通貨自体が信頼されるためにはとても重要でした。たとえばもしも皆さまの財布にある1万円札が、「それは昔、犯罪者が盗んだものだったから、元の保有者のAさんに返すため回収になります」と言われては、誰も絶対に納得しません。
-  .news-box
-    .news-title-ellipsised
-      【NEM幹部】580億円の流出、「疑惑」の人物はすでにいる
-    .publisher-ellipsised
-      NewsPicks
+- comments.each_with_index do |comment, index|
+  = link_to article_path(comment.article.id) do
+    .comment-ranking-card
+      .comment-ranking-header
+        .ranking-order
+          .ranking-ribon
+            - if index == 0
+              = image_tag 'rank_ribon_first.png', { class: 'ranking-ribon-image'}
+            - elsif index == 1
+              = image_tag 'rank_ribon_second.png', { class: 'ranking-ribon-image'}
+            - elsif index == 2
+              = image_tag 'rank_ribon_third.png', { class: 'ranking-ribon-image'}
+            - else
+              = image_tag 'rank_ribon_other.png', { class: 'ranking-ribon-image'}
+            .rank
+              = index + 1
+        .user-cover
+          = image_tag comment.user.avatar_image, { class: 'user-icon'}
+        .user-meta
+          .name-wrapper
+            = comment.user.name
+          .title_ellipsised
+            = comment.user.company
+            = comment.user.position
+        .comment-ranking-header-right-box
+          .likes
+            .like-count
+              - if comment.like_counts == nil
+                0
+              - else
+                = comment.like_counts
+            .small-letter
+              Likes
+          .follow
+            = image_tag 'follow-button.png', { class: 'follow-btn'}
+      .comment-box
+        .comment-text
+          = comment.content
+      .news-box
+        .news-title-ellipsised
+          = comment.article.title
+        .publisher-ellipsised
+          = comment.article.site_name

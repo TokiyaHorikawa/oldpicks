@@ -1,20 +1,35 @@
-.user-ranking-card
-  .ranking-order
-    .rank-circle
-      .rank
-        1
-  .user-cover
-    = image_tag 'sky.jpg', { class: 'user-icon'}
-  .user-info
-    .name-wrapper
-      .username_ellipsised
-        坂本龍馬
-    .title_ellipsised
-      海援隊隊長
-    .likes
-      .likes_detail
-        週間 Liked ユーザー数:
-      .likes_count
-        300
-  .follow
-    = image_tag 'follow-button.png', { class: 'follow-btn'}
+- like_sort_users.each_with_index do |user, index|
+  .user-ranking-card
+    .ranking-order
+      - if index == 0
+        .rank-circle-1
+          .rank
+            = index + 1
+      - elsif index == 1
+        .rank-circle-2
+          .rank
+            = index + 1
+      - elsif index == 2
+        .rank-circle-3
+          .rank
+            = index + 1
+      - else
+        .rank-circle-other
+          .rank
+            = index + 1
+    .user-cover
+      = image_tag user[0].avatar_image, { class: 'user-icon'}
+    .user-info
+      .name-wrapper
+        .username_ellipsised
+          = user[0].name
+      .title_ellipsised
+        = user[0].company
+      .likes
+        .likes_detail
+          合計 Liked 数:
+        .likes_count
+          = user[1]
+    .follow
+      = link_to root_path do
+        = image_tag 'follow-button.png', { class: 'follow-btn'}
