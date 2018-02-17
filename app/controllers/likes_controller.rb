@@ -3,11 +3,13 @@ class LikesController < ApplicationController
 
   def create
     @like = Like.create(user_id: current_user.id, comment_id: params[:comment_id])
+    redirect_to :back
   end
 
   def destroy
     @like = Like.find_by(user_id: current_user.id, comment_id: params[:comment_id])
     @like.destroy
+    redirect_to :back
   end
 
   private
