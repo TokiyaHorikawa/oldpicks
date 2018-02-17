@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
   def index
     @article = Article.new
     @comment = Comment.new
+    @comments = Comment.includes(:user).order("like_counts DESC").limit(4)
     @head_articles = Article.where(params[:id]).limit(2)
     @top_articles = Article.where(params[:id]).limit(4)
     @latest_articles = Article.order('created_at DESC').limit(8)
@@ -16,6 +17,19 @@ class ArticlesController < ApplicationController
     @job_articles = Article.tagged_with("ジョブ").limit(3)
     @back_number_articles = Article.tagged_with("過去記事").limit(3)
     @analysis_articles = Article.tagged_with("アナリスト").limit(3)
+
+    users = {}
+    @users = User.all
+    @users.each do |user|
+      @count = 0
+      user.comments.each do |comment|
+        a = comment.like_counts.to_i
+        @count += a
+        users[user] = @count
+      end
+    end
+    like_sort_users = Hash[ users.sort_by{ |_, v| -v } ]
+    @like_sort_users = like_sort_users.to_a.take(4)
   end
 
   def new
@@ -46,6 +60,7 @@ class ArticlesController < ApplicationController
 
   def destroy
   end
+
 
   private
 
