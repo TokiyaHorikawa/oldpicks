@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   root "articles#index"
 
   resources :articles, shallow: true do
-    resources :comments, only: [:create, :edit, :update, :destroy] do
-      resources :likes, only: [:create, :destroy]
-    end
+    resources :comments, only: [:create, :edit, :update, :destroy]
   end
 
   resources :get_urls, only: [:index]
@@ -15,9 +13,10 @@ Rails.application.routes.draw do
   get '/about_users', to: 'ranking#about_users', as: 'about_users'
 
   resources :users, only: [:show, :edit, :update, :destroy] do
-    collection do
-      get 'follow'
-      get 'follower'
-    end
+    resources :follows, only: [:index, :create, :destroy]
+    resources :followers, only: [:index]
   end
+  post '/comments/:comment_id/like', to: 'likes#create', as: 'like'
+  delete '/comments/:comment_id/unlike', to: 'likes#destroy', as: 'unlike'
+
 end
