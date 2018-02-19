@@ -1,6 +1,7 @@
 .ranking-wrapper
   = render partial: "shared/header"
   = render partial: "shared/side-bar"
+  = render partial: "users/user-modal"
 
   .ranking-library-page
     .ranking-header
@@ -27,5 +28,4 @@
                       %span.unit フォロワー
                       %br
                       %span.follow-counts  #{user.followers_count}
-            = render partial: "about-user-modal", locals: { user: user }
                     = render partial: "follows/follow", locals: {user: user, follow: @follow, follower: @follower}

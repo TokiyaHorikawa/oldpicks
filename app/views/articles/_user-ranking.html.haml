@@ -33,5 +33,3 @@
             = user[1]
       .follow
         = render partial: "follows/follow", locals: {user: user[0], follow: @follow, follower: @follower}
-
-  = render partial: "ranking/user-ranking-modal", locals: { user: user }
