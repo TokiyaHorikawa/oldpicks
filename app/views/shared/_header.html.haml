@@ -27,7 +27,7 @@
       .nozzle
       .user-menu
         = link_to 'マイピックス', user_path(current_user), {class: 'menu-item'}
-        = link_to 'ユーザーを探す', root_path, {class: 'menu-item'}
+        = link_to 'ユーザーを探す', user_ranking_page_path, {class: 'menu-item'}
         %hr.border
         = link_to 'アカデミア', root_path, {class: 'menu-item'}
         = link_to '有料サービスについて', root_path, {class: 'menu-item'}

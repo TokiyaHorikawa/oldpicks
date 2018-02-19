@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :get_urls, only: [:index]
 
+  get '/user_ranking_page', to: 'ranking#user_ranking_page', as: 'user_ranking_page'
+  get '/comment_ranking_page', to: 'ranking#comment_ranking_page', as: 'comment_ranking_page'
+  get '/about_users', to: 'ranking#about_users', as: 'about_users'
+
   resources :users, only: [:show, :edit, :update, :destroy] do
     resources :follows, only: [:index, :create, :destroy]
     resources :followers, only: [:index]
