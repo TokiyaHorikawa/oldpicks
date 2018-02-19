@@ -16,6 +16,10 @@ class RankingController < ApplicationController
     end
     like_sort_users = Hash[ users.sort_by{ |_, v| -v } ]
     @like_sort_users = like_sort_users.to_a
+
+    @like_sort_users.each do |sort_user|
+      @sort_user = sort_user[0].id
+    end
   end
 
   def comment_ranking_page
@@ -27,7 +31,7 @@ class RankingController < ApplicationController
   def about_users
     @article = Article.new
     @comment = Comment.new
-    @users = User.limit(50)
+    @users = User.all
   end
 
 end

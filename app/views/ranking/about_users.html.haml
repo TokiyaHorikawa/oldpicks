@@ -9,21 +9,22 @@
       .ranking-selected
         .items
           - @users.each do |user|
-            = link_to root_path, {class: 'user-tile'} do
-              .wrapper
-                = image_tag user.avatar_image.present? ? user.avatar_image : 'user-image.png', {class: 'user-icon'}
-                .profile-container
-                  .name-wrapper
-                    .user-name  #{user.name}
-                  .user-title  #{user.company} #{user.position}
-                .user-follow-counts
-                  .user-relation
-                    %span.unit フォロー
-                    %br
-                    %span.follow-counts 10
-                  .vr
-                  .user-relation
-                    %span.unit フォロワー
-                    %br
-                    %span.follow-counts  10
-
+            .user-tile
+              = link_to user_path(user.id), {remote: true} do
+                .wrapper
+                  = image_tag user.avatar_image.present? ? user.avatar_image : 'user-image.png', {class: 'user-icon'}
+                  .profile-container
+                    .name-wrapper
+                      .user-name  #{user.name}
+                    .user-title  #{user.company} #{user.position}
+                  .user-follow-counts
+                    .user-relation
+                      %span.unit フォロー
+                      %br
+                      %span.follow-counts #{user.follow_count}
+                    .vr
+                    .user-relation
+                      %span.unit フォロワー
+                      %br
+                      %span.follow-counts  #{user.followers_count}
+            = render partial: "about-user-modal", locals: { user: user }
