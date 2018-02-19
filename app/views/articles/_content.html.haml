@@ -112,13 +112,19 @@
 
     .user-ranking
       %h4.title ユーザーランキング
-      = link_to "ユーザーランキング　 一覧を見る", user_ranking_page_path, { class: 'user-ranking-link'}
+      - if user_signed_in?
+        = link_to "ユーザーランキング　 一覧を見る", user_ranking_page_path, { class: 'user-ranking-link'}
+      -else
+        = link_to "ユーザーランキング　 一覧を見る", user_session_path, { class: 'user-ranking-link'}
       .user-ranking-block
         = render partial: 'user-ranking', locals: { like_sort_users: @like_sort_users}
 
     .comment-ranking
       %h4.title コメントランキング
-      = link_to "コメントランキング　 一覧を見る", comment_ranking_page_path, { class: 'comment-ranking-link'}
+      - if user_signed_in?
+        = link_to "コメントランキング　 一覧を見る", comment_ranking_page_path, { class: 'comment-ranking-link'}
+      - else
+        = link_to "コメントランキング　 一覧を見る", user_session_path, { class: 'comment-ranking-link'}
       .comment-ranking-block
         = render partial: 'comment-ranking', locals: { comments: @comments}
 
