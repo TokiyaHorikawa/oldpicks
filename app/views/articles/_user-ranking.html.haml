@@ -1,20 +1,8 @@
-.user-ranking-card
-  .ranking-order
-    .rank-circle
-      .rank
-        1
-  .user-cover
-    = image_tag 'sky.jpg', { class: 'user-icon'}
-  .user-info
-    .name-wrapper
-      .username_ellipsised
-        坂本龍馬
-    .title_ellipsised
-      海援隊隊長
-    .likes
-      .likes_detail
-        週間 Liked ユーザー数:
-      .likes_count
-        300
-  .follow
-    = image_tag 'follow-button.png', { class: 'follow-btn'}
+- like_sort_users.each_with_index do |user, index|
+  - if current_page?(root_path)
+    = link_to user_path(user[0].id) do
+      = render partial: "shared/user_ranking_card", locals: {user: user, index: index}
+
+  - else 
+    = link_to user_path(user[0].id), {remote: true} do
+      = render partial: "shared/user_ranking_card", locals: {user: user, index: index}

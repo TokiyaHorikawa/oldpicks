@@ -116,6 +116,7 @@
                         .like-panel
                           = render partial: 'likes/like', locals: {comment: comment}
 
+<<<<<<< HEAD
               .follow-comment
                 - if @your_comment.present?
                   .section-header
@@ -137,58 +138,82 @@
                             = current_user.position
                           .pick-time
                             = @your_comment.before_time
+=======
+              - if user_signed_in?
+                .follow-comment
+                  - if @your_comment.present?
+                    .section-header
+                      フォローしているユーザーのコメント
+                    .comment-container
+                      .comment-row-no-border
+                        .user-bar
+                          .user-cover
+                            = image_tag current_user.avatar_image, { class: 'user-icon' }
+                          .user-profile
+                            .user-name
+                              = current_user.name
+                            .follower-only
+                              = image_tag 'follower-only.png', { class: 'follower-only-icon'}
+                              .follower-only-text
+                                フォロワーのみ
+                            .user-job
+                              = current_user.company
+                              = current_user.position
+                            .pick-time
+                              = @your_comment.before_time
+>>>>>>> master
 
-                        .dropdown
-                          %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
-                            ▼
-                          .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
-                            %a.dropdown-item
-                              .edit-drop-menu
-                                編集
-                            %a.dropdown-item
-                              #delete-drop-button.delete-drop-menu
-                                削除
-                        .comment-delete-modal
-                          .background
-                            .modal-content-wrapper
-                              .message-box
-                                .labels
-                                  .alert-title
-                                    Pickを削除してもよろしいですか？
-                                  .alert-message
-                                    Pickを削除すると元に戻すことは出来ません。
-                                  .alert-buttons
-                                    #cancel_delete.negative-button
-                                      キャンセル
-                                    = link_to 'Pickを削除する', comment_path(@your_comment.id), {method: :delete, class: 'delete-button'}
+                          .dropdown
+                            %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+                              ▼
+                            .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
+                              %a.dropdown-item
+                                .edit-drop-menu
+                                  編集
+                              %a.dropdown-item
+                                #delete-drop-button.delete-drop-menu
+                                  削除
+                          .comment-delete-modal
+                            .background
+                              .modal-content-wrapper
+                                .message-box
+                                  .labels
+                                    .alert-title
+                                      Pickを削除してもよろしいですか？
+                                    .alert-message
+                                      Pickを削除すると元に戻すことは出来ません。
+                                    .alert-buttons
+                                      #cancel_delete.negative-button
+                                        キャンセル
+                                      = link_to 'Pickを削除する', comment_path(@your_comment.id), {method: :delete, class: 'delete-button'}
 
-                      .comment-box
-                        #your-comment.comment
-                          = @your_comment.content
-                        .edit-comment-box
-                          = form_for [@your_comment] do |f|
-                            = f.text_area :content, { class: 'your-comment-form' }
-                            .pick-control
-                              .description
-                                シェアする
-                              .sns-twitter
-                                = image_tag 'twitter-gray', { class: 'twitter-mark' }
-                              .sns-facebook
-                                = image_tag 'facebook-gray', { class: 'facebook-mark' }
-                              = f.submit 'Pick', class: 'pick-button'
-                              .cancel-button
-                                キャンセル
-                        #your-like.like-panel
-                          = image_tag 'like-gray', { class: 'like-icon' }
-                          / = image_tag 'like-red', { class: 'like-mark' }
-                          .like-count-box
-                            .like-count
-                              - if @your_comment.like_counts == nil
-                                0
-                              -else
-                                = @your_comment.like_counts
-                          .like-label
-                            Likes
+                        .comment-box
+                          #your-comment.comment
+                            = @your_comment.content
+                          .edit-comment-box
+                            = form_for [@your_comment] do |f|
+                              = f.text_area :content, { class: 'your-comment-form' }
+                              .pick-control
+                                .description
+                                  シェアする
+                                .sns-twitter
+                                  = image_tag 'twitter-gray', { class: 'twitter-mark' }
+                                .sns-facebook
+                                  = image_tag 'facebook-gray', { class: 'facebook-mark' }
+                                = f.submit 'Pick', class: 'pick-button'
+                                .cancel-button
+                                  キャンセル
+                          #your-like.like-panel
+                            = image_tag 'like-gray', { class: 'like-icon' }
+                            / = image_tag 'like-red', { class: 'like-mark' }
+                            .like-count-box
+                              .like-count
+                                - if @your_comment.like_counts == nil
+                                  0
+                                -else
+                                  = @your_comment.like_counts
+                            .like-label
+                              Likes
 
 
               .recommend-new
