@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
-  # 繰り返し使われる変数はbefore_actionに定義する
+  require 'uri'
+
+  @@num = 0
 
   def index
     @article = Article.new
@@ -52,7 +54,7 @@ class ArticlesController < ApplicationController
   def search
     @article = Article.new
     @comment = Comment.new
-    @articles = Article.search(params[:key].first)
+    @articles = Article.search(params[:key])
   end
 
   private

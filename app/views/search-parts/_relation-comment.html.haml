@@ -13,7 +13,7 @@
               .user-name._tab-ellipsis
                 = article.comments.first.user.name.present? ? article.comments.first.user.name : "未登録"
             .user-title._ellipsised{ style: "overflow: initial;" }
-              = (article.comments.first.user.company) + " " + (article.comments.first.user.position)
+              = "#{article.comments.first.user.company} #{article.comments.first.user.position}"
             .pick-time
               コメント時間
       .comment-content-wrapper
