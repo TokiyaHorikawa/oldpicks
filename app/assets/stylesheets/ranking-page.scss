@@ -8,6 +8,7 @@
       top: 50px;
       position: fixed;
       width: 100%;
+      z-index: 2;
       .tab-container {
         height: 50px;
         width: 100%;
@@ -33,7 +34,7 @@
     .ranking-main-container{
       background-color: #EFEFEF;
       padding-top: 70px;
-      min-height: 250vw;
+      min-height: 400vw;
       .ranking-selected{
         background-color: #EFEFEF;
         padding-left: 60px;
@@ -51,6 +52,17 @@
             float: left;
             padding-left: 30px;
             padding-top: 25px;
+          }
+          .follow{
+            display: inline-block;
+            float: left;
+            .show-follow-btn{
+              margin-top: 30px;
+              img{
+                width: 75px;
+                height: 28px;
+              }
+            }
           }
         }
         .comment-ranking-card{
@@ -124,7 +136,7 @@
               .follow{
                 display: inline-block;
                 float: left;
-                .follow-btn{
+                img{
                   width: 75px;
                   height: 28px;
                   margin-top: 17px;
@@ -173,6 +185,9 @@
             background-color: #FFF;
             color: inherit;
             text-decoration: none;
+            a{
+              text-decoration: none;
+            }
             outline: 0;
             .wrapper{
               width: 344px;
