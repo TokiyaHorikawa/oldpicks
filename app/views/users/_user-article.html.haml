@@ -22,8 +22,7 @@
   = link_to root_path do
     .user-show-comment
       .comment-text
-        / ロボット、てゆうとくくりが広過ぎる  掃除ロボ、産業ロボ、倉庫搬送ロボ、ピザ宅配ロボなどはすでに実用商業化していて非常に強いプロダクト 今後は警備ロボ、ドローン物流、自動運転車、オート建機など、いわゆる泥くさい仕事のロボット化が期待されているだろう
-        = article.comments.first.content
+        = article.comments.first.content.present? ? article.comments.first.content : "コメントはありません"
   .show-footer
     .publisher
       = article.site_name.truncate(20)

@@ -26,7 +26,7 @@
   = link_to article_path(article.id) do
     .article-comment
       .comment-text
-        = article.comments.first.content
+        = article.comments.first.present? ? article.comments.first.content : "コメントはありません"
       .comment-user
         = image_tag 'sky.jpg', { class: 'comment-icon' }
         = image_tag 'sky.jpg', { class: 'comment-icon' }
