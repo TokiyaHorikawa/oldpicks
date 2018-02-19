@@ -17,7 +17,7 @@
         .rank
           = index + 1
   .user-cover
-    = image_tag user[0].avatar_image, { class: 'user-icon' }
+    = image_tag user[0].avatar_image.present? ? user[0].avatar_image : 'user-image.png', class: 'user-icon'
   .user-info
     .name-wrapper
       .username_ellipsised
