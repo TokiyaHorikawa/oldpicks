@@ -5,7 +5,7 @@
 
     .picks
       .count
-        10
+        = article.comment_counts
       %span.small-letter
         Picks
 
@@ -15,22 +15,23 @@
   = link_to user_path("#{article.user.id}") do
     .article-user
       .user-icon
-        = image_tag article.user.avatar_image, { class: 'icon-image'}
+        = image_tag article.user.avatar_image.present? ? article.user.avatar_image : 'user-image.png', { class: 'icon-image'}
 
       .user-info
         .user-name
           = article.user.name
         .user-status
           = article.user.position
-
-  = link_to article_path(article.id) do
     .article-comment
-      .comment-text
-        = article.comments.first.present? ? article.comments.first.content : "コメントはありません"
-      .comment-user
-        = image_tag 'sky.jpg', { class: 'comment-icon' }
-        = image_tag 'sky.jpg', { class: 'comment-icon' }
+      = link_to article_path(article.user.id) do
+        .comment-text
+          = article.comments.first.present? ? article.comments.first.content : "コメントはありません"
 
+      - 0.upto(4) do |num|
+        - if article.comments[num].present?
+          = link_to user_path(article.comments[num].user_id), remote: true do
+            .comment-user
+              = image_tag article.comments[num].user.avatar_image.present? ? article.comments[num].user.avatar_image : 'user-image.png', { class: 'comment-icon' }
   .footer
     .publisher
       = article.site_name.truncate(20)

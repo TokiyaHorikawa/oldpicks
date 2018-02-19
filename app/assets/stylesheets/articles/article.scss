@@ -109,18 +109,17 @@
       // text-overflow: ellipsis;
     }
     .comment-user{
-      margin: 10px 0 0;
       .comment-icon{
-        width: 24px;
-        height: 24px;
-        margin-top: 10px;
+        float: left;
+        width: 30px;
+        height: 30px;
         margin-right: 5px;
       }
     }
   }
 
   .footer{
-    margin-top: 40px;
+    margin-top: 60px;
     width: 360px;
     border-top: 1px solid #ccc;
     position: relative;

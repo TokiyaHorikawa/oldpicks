@@ -5,7 +5,7 @@
       = image_tag article.image, { id: 'thumbnail-image' }
     .picks-block
       %span.pick-counts
-        10
+        = article.comment_counts
         %span.small-letter
         Picks
     .show-title_ellipsised
@@ -13,7 +13,7 @@
   = link_to user_path(@user) do
     .details
       .user-icon
-        = image_tag 'sky.jpg', { class: 'user-icon'}
+        = image_tag @user.avatar_image.present? ? @user.avatar_image : 'user-image.png', { class: 'user-icon'}
       .user-info
         .user-name
           = article.user.name
@@ -22,7 +22,7 @@
   = link_to root_path do
     .user-show-comment
       .comment-text
-        = article.comments.first.content.present? ? article.comments.first.content : "コメントはありません"
+        = article.comments.first.present? ? article.comments.first.content : "コメントはありません"
   .show-footer
     .publisher
       = article.site_name.truncate(20)

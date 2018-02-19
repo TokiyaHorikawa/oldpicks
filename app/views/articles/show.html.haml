@@ -35,10 +35,11 @@
               .caption
                 = @article.before_time
             = link_to '続きを読む', @article.url, { class: 'read-more-center' }
-
+        - if user_signed_in?
           .news-comment
             .pick-editor
               .comment-area
+                = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', { class: 'cover' }
                 .comment-container
                   - if @your_comment.present?
                     = form_for [@your_comment], html: { id: "update_comment_form", name: "#{@your_comment.id}", } do |f|
@@ -66,18 +67,11 @@
                                     #cancel_update.negative-button
                                       キャンセル
                                     = f.submit 'OK', class: 'positive-button'
-                  -else
-                    = form_for [@article, @comment], html: { id: "comment_form", name: "#{@comment.id}", } do |f|
-                      = f.text_area :content, { class: 'comment-form-area', placeholder: "コメントを書く" }
-                      .pick-control
-                        .description
-                          シェアする
-                        .sns-twitter
-                          = image_tag 'twitter-gray', { class: 'twitter-mark' }
-                        .sns-facebook
-                          = image_tag 'facebook-gray', { class: 'facebook-mark' }
-                      = f.submit 'Pick', class: 'pick-button', id:'new_comment'
-
+        -else
+          .news-comment
+            .pick-editor
+              .comment-area
+                = link_to '新規登録/ログインして、コメントを投稿する', user_session_path, class: 'go-session'
 
             .comments
               .populars
@@ -88,7 +82,7 @@
                     .comment-row-no-border
                       .user-bar
                         .user-cover
-                          = image_tag comment.user.avatar_image, { class: 'user-icon' }
+                          = image_tag comment.user.avatar_image.present? ? comment.user.avatar_image : 'user-image.png', { class: 'user-icon' }
                         .user-profile
                           .user-name
                             = comment.user.name
@@ -114,7 +108,6 @@
                           = comment.content
                         .like-panel
                           = render partial: 'likes/like', locals: {comment: comment}
-
               - if user_signed_in?
                 .follow-comment
                   - if @your_comment.present?
