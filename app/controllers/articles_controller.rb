@@ -1,9 +1,9 @@
 class ArticlesController < ApplicationController
-  # 繰り返し使われる変数はbefore_actionに定義する
+  before_action :set_like_sort, only: [:index]
+  before_action :set_user_comment, only: [:index, :show]
 
   def index
     @article = Article.new
-    @comment = Comment.new
     @comments = Comment.includes(:user).order("like_counts DESC").limit(4)
     @head_articles = Article.where(params[:id]).limit(2)
     @top_articles = Article.where(params[:id]).limit(4)
@@ -18,22 +18,9 @@ class ArticlesController < ApplicationController
     @back_number_articles = Article.tagged_with("過去記事").limit(3)
     @analysis_articles = Article.tagged_with("アナリスト").limit(3)
 
-    @user = @user = User.find(current_user.id)
+    @user = User.find(current_user.id)
     @follow = @user.all_following
     @follower = @user.followers
-
-    users = {}
-    @users = User.all
-    @users.each do |user|
-      @count = 0
-      user.comments.each do |comment|
-        a = comment.like_counts.to_i
-        @count += a
-        users[user] = @count
-      end
-    end
-    like_sort_users = Hash[ users.sort_by{ |_, v| -v } ]
-    @like_sort_users = like_sort_users.to_a.take(4)
   end
 
   def new
@@ -52,7 +39,6 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @articles = Article.where(params[:id]).order("created_at DESC").limit(6)
-    @comment = Comment.new
     @your_comment = Comment.find_by(user_id: current_user.id, article_id: @article.id)
     @comments = @article.comments.includes(:user).order("like_counts DESC").limit(3)
     @new_comments = @article.comments.includes(:user).order("created_at DESC").limit(12)
@@ -77,6 +63,25 @@ class ArticlesController < ApplicationController
 
     def comment_params
       params.require(:comment).permit(:content).merge(user_id: current_user.id)
+    end
+
+    def set_user_comment
+      @comment = Comment.new
+    end
+
+    def set_like_sort
+      users = {}
+      @users = User.all
+      @users.each do |user|
+        count = 0
+        user.comments.each do |comment|
+          a = comment.like_counts.to_i
+          count += a
+          users[user] = count
+        end
+      end
+      like_sort_users = Hash[ users.sort_by{ |_, v| -v } ]
+      @like_sort_users = like_sort_users.to_a.take(4)
     end
 
 end

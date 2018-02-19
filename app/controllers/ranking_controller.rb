@@ -6,11 +6,11 @@ class RankingController < ApplicationController
     users = {}
     @users = User.all
     @users.each do |user|
-      @count = 0
+      count = 0
       user.comments.each do |comment|
         a = comment.like_counts.to_i
-        @count += a
-        users[user] = @count
+        count += a
+        users[user] = count
       end
     end
     like_sort_users = Hash[ users.sort_by{ |_, v| -v } ]

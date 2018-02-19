@@ -10,14 +10,6 @@ before_action :set_like_total, only: [:show]
     @follower = @user.followers
     @articles = Article.where( user_id: @user ).order( "id DESC" )
     @modal_articles = Article.where( user_id: @user ).order( "created_at DESC" ).limit(2)
-
-    @count = 0
-    @user.comments.each do |comment|
-      a = comment.like_counts.to_i
-      @count += a
-    end
-    @counts = @count
-
   end
 
   def edit
@@ -56,12 +48,12 @@ before_action :set_like_total, only: [:show]
 
     def set_like_total
       @user = User.find(params[:id])
-      @count = 0
+      count = 0
       @user.comments.each do |comment|
         a = comment.like_counts.to_i
-        @count += a
+        count += a
       end
-      @counts = @count
+      @counts = count
     end
 
 end
