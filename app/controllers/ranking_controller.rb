@@ -1,9 +1,8 @@
 class RankingController < ApplicationController
+  before_action :set_user_article
+  before_action :set_user_follow
 
   def user_ranking_page
-    @article = Article.new
-    @comment = Comment.new
-
     users = {}
     @users = User.all
     @users.each do |user|
@@ -16,22 +15,25 @@ class RankingController < ApplicationController
     end
     like_sort_users = Hash[ users.sort_by{ |_, v| -v } ]
     @like_sort_users = like_sort_users.to_a
-
-    @like_sort_users.each do |sort_user|
-      @sort_user = sort_user[0].id
-    end
   end
 
   def comment_ranking_page
-    @article = Article.new
-    @comment = Comment.new
     @comments = Comment.includes(:user).order("like_counts DESC").limit(20)
   end
 
   def about_users
+    @users = User.all
+  end
+
+  def set_user_article
     @article = Article.new
     @comment = Comment.new
-    @users = User.all
+  end
+
+  def set_user_follow
+    @user = User.find(current_user)
+    @follow = @user.all_following
+    @follower = @user.followers
   end
 
 end

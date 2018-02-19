@@ -18,6 +18,10 @@ class ArticlesController < ApplicationController
     @back_number_articles = Article.tagged_with("過去記事").limit(3)
     @analysis_articles = Article.tagged_with("アナリスト").limit(3)
 
+    @user = @user = User.find(current_user.id)
+    @follow = @user.all_following
+    @follower = @user.followers
+
     users = {}
     @users = User.all
     @users.each do |user|

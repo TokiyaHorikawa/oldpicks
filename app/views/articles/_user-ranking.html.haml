@@ -32,7 +32,6 @@
           .likes_count
             = user[1]
       .follow
-        = link_to root_path do
-          = image_tag 'follow-button.png', { class: 'follow-btn' }
+        = render partial: "follows/follow", locals: {user: user[0], follow: @follow, follower: @follower}
 
   = render partial: "ranking/user-ranking-modal", locals: { user: user }

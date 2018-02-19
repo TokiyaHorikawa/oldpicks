@@ -115,10 +115,14 @@
     }
   }
   .follow{
-    .follow-btn{
-      width: 75px;
-      height: 28px;
-      margin-top: 35px;
+    display: inline-block;
+    float: left;
+    .show-follow-btn{
+      margin-top: 30px;
+      img{
+        width: 75px;
+        height: 28px;
+      }
     }
   }
 }

@@ -12,7 +12,7 @@
               = image_tag 'rank_ribon_third.png', { class: 'ranking-ribon-image'}
             - else
               = image_tag 'rank_ribon_other.png', { class: 'ranking-ribon-image'}
-            .rank
+            .rank-box
               = index + 1
         .user-cover
           = image_tag comment.user.avatar_image, { class: 'user-icon'}
@@ -32,7 +32,7 @@
             .small-letter
               Likes
           .follow
-            = image_tag 'follow-button.png', { class: 'follow-btn'}
+            = render partial: "follows/follow", locals: {user: comment.user, follow: @follow, follower: @follower}
       .comment-box
         .comment-text
           = comment.content
