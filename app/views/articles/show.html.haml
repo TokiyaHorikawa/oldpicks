@@ -35,7 +35,7 @@
               .caption
                 = @article.before_time
             = link_to '続きを読む', @article.url, { class: 'read-more-center' }
-
+        - if user_signed_in?
           .news-comment
             .pick-editor
               .comment-area
@@ -67,18 +67,11 @@
                                     #cancel_update.negative-button
                                       キャンセル
                                     = f.submit 'OK', class: 'positive-button'
-                  -else
-                    = form_for [@article, @comment], html: { id: "comment_form", name: "#{@comment.id}", } do |f|
-                      = f.text_area :content, { class: 'comment-form-area', placeholder: "コメントを書く" }
-                      .pick-control
-                        .description
-                          シェアする
-                        .sns-twitter
-                          = image_tag 'twitter-gray', { class: 'twitter-mark' }
-                        .sns-facebook
-                          = image_tag 'facebook-gray', { class: 'facebook-mark' }
-                      = f.submit 'Pick', class: 'pick-button', id:'new_comment'
-
+        -else
+          .news-comment
+            .pick-editor
+              .comment-area
+                = link_to '新規登録/ログインして、コメントを投稿する', user_session_path, class: 'go-session'
 
             .comments
               .populars

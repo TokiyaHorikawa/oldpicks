@@ -2,3 +2,5 @@
   = render partial: "shared/header"
   = render partial: "shared/side-bar"
   = render partial: "content"
+- if user_signed_in?
+  = render partial: "users/user-modal"

@@ -29,7 +29,7 @@
 
       - 0.upto(4) do |num|
         - if article.comments[num].present?
-          = link_to user_path(article.comments[num].user_id) do
+          = link_to user_path(article.comments[num].user_id), remote: true do
             .comment-user
               = image_tag article.comments[num].user.avatar_image.present? ? article.comments[num].user.avatar_image : 'user-image.png', { class: 'comment-icon' }
   .footer
