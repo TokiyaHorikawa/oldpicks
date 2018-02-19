@@ -39,7 +39,7 @@
           .news-comment
             .pick-editor
               .comment-area
-                = image_tag current_user.avatar_image, { class: 'cover' }
+                = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', { class: 'cover' }
                 .comment-container
                   - if @your_comment.present?
                     = form_for [@your_comment], html: { id: "update_comment_form", name: "#{@your_comment.id}", } do |f|
@@ -89,7 +89,7 @@
                     .comment-row-no-border
                       .user-bar
                         .user-cover
-                          = image_tag comment.user.avatar_image, { class: 'user-icon' }
+                          = image_tag comment.user.avatar_image.present? ? comment.user.avatar_image : 'user-image.png', { class: 'user-icon' }
                         .user-profile
                           .user-name
                             = comment.user.name
@@ -124,7 +124,7 @@
                     .comment-row-no-border
                       .user-bar
                         .user-cover
-                          = image_tag current_user.avatar_image, { class: 'user-icon' }
+                          = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', { class: 'user-icon' }
                         .user-profile
                           .user-name
                             = current_user.name
