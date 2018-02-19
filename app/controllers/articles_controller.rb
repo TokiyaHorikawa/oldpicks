@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   # 繰り返し使われる変数はbefore_actionに定義する
-
+  before_action :following_article, only: [:index, :show]
   def index
     @article = Article.new
     @comment = Comment.new
@@ -64,6 +64,13 @@ class ArticlesController < ApplicationController
 
     def comment_params
       params.require(:comment).permit(:content).merge(user_id: current_user.id)
+    end
+
+    def following_article
+      if user_signed_in?
+        @side_articles_login = Comment.where(user_id: current_user.all_following).includes(:article).order("id DESC").limit(10)
+        @side_articles = Comment.includes(:user).includes(:article).order("id DESC").limit(10)
+      end
     end
 
 end
