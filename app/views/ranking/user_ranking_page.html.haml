@@ -1,0 +1,11 @@
+.ranking-wrapper
+  = render partial: "shared/header"
+  = render partial: "shared/side-bar"
+  = render partial: "users/user-modal"
+
+  .ranking-library-page
+    .ranking-header
+      = render partial: "ranking-header"
+    .ranking-main-container
+      .ranking-selected
+        = render partial: '/articles/user-ranking', locals: { like_sort_users: @like_sort_users}
