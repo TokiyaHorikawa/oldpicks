@@ -15,7 +15,7 @@
             .rank-box
               = index + 1
         .user-cover
-          = image_tag comment.user.avatar_image, { class: 'user-icon'}
+          = image_tag comment.user.avatar_image.present? ? comment.user.avatar_image : 'user-image.png', class: 'user-icon'
         .user-meta
           .name-wrapper
             = comment.user.name

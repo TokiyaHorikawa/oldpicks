@@ -18,9 +18,11 @@ class ArticlesController < ApplicationController
     @back_number_articles = Article.tagged_with("過去記事").limit(3)
     @analysis_articles = Article.tagged_with("アナリスト").limit(3)
 
-    @user = User.find(current_user.id)
-    @follow = @user.all_following
-    @follower = @user.followers
+    if user_signed_in?
+      @user = User.find(current_user.id)
+      @follow = @user.all_following
+      @follower = @user.followers
+    end
   end
 
   def new
@@ -39,9 +41,12 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @articles = Article.where(params[:id]).order("created_at DESC").limit(6)
-    @your_comment = Comment.find_by(user_id: current_user.id, article_id: @article.id)
     @comments = @article.comments.includes(:user).order("like_counts DESC").limit(3)
     @new_comments = @article.comments.includes(:user).order("created_at DESC").limit(12)
+    
+    if user_signed_in?
+      @your_comment = Comment.find_by(user_id: current_user.id, article_id: @article.id)
+    end
   end
 
   def edit
