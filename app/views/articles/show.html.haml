@@ -115,30 +115,6 @@
                           = comment.content
                         .like-panel
                           = render partial: 'likes/like', locals: {comment: comment}
-
-<<<<<<< HEAD
-              .follow-comment
-                - if @your_comment.present?
-                  .section-header
-                    フォローしているユーザーのコメント
-                  .comment-container
-                    .comment-row-no-border
-                      .user-bar
-                        .user-cover
-                          = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', { class: 'user-icon' }
-                        .user-profile
-                          .user-name
-                            = current_user.name
-                          .follower-only
-                            = image_tag 'follower-only.png', { class: 'follower-only-icon'}
-                            .follower-only-text
-                              フォロワーのみ
-                          .user-job
-                            = current_user.company
-                            = current_user.position
-                          .pick-time
-                            = @your_comment.before_time
-=======
               - if user_signed_in?
                 .follow-comment
                   - if @your_comment.present?
@@ -161,7 +137,6 @@
                               = current_user.position
                             .pick-time
                               = @your_comment.before_time
->>>>>>> master
 
                           .dropdown
                             %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
