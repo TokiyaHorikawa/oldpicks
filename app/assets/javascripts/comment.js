@@ -1,3 +1,4 @@
+$(document).on('turbolinks:load', function() {
 $(function(){
 
   function buildHTML(comment) {
@@ -139,4 +140,5 @@ $(function(){
     })
     return false;
   });
+});
 });

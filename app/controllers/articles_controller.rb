@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  # 繰り返し使われる変数はbefore_actionに定義する
+  before_action :following_article, only: [:index, :show]
   before_action :set_like_sort, only: [:index]
   before_action :set_user_comment, only: [:index, :show]
 
@@ -43,7 +45,7 @@ class ArticlesController < ApplicationController
     @articles = Article.where(params[:id]).order("created_at DESC").limit(6)
     @comments = @article.comments.includes(:user).order("like_counts DESC").limit(3)
     @new_comments = @article.comments.includes(:user).order("created_at DESC").limit(12)
-    
+
     if user_signed_in?
       @your_comment = Comment.find_by(user_id: current_user.id, article_id: @article.id)
     end
@@ -74,6 +76,13 @@ class ArticlesController < ApplicationController
 
     def comment_params
       params.require(:comment).permit(:content).merge(user_id: current_user.id)
+    end
+
+    def following_article
+      if user_signed_in?
+        @side_articles_login = Comment.where(user_id: current_user.all_following).includes(:article).order("id DESC").limit(10)
+        @side_articles = Comment.includes(:user).includes(:article).order("id DESC").limit(10)
+      end
     end
 
     def set_user_comment

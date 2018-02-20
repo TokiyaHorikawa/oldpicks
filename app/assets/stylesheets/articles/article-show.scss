@@ -128,7 +128,14 @@
             border-bottom: 1px solid #ccc;
             .comment-area{
               display: inline-block;
+              height: 100%;
+              margin-top: 25px;
               float: left;
+              .go-session{
+                text-decoration: none;
+                font-size: 20px;
+                padding-left:100px;
+              }
               .cover{
                 width: 45px;
                 height: 45px;
