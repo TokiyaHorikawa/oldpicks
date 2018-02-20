@@ -8,7 +8,7 @@ $(function(){
 
   // フォームのデータ送信時にログインユーザーのコメント表示部分に差し込むhtml
     var html =  '<div class = "section-header">' +
-                  'フォローしているユーザーのコメント' +
+                  'あなたのコメント' +
                 '</div>' +
                 '<div class="comment-container">' +
                   '<div class="comment-row-no-border">' +
@@ -21,10 +21,6 @@ $(function(){
                           comment.name +
                         '</div>' +
                         '<div class="follower-only">' +
-                          '<img class="follower-only-icon" src="/assets/follower-only.png" alt="Follower only">' +
-                          '<div class="follower-only-text">' +
-                            'フォロワーのみ' +
-                          '</div>' +
                         '</div>' +
                         '<div class="user-job">' +
                           comment.company +
