@@ -43,7 +43,7 @@
           - @side_articles_login.each do |article|
             .stream-tile
               .picker-info
-                = link_to user_path(article.user.id) do
+                = link_to user_path(article.user.id), remote: true do
                   = image_tag article.user.avatar_image.present? ? article.user.avatar_image : 'user-image.png', {class: 'picker-icon'}
                   .picker-name
                     #{article.user.name}
@@ -81,7 +81,7 @@
             - @side_articles.each do |article|
               .stream-tile
                 .picker-info
-                  = link_to user_path(article.user.id) do
+                  = link_to user_path(article.user.id), remote: true do
                     = image_tag article.user.avatar_image.present? ? article.user.avatar_image : 'user-image.png', {class: 'picker-icon'}
                     .picker-name
                       #{article.user.name}
@@ -111,4 +111,4 @@
               .follower-count -
               .follower-caption フォロワー
           .stream_time-line
-          ログインしてください
+            = link_to '新規登録/ログインして,コメントを閲覧する',user_session_path, class: 'go-session'

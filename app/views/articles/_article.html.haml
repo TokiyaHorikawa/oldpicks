@@ -12,7 +12,7 @@
     .title_ellipsised
       = article.title.truncate(50)
 
-  = link_to user_path("#{article.user.id}") do
+  = link_to user_path("#{article.user.id}"), remote: true do
     .article-user
       .user-icon
         = image_tag article.user.avatar_image.present? ? article.user.avatar_image : 'user-image.png', { class: 'icon-image'}
