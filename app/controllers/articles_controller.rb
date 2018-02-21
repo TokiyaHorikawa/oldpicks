@@ -2,9 +2,8 @@ class ArticlesController < ApplicationController
   require 'uri'
   before_action :set_like_sort, only: [:index]
   before_action :set_user_comment, only: [:index, :show]
+  before_action :following_article, only: [:index, :show, :search]
   @@num = 0
-
-
 
   def index
     @article = Article.new
@@ -43,13 +42,14 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @show_article = Article.find(params[:id])
     @articles = Article.where(params[:id]).order("created_at DESC").limit(6)
-    @comments = @article.comments.includes(:user).order("like_counts DESC").limit(3)
-    @new_comments = @article.comments.includes(:user).order("created_at DESC").limit(12)
+    @comments = @show_article.comments.includes(:user).order("like_counts DESC").limit(3)
+    @new_comments = @show_article.comments.includes(:user).order("created_at DESC").limit(12)
 
     if user_signed_in?
-      @your_comment = Comment.find_by(user_id: current_user.id, article_id: @article.id)
+      @your_comment = Comment.find_by(user_id: current_user.id, article_id: @show_article.id)
+      @user = User.find(current_user.id)
     end
   end
 
@@ -89,7 +89,15 @@ class ArticlesController < ApplicationController
       params.require(:comment).permit(:content).merge(user_id: current_user.id)
     end
 
+    def following_article
+      if user_signed_in?
+        @side_articles_login = Comment.where(user_id: current_user.all_following).includes(:article).order("id DESC").limit(10)
+        @side_articles = Comment.includes(:user).includes(:article).order("id DESC").limit(10)
+      end
+    end
+
     def set_user_comment
+      @article = Article.new
       @comment = Comment.new
     end
 

@@ -11,34 +11,36 @@
 
     .show-contents
       .main-contents-area
-        = link_to @article.url do
+        = link_to @show_article.url do
           .show-article-image
-            = image_tag @article.image, { class: 'show-image' }
+            = image_tag @show_article.image, { class: 'show-image' }
             .show-picks
               .show-count
-                - if @article.comment_counts == nil
+                - if @show_article.comment_counts == nil
                   0
                 - else
-                  = @article.comment_counts
+                  = @show_article.comment_counts
               %span.show-small-letter
                 Picks
 
           .news
-            = link_to @article.url do
+            = link_to @show_article.url do
               .title-bordered-editor
-                = @article.title.truncate(50)
+                = @show_article.title.truncate(50)
             .meta
               = image_tag 'publisher.png', { class: 'icon-image' }
               .caption
-                = @article.site_name.truncate(10)
+                = @show_article.site_name.truncate(10)
               = image_tag 'published.png', { class: 'icon-image' }
               .caption
-                = @article.before_time
-            = link_to '続きを読む', @article.url, { class: 'read-more-center' }
-
+                = @show_article.before_time
+            = link_to '続きを読む', @show_article.url, { class: 'read-more-center' }
+        - if user_signed_in?
+          = render partial: "users/user-modal"
           .news-comment
             .pick-editor
               .comment-area
+                = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', { class: 'cover' }
                 .comment-container
                   - if @your_comment.present?
                     = form_for [@your_comment], html: { id: "update_comment_form", name: "#{@your_comment.id}", } do |f|
@@ -67,7 +69,7 @@
                                       キャンセル
                                     = f.submit 'OK', class: 'positive-button'
                   -else
-                    = form_for [@article, @comment], html: { id: "comment_form", name: "#{@comment.id}", } do |f|
+                    = form_for [@show_article, @comment], html: { id: "comment_form", name: "#{@comment.id}", } do |f|
                       = f.text_area :content, { class: 'comment-form-area', placeholder: "コメントを書く" }
                       .pick-control
                         .description
@@ -77,8 +79,6 @@
                         .sns-facebook
                           = image_tag 'facebook-gray', { class: 'facebook-mark' }
                       = f.submit 'Pick', class: 'pick-button', id:'new_comment'
-
-
             .comments
               .populars
                 .section-header
@@ -88,7 +88,8 @@
                     .comment-row-no-border
                       .user-bar
                         .user-cover
-                          = image_tag comment.user.avatar_image, { class: 'user-icon' }
+                          = link_to user_path(comment.user.id), remote: true do
+                            = image_tag comment.user.avatar_image.present? ? comment.user.avatar_image : 'user-image.png', { class: 'user-icon' }
                         .user-profile
                           .user-name
                             = comment.user.name
@@ -114,7 +115,26 @@
                           = comment.content
                         .like-panel
                           = render partial: 'likes/like', locals: {comment: comment}
+              - if user_signed_in?
+                .follow-comment
+                  - if @your_comment.present?
+                    .section-header
+                      あなたのコメント
+                    .comment-container
+                      .comment-row-no-border
+                        .user-bar
+                          .user-cover
+                            = image_tag @your_comment.user.avatar_image.present? ? @your_comment.user.avatar_image : 'user-image.png', { class: 'user-icon' }
+                          .user-profile
+                            .user-name
+                              = current_user.name
+                            .user-job
+                              = current_user.company
+                              = current_user.position
+                            .pick-time
+                              = @your_comment.before_time
 
+<<<<<<< HEAD
               - if user_signed_in?
                 .follow-comment
                   - if @your_comment.present?
@@ -162,6 +182,32 @@
                                         キャンセル
                                       = link_to 'Pickを削除する', comment_path(@your_comment.id), {method: :delete, class: 'delete-button'}
 
+=======
+                          .dropdown
+                            %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+                              ▼
+                            .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
+                              %a.dropdown-item
+                                .edit-drop-menu
+                                  編集
+                              %a.dropdown-item
+                                #delete-drop-button.delete-drop-menu
+                                  削除
+                          .comment-delete-modal
+                            .background
+                              .modal-content-wrapper
+                                .message-box
+                                  .labels
+                                    .alert-title
+                                      Pickを削除してもよろしいですか？
+                                    .alert-message
+                                      Pickを削除すると元に戻すことは出来ません。
+                                    .alert-buttons
+                                      #cancel_delete.negative-button
+                                        キャンセル
+                                      = link_to 'Pickを削除する', comment_path(@your_comment.id), {method: :delete, class: 'delete-button'}
+
+>>>>>>> master
                         .comment-box
                           #your-comment.comment
                             = @your_comment.content
@@ -201,7 +247,8 @@
                         .comment-row-no-border
                           .user-bar
                             .user-cover
-                              = image_tag comment.user.avatar_image, { class: 'user-icon' }
+                              = link_to user_path(comment.user.id), remote:true do
+                                = image_tag comment.user.avatar_image.present? ? comment.user.avatar_image : 'user-image.png', { class: 'user-icon' }
                             .user-profile
                               .user-name
                                 = comment.user.name
@@ -232,7 +279,7 @@
                         .comment-row-no-border
                           .user-bar
                             .user-cover
-                              = image_tag comment.user.avatar_image, { class: 'user-icon' }
+                              = image_tag comment.user.avatar_image.present? ? comment.avatar_image : 'user-image.png', { class: 'user-icon' }
                             .user-profile
                               .user-name
                                 = comment.user.name
@@ -267,6 +314,11 @@
                       0
                     .other-pick-label
                       件の Pickを表示
+        -else
+          .news-comment
+            .pick-editor
+              .comment-area
+                = link_to '新規登録/ログインして、コメントを閲覧・投稿する', user_session_path, class: 'go-session'
 
     .right-container
       .transmit-source-container
@@ -275,7 +327,7 @@
           .related-user
             = image_tag 'sky.jpg', { class: 'transmit-source-icon' }
             .related-user-name
-              = @article.site_name
+              = @show_article.site_name
             = image_tag 'follow-button.png', { class: 'follow-btn' }
 
       .side-news-wrapper

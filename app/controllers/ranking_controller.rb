@@ -1,6 +1,9 @@
 class RankingController < ApplicationController
   before_action :set_user_article
   before_action :set_user_follow
+<<<<<<< HEAD
+  before_action :following_article
+
 
   def user_ranking_page
     users = {}
@@ -36,4 +39,15 @@ class RankingController < ApplicationController
     @follower = @user.followers
   end
 
+<<<<<<< HEAD
+=======
+  private
+  def following_article
+    if user_signed_in?
+      @side_articles_login = Comment.where(user_id: current_user.all_following).includes(:article).order("id DESC").limit(10)
+      @side_articles = Comment.includes(:user).includes(:article).order("id DESC").limit(10)
+    end
+  end
+
+>>>>>>> master
 end
