@@ -1,4 +1,4 @@
-- if !current_page?(root_path) && !current_page?(user_path) && article_counter == 0
+- if !current_page?(root_path) && !current_page?(user_path(article.user.id)) && article_counter == 0
   .top-article
     = link_to article_path(article.id) do
       .top-article-image
