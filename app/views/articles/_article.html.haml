@@ -1,39 +1,81 @@
-.article
-  = link_to article_path(article.id) do
-    .article-image
-      = image_tag article.image, { class: 'image' }
+- if !current_page?(root_path) && article_counter == 0
+  .top-article
+    = link_to article_path(article.id) do
+      .top-article-image
+        = image_tag article.image, { class: 'image' }
 
-    .picks
-      .count
-        = article.comment_counts
-      %span.small-letter
-        Picks
+      .top-picks
+        .top-count
+          = article.comment_counts
+        %span.top-small-letter
+          Picks
 
-    .title_ellipsised
-      = article.title.truncate(50)
+      .top-title_ellipsised
+        = article.title.truncate(50)
 
-  = link_to user_path("#{article.user.id}") do
-    .article-user
-      .user-icon
-        = image_tag article.user.avatar_image.present? ? article.user.avatar_image : 'user-image.png', { class: 'icon-image'}
+    = link_to user_path(article.user.id), remote: true do
+      .top-article-user
+        .top-user-icon
+          = image_tag article.user.avatar_image.present? ? article.user.avatar_image : 'user-image.png', { class: 'icon-image'}
 
-      .user-info
-        .user-name
-          = article.user.name
-        .user-status
-          = article.user.position
-    .article-comment
-      = link_to article_path(article.user.id) do
-        .comment-text
-          = article.comments.first.present? ? article.comments.first.content : "コメントはありません"
+        .top-user-info
+          .top-user-name
+            = article.user.name
+          .top-user-status
+            = article.user.position
+      .top-article-comment
+        = link_to article_path(article.user.id) do
+          .top-comment-text
+            = article.comments.first.present? ? article.comments.first.content : "コメントはありません"
 
-      - 0.upto(4) do |num|
-        - if article.comments[num].present?
-          = link_to user_path(article.comments[num].user_id), remote: true do
-            .comment-user
-              = image_tag article.comments[num].user.avatar_image.present? ? article.comments[num].user.avatar_image : 'user-image.png', { class: 'comment-icon' }
-  .footer
-    .publisher
-      = article.site_name.truncate(20)
-    .published
-      = article.before_time
+        - 0.upto(4) do |num|
+          - if article.comments[num].present?
+            = link_to user_path(article.comments[num].user_id), remote: true do
+              .top-comment-user
+                = image_tag article.comments[num].user.avatar_image.present? ? article.comments[num].user.avatar_image : 'user-image.png', { class: 'comment-icon' }
+    .top-footer
+      .top-publisher
+        = article.site_name.truncate(20)
+      .top-published
+        = article.before_time
+
+- else
+  .article
+    = link_to article_path(article.id) do
+      .article-image
+        = image_tag article.image, { class: 'image' }
+
+      .picks
+        .count
+          = article.comment_counts
+        %span.small-letter
+          Picks
+
+      .title_ellipsised
+        = article.title.truncate(50)
+
+    = link_to user_path(article.user.id), remote: true do
+      .article-user
+        .user-icon
+          = image_tag article.user.avatar_image.present? ? article.user.avatar_image : 'user-image.png', { class: 'icon-image'}
+
+        .user-info
+          .user-name
+            = article.user.name
+          .user-status
+            = article.user.position
+      .article-comment
+        = link_to article_path(article.user.id) do
+          .comment-text
+            = article.comments.first.present? ? article.comments.first.content : "コメントはありません"
+
+        - 0.upto(4) do |num|
+          - if article.comments[num].present?
+            = link_to user_path(article.comments[num].user_id), remote: true do
+              .comment-user
+                = image_tag article.comments[num].user.avatar_image.present? ? article.comments[num].user.avatar_image : 'user-image.png', { class: 'comment-icon' }
+    .footer
+      .publisher
+        = article.site_name.truncate(20)
+      .published
+        = article.before_time

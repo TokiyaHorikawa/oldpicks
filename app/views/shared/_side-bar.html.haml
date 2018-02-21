@@ -1,22 +1,5 @@
+= render partial: "shared/main-menu"
 .container
-  .menu
-    .main-menu
-      = link_to  '総合トップ', root_path, {class: 'menu-item'}
-      = link_to 'マイニュース', root_path, {class: 'menu-item'}
-      = link_to 'オリジナル記事', root_path, {class: 'menu-item'}
-      = link_to '仮想通貨ショック', root_path, {class: 'menu-item'}
-    .title テーマ一覧
-    .theme-menu
-      = link_to 'テクノロジー', root_path, {class: 'menu-item'}
-      = link_to 'ビジネス', root_path, {class: 'menu-item'}
-      = link_to '政治・経済', root_path, {class: 'menu-item'}
-      = link_to '金融・マーケット', root_path, {class: 'menu-item'}
-      = link_to 'キャリア・教育', root_path, {class: 'menu-item'}
-      = link_to '社会・スポーツ', root_path, {class: 'menu-item'}
-      = link_to 'イノベーション', root_path, {class: 'menu-item'}
-      = link_to 'ジョブオファー', root_path, {class: 'menu-item'}
-
-
   .side-bar
     .user
       - if user_signed_in? && @side_articles_login.present?
@@ -111,4 +94,4 @@
               .follower-count -
               .follower-caption フォロワー
           .stream_time-line
-          ログインしてください
+            ログインしてください
