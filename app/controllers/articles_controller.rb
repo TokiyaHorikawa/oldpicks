@@ -71,9 +71,9 @@ class ArticlesController < ApplicationController
     @comments = Comment.search(params[:key])
     # before_actionにする（フォロー機能）
     if user_signed_in?
-      user = User.find(current_user.id)
-      @follow = user.all_following
-      @follower = user.followers
+      @user = User.find(current_user.id)
+      @follow = @user.all_following
+      @follower = @user.followers
     end
   end
 

@@ -134,30 +134,6 @@
                             .pick-time
                               = @your_comment.before_time
 
-<<<<<<< HEAD
-              - if user_signed_in?
-                .follow-comment
-                  - if @your_comment.present?
-                    .section-header
-                      フォローしているユーザーのコメント
-                    .comment-container
-                      .comment-row-no-border
-                        .user-bar
-                          .user-cover
-                            = image_tag current_user.avatar_image, { class: 'user-icon' }
-                          .user-profile
-                            .user-name
-                              = current_user.name
-                            .follower-only
-                              = image_tag 'follower-only.png', { class: 'follower-only-icon'}
-                              .follower-only-text
-                                フォロワーのみ
-                            .user-job
-                              = current_user.company
-                              = current_user.position
-                            .pick-time
-                              = @your_comment.before_time
-
                           .dropdown
                             %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
                               ▼
@@ -182,32 +158,6 @@
                                         キャンセル
                                       = link_to 'Pickを削除する', comment_path(@your_comment.id), {method: :delete, class: 'delete-button'}
 
-=======
-                          .dropdown
-                            %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
-                              ▼
-                            .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
-                              %a.dropdown-item
-                                .edit-drop-menu
-                                  編集
-                              %a.dropdown-item
-                                #delete-drop-button.delete-drop-menu
-                                  削除
-                          .comment-delete-modal
-                            .background
-                              .modal-content-wrapper
-                                .message-box
-                                  .labels
-                                    .alert-title
-                                      Pickを削除してもよろしいですか？
-                                    .alert-message
-                                      Pickを削除すると元に戻すことは出来ません。
-                                    .alert-buttons
-                                      #cancel_delete.negative-button
-                                        キャンセル
-                                      = link_to 'Pickを削除する', comment_path(@your_comment.id), {method: :delete, class: 'delete-button'}
-
->>>>>>> master
                         .comment-box
                           #your-comment.comment
                             = @your_comment.content

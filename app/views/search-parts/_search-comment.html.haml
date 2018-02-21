@@ -2,7 +2,7 @@
   .main-container
     .comment-card-list
       .search-result-card.comment-card
-        = link_to user_path(comment.user.id) do
+        = link_to user_path(comment.user.id), { remote: true } do
           .user-profile
             - if comment.user.avatar_image.present?
               = image_tag comment.user.avatar_image, { class: "user-icon circle-icon" }

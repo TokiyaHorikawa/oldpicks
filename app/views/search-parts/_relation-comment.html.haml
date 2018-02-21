@@ -2,7 +2,7 @@
   .search-result-card.comment-card
     - if article.comments.first.present?
       -# ユーザーリンク
-      = link_to user_path(article.comments.first.user.id) do
+      = link_to user_path(article.comments.first.user.id), {remote: true} do
         .user-profile
           - if article.comments.first.user.avatar_image.present?
             = image_tag article.comments.first.user.avatar_image, { class: "user-icon square-icon"}
