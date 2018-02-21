@@ -20,4 +20,11 @@ Rails.application.routes.draw do
   post '/comments/:comment_id/like', to: 'likes#create', as: 'like'
   delete '/comments/:comment_id/unlike', to: 'likes#destroy', as: 'unlike'
 
+  get 'technology', to: 'fields#technology', as: 'technology'
+  get 'business', to: 'fields#business', as: 'business'
+  get 'economy', to: 'fields#economy', as: 'economy'
+  get 'finance', to: 'fields#finance', as: 'finance'
+  get 'career', to: 'fields#career', as: 'career'
+  get 'society', to: 'fields#society', as: 'society'
+  get 'job', to: 'fields#job', as: 'job'
 end
