@@ -12,6 +12,15 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
+  # 検索機能
+  def self.search(key)
+    if key
+      User.where(['name LIKE ?', "%#{key}%"])
+    else
+      User.all
+    end
+  end
+
   def user_profile
     if company.present? && position.present?
       return "#{company.truncate(15)}\n#{position.truncate(15)}"

@@ -1,0 +1,32 @@
+.like-panel{
+  display: inline-block;
+  float: left;
+  margin-left: 45px;
+  width: 40px;
+  padding-top: 20px;
+  button{
+    border: none;
+    width: 40px;
+  }
+  .like-icon{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .like-count-box{
+    margin-top: 5px;
+    .like-count{
+      font-size: 14px;
+      color: #999;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+  .like-label{
+    font-size: 14px;
+    color: #999;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+}

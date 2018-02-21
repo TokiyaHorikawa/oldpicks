@@ -4,8 +4,10 @@
   = render partial: "search-parts/search-header"
   .tab-contents
     .top#myTabContent.tab-content.selected{ style: "display:block;" }
+      -# 記事検索結果
       #tab1.tab-pane.fade.active.in
         = render partial: 'search-parts/tool-bar'
+        -# 部分テンプレートにする
         .items
           .main-container{style: "display:block;"}
             .news-card-list
@@ -18,9 +20,12 @@
             .related-comment-container
               .related-comment-caption キーワードに関連するコメント
               = render partial: "search-parts/relation-comment", collection: @articles, as: :article
-
+      -# コメント検索結果
       #tab2.tab-pane.fade
         = render partial: 'search-parts/tool-bar'
+        = render partial: 'search-parts/search-comment', collection: @comments, as: :comment
 
+      -# ユーザー検索結果
       #tab3.tab-pane.fade
-        ううう
+        = render partial: 'search-parts/tool-bar'
+        = render partial: 'shared/user-card', collection: @users, as: :user

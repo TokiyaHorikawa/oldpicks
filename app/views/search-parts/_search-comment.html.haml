@@ -1,0 +1,40 @@
+.items
+  .main-container
+    .comment-card-list
+      .search-result-card.comment-card
+        = link_to user_path(comment.user.id) do
+          .user-profile
+            - if comment.user.avatar_image.present?
+              = image_tag comment.user.avatar_image, { class: "user-icon circle-icon" }
+            - else
+              = image_tag 'user-image.png', { class: "user-icon circle-icon" }
+            .user-info
+              .name-wrapper
+                .user-name._ellipsised{ style: "overflow: initial;"}
+                  = comment.user.name.present?
+              .user-title._ellipsised{ style: "overflow: initial;" }
+                = "#{comment.user.company} #{comment.user.position}"
+              .pick-time
+                = comment.before_time
+        .comment-content-wrapper
+          = link_to "#" do
+            .user-comment
+              .comment-value
+                = comment.content
+          .continue
+            %em.clickable{ style: "opacity: 1;" }
+              続きを読む
+          .right-content
+            = render partial: "shared/like", locals: { comment: comment}
+
+        .meta
+          = link_to article_path(comment.article.id) do
+            .news-title._ellipsised{ style: "overflow: initial;"}
+              = comment.article.title
+          .publisher-container
+            .publisher._ellipsised{  style: "overflow: initial;"}
+              = comment.article.site_name
+            .separator
+              |
+            .published
+              = comment.article.before_time

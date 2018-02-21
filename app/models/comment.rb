@@ -5,6 +5,15 @@ class Comment < ApplicationRecord
   belongs_to :article
   has_many :likes, dependent: :destroy
 
+  # 検索機能
+  def self.search(key)
+    if key
+      Comment.where(['content LIKE ?', "%#{key}%"])
+    else
+      Comment.all
+    end
+  end
+
   def before_time
     comment_time = self.created_at.in_time_zone('Tokyo')
     now_time = DateTime.now
