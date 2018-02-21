@@ -9,13 +9,12 @@
         .published
           = article.before_time
     - else
-      - if field_articles.ids.group_by{|i| i == article.id}[true] == [article.id]
-        .latest-news-image-box
-          = image_tag article.image, { class: 'latest-news-image' }
-        .title
-          = article.title.truncate(30)
-        .meta
-          .publisher
-            = article.site_name.truncate(20)
-          .published
-            = article.before_time
+      .latest-news-image-box
+        = image_tag article.image, { class: 'latest-news-image' }
+      .title
+        = article.title.truncate(30)
+      .meta
+        .publisher
+          = article.site_name.truncate(20)
+        .published
+          = article.before_time
