@@ -41,13 +41,14 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @show_article = Article.find(params[:id])
     @articles = Article.where(params[:id]).order("created_at DESC").limit(6)
-    @comments = @article.comments.includes(:user).order("like_counts DESC").limit(3)
-    @new_comments = @article.comments.includes(:user).order("created_at DESC").limit(12)
+    @comments = @show_article.comments.includes(:user).order("like_counts DESC").limit(3)
+    @new_comments = @show_article.comments.includes(:user).order("created_at DESC").limit(12)
 
     if user_signed_in?
-      @your_comment = Comment.find_by(user_id: current_user.id, article_id: @article.id)
+      @your_comment = Comment.find_by(user_id: current_user.id, article_id: @show_article.id)
+      @user = User.find(current_user.id)
     end
   end
 
@@ -86,6 +87,7 @@ class ArticlesController < ApplicationController
     end
 
     def set_user_comment
+      @article = Article.new
       @comment = Comment.new
     end
 
