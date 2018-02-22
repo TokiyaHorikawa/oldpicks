@@ -1,0 +1,17 @@
+.field-wrapper
+  = render partial: "shared/header"
+  = render partial: "shared/side-bar"
+  = render partial: "users/user-modal"
+
+  .field-page
+    .field-header
+      .field-header-title
+        ビジネス
+    - if @business_articles.present?
+      .field-contents
+        .field-container
+          = render partial: 'articles/article', collection: @business_articles, as: :article
+        .latest-news
+          .area-title
+            新着ニュース
+          = render partial: 'articles/latest-new', locals:{field_articles: @business_articles}, collection: @latest_articles, as: :article

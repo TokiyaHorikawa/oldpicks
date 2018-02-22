@@ -7,11 +7,11 @@
       = link_to '仮想通貨ショック', root_path, {class: 'menu-item'}
     .title テーマ一覧
     .theme-menu
-      = link_to 'テクノロジー', root_path, {class: 'menu-item'}
-      = link_to 'ビジネス', root_path, {class: 'menu-item'}
-      = link_to '政治・経済', root_path, {class: 'menu-item'}
-      = link_to '金融・マーケット', root_path, {class: 'menu-item'}
-      = link_to 'キャリア・教育', root_path, {class: 'menu-item'}
-      = link_to '社会・スポーツ', root_path, {class: 'menu-item'}
+      = link_to "テクノロジー", user_signed_in? ? technology_path : user_session_path, {class: 'menu-item'}
+      = link_to "ビジネス", user_signed_in? ? business_path : user_session_path, {class: 'menu-item'}
+      = link_to "政治・経済", user_signed_in? ? economy_path : user_session_path, {class: 'menu-item'}
+      = link_to "金融・マーケット", user_signed_in? ? finance_path : user_session_path, {class: 'menu-item'}
+      = link_to "キャリア・教育", user_signed_in? ? career_path : user_session_path, {class: 'menu-item'}
+      = link_to "社会・スポーツ", user_signed_in? ? society_path : user_session_path, {class: 'menu-item'}
       = link_to 'イノベーション', root_path, {class: 'menu-item'}
-      = link_to 'ジョブオファー', root_path, {class: 'menu-item'}
+      = link_to "ジョブオファー", user_signed_in? ? job_path : user_session_path, {class: 'menu-item'}

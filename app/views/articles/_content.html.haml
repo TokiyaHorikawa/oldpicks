@@ -55,47 +55,46 @@
             = image_tag 'sky.jpg', { class: 'innovation-right-image'}
             = link_to "もっと見る", '#', { class: 'innovation-right-block-link'}
 
-
     .genre-topic
       .genreblock
         %h4.title テクノロジー
-        = link_to "テクノロジー  一覧を見る", '#', { class: 'genre-link'}
+        = link_to "テクノロジー  一覧を見る", user_signed_in? ? technology_path : user_session_path, { class: 'genre-link'}
         .article-box
           = render partial: 'article', collection: @tech_articles, as: :article
 
       .genreblock
         %h4.title ビジネス
-        = link_to "ビジネス　 一覧を見る", '#', { class: 'genre-link'}
+        = link_to "ビジネス　 一覧を見る", user_signed_in? ? business_path : user_session_path, { class: 'genre-link'}
         .article-box
           = render partial: 'article', collection: @business_articles, as: :article
 
       .genreblock
         %h4.title 政治・経済
-        = link_to "政治・経済　 一覧を見る", '#', { class: 'genre-link'}
+        = link_to "政治・経済　 一覧を見る", user_signed_in? ? economy_path : user_session_path, { class: 'genre-link'}
         .article-box
           = render partial: 'article', collection: @economy_articles, as: :article
 
       .genreblock
         %h4.title 金融・マーケット
-        = link_to "金融・マーケット　 一覧を見る", '#', { class: 'genre-link'}
+        = link_to "金融・マーケット　 一覧を見る", user_signed_in? ? finance_path : user_session_path, { class: 'genre-link'}
         .article-box
           = render partial: 'article', collection: @finance_articles, as: :article
 
       .genreblock
         %h4.title キャリア・教育
-        = link_to "キャリア・教育　 一覧を見る", '#', { class: 'genre-link'}
+        = link_to "キャリア・教育　 一覧を見る", user_signed_in? ? career_path : user_session_path, { class: 'genre-link'}
         .article-box
           = render partial: 'article', collection: @career_articles, as: :article
 
       .genreblock
         %h4.title 社会・スポーツ
-        = link_to "社会・スポーツ　 一覧を見る", '#', { class: 'genre-link'}
+        = link_to "社会・スポーツ　 一覧を見る", user_signed_in? ? society_path : user_session_path, { class: 'genre-link'}
         .article-box
           = render partial: 'article', collection: @society_articles, as: :article
 
       .genreblock
         %h4.title ジョブオファー
-        = link_to "ジョブオファー　 一覧を見る", '#', { class: 'genre-link'}
+        = link_to "ジョブオファー　 一覧を見る", user_signed_in? ? job_path : user_session_path, { class: 'genre-link'}
         .article-box
           = render partial: 'article', collection: @job_articles, as: :article
 
@@ -112,19 +111,13 @@
 
     .user-ranking
       %h4.title ユーザーランキング
-      - if user_signed_in?
-        = link_to "ユーザーランキング　 一覧を見る", user_ranking_page_path, { class: 'user-ranking-link'}
-      -else
-        = link_to "ユーザーランキング　 一覧を見る", user_session_path, { class: 'user-ranking-link'}
+      = link_to "ユーザーランキング　 一覧を見る", user_signed_in? ? user_ranking_page_path : user_session_path, { class: 'user-ranking-link'}
       .user-ranking-block
         = render partial: 'user-ranking', locals: { like_sort_users: @like_sort_users}
 
     .comment-ranking
       %h4.title コメントランキング
-      - if user_signed_in?
-        = link_to "コメントランキング　 一覧を見る", comment_ranking_page_path, { class: 'comment-ranking-link'}
-      - else
-        = link_to "コメントランキング　 一覧を見る", user_session_path, { class: 'comment-ranking-link'}
+      = link_to "コメントランキング　 一覧を見る", user_signed_in? ? comment_ranking_page_path : user_session_path, { class: 'comment-ranking-link'}
       .comment-ranking-block
         = render partial: 'comment-ranking', locals: { comments: @comments}
 
