@@ -32,6 +32,9 @@
             = link_to user_followers_path(@user) do
               .count #{@user.followers.count}
               .unit フォロワー
+          .tab-item-question
+            = link_to user_questions_path(@user.id) do
+              %span.tab-title Question
         - if current_user.following? @user
           .show-follow-btn
             = link_to user_follow_path(@user, @follower), {method: :delete} do
