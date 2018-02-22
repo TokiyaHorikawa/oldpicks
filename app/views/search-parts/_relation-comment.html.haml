@@ -2,7 +2,7 @@
   .search-result-card.comment-card
     - if article.comments.first.present?
       -# ユーザーリンク
-      = link_to user_path(article.comments.first.user.id) do
+      = link_to user_path(article.comments.first.user.id), {remote: true} do
         .user-profile
           - if article.comments.first.user.avatar_image.present?
             = image_tag article.comments.first.user.avatar_image, { class: "user-icon square-icon"}
@@ -13,7 +13,7 @@
               .user-name._tab-ellipsis
                 = article.comments.first.user.name.present? ? article.comments.first.user.name : "未登録"
             .user-title._ellipsised{ style: "overflow: initial;" }
-              = (article.comments.first.user.company) + " " + (article.comments.first.user.position)
+              = "#{article.comments.first.user.company} #{article.comments.first.user.position}"
             .pick-time
               コメント時間
       .comment-content-wrapper

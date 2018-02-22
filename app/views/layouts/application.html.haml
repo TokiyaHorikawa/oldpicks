@@ -6,9 +6,7 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-    = yield
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
     = javascript_include_tag "slick.min.js"
-
-<meta name="viewport" content="width=device-width,initial-scale=1">
+  %body
+    = yield

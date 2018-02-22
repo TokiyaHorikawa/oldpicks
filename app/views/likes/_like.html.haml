@@ -7,7 +7,7 @@
       = button_to unlike_path(comment.id), method: :delete, class: "like-button", id: "like-off-button" do
         / アイコン表示部分にファイルを呼び出し赤いlikeアイコンを表示
         .like-red-image{ id: "image-#{comment.id}" }
-          = render partial: 'likes/like_red_icon'
+          = image_tag "like-red.png", { class: 'like-icon' }
         .like-count-box
           .like-count
             - if comment.like_counts == nil
@@ -21,7 +21,7 @@
       = button_to like_path(comment.id), method: :post, class: "like-button", id: "like-on-button" do
         / アイコン表示部分にファイルを呼び出し灰色のlikeアイコンを表示
         .like-gray-image{ id: "image-#{comment.id}" }
-          = render partial: 'likes/like_gray_icon'
+          = image_tag "like-gray.png", { class: 'like-icon' }
         .like-count-box
           .like-count
             - if comment.like_counts == nil
@@ -31,7 +31,7 @@
           .like-label
             Likes
   - else
-    = image_tag "like-gray", { class: 'like-icon' }
+    = image_tag "like-gray.png", { class: 'like-icon' }
     .like-count-box
       .like-count
         - if comment.like_counts == nil
@@ -40,4 +40,3 @@
           = comment.like_counts
       .like-label
         Likes
-

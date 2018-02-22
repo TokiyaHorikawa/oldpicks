@@ -3,6 +3,7 @@ class RankingController < ApplicationController
   before_action :set_user_follow
   before_action :following_article
 
+
   def user_ranking_page
     users = {}
     @users = User.all

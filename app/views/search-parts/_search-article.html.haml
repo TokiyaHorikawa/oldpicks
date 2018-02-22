@@ -1,0 +1,12 @@
+.items
+  .main-container{style: "display:block;"}
+    .news-card-list
+      .top-news-section
+        .top-news-title
+          トップニュース
+        = render partial: "search-parts/search-card", collection: @articles, as: :article
+
+  .right-container
+    .related-comment-container
+      .related-comment-caption キーワードに関連するコメント
+      = render partial: "search-parts/relation-comment", collection: @articles, as: :article

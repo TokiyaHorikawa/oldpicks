@@ -17,9 +17,10 @@ Rails.application.routes.draw do
     resources :follows, only: [:index, :create, :destroy]
     resources :followers, only: [:index]
   end
+
   post '/comments/:comment_id/like', to: 'likes#create', as: 'like'
   delete '/comments/:comment_id/unlike', to: 'likes#destroy', as: 'unlike'
-
+  #フィールド以下（分野別記事）
   get 'technology', to: 'fields#technology', as: 'technology'
   get 'business', to: 'fields#business', as: 'business'
   get 'economy', to: 'fields#economy', as: 'economy'

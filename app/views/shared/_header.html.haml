@@ -4,7 +4,7 @@
   .col-md-1.search-box
     = form_tag( search_articles_path, method: :get ) do
       = image_tag 'glass.svg', { class: 'glass' }
-      = text_field :key, params[:key], { placeholder: "検索する", class: "text" }
+      = text_field_tag :key, params[:key], { placeholder: "検索する", class: "text" }
   .col-md-4.logo
     = link_to "Old PICKS", root_path, { class: 'logo-mark'}
 

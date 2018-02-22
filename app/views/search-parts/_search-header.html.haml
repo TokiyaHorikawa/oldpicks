@@ -2,9 +2,13 @@
   .search-header
     .header-container
       .tab-container
-        .tab-item.top.selected
-          トップ
-        .tab-item.comment
-          コメント
-        .tab-item.user
-          ユーザー
+        %ul.nav.nav-tabs
+          .tab-item.top.nav-item
+            = link_to '#tab1', { class: "nav-link active", "data-toggle" => "tab" } do
+              トップ
+          .tab-item.comment.nav-item
+            = link_to '#tab2', { class: "nav-link", "data-toggle" => "tab" } do
+              コメント
+          .tab-item.user.nav-item
+            = link_to '#tab3', { class: "nav-link", "data-toggle" => "tab" } do
+              ユーザー

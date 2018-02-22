@@ -1,8 +1,7 @@
 class ArticlesController < ApplicationController
-  # 繰り返し使われる変数はbefore_actionに定義する
-  before_action :following_article, only: [:index, :show]
   before_action :set_like_sort, only: [:index]
   before_action :set_user_comment, only: [:index, :show]
+  before_action :following_article, only: [:index, :show, :search]
 
   def index
     @article = Article.new
@@ -64,7 +63,16 @@ class ArticlesController < ApplicationController
   def search
     @article = Article.new
     @comment = Comment.new
-    @articles = Article.search(params[:key].first)
+    # サーチ機能
+    @articles = Article.search(params[:key])
+    @users = User.search(params[:key])
+    @comments = Comment.search(params[:key])
+    # before_actionにする（フォロー機能）
+    if user_signed_in?
+      @user = User.find(current_user.id)
+      @follow = @user.all_following
+      @follower = @user.followers
+    end
   end
 
 
