@@ -17,7 +17,7 @@
               .pick-time
                 = comment.before_time
         .comment-content-wrapper
-          = link_to "#" do
+          = link_to article_path(comment.article.id) do
             .user-comment
               .comment-value
                 = comment.content

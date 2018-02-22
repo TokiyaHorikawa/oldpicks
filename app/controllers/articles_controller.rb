@@ -1,9 +1,7 @@
 class ArticlesController < ApplicationController
-  require 'uri'
   before_action :set_like_sort, only: [:index]
   before_action :set_user_comment, only: [:index, :show]
   before_action :following_article, only: [:index, :show, :search]
-  @@num = 0
 
   def index
     @article = Article.new

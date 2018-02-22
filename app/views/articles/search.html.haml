@@ -9,19 +9,8 @@
       -# 記事検索結果
       #tab1.tab-pane.fade.active.in
         = render partial: 'search-parts/tool-bar'
-        -# 部分テンプレートにする
-        .items
-          .main-container{style: "display:block;"}
-            .news-card-list
-              .top-news-section
-                .top-news-title
-                  トップニュース
-                = render partial: "search-parts/search-card", collection: @articles, as: :article
-
-          .right-container
-            .related-comment-container
-              .related-comment-caption キーワードに関連するコメント
-              = render partial: "search-parts/relation-comment", collection: @articles, as: :article
+        = render partial: 'search-parts/search-article'
+        
       -# コメント検索結果
       #tab2.tab-pane.fade
         = render partial: 'search-parts/tool-bar'
