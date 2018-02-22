@@ -49,9 +49,9 @@
                         .description
                           シェアする
                         .sns-twitter
-                          = image_tag 'twitter-gray', { class: 'twitter-mark' }
+                          = image_tag 'twitter-gray.png', { class: 'twitter-mark' }
                         .sns-facebook
-                          = image_tag 'facebook-gray', { class: 'facebook-mark' }
+                          = image_tag 'facebook-gray.png', { class: 'facebook-mark' }
                         #update_comment.pick-button
                           Pick
                         .comment-update-modal
@@ -75,9 +75,9 @@
                         .description
                           シェアする
                         .sns-twitter
-                          = image_tag 'twitter-gray', { class: 'twitter-mark' }
+                          = image_tag 'twitter-gray.png', { class: 'twitter-mark' }
                         .sns-facebook
-                          = image_tag 'facebook-gray', { class: 'facebook-mark' }
+                          = image_tag 'facebook-gray.png', { class: 'facebook-mark' }
                       = f.submit 'Pick', class: 'pick-button', id:'new_comment'
             .comments
               .populars
@@ -102,13 +102,13 @@
                             ⋮
                           .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
                             %a.dropdown-item
-                              = image_tag 'follow', { class: 'drop-icon' }
+                              = image_tag 'follow.png', { class: 'drop-icon' }
                               このユーザーをフォロー
                             %a.dropdown-item
-                              = image_tag 'mute-icon', { class: 'drop-icon' }
+                              = image_tag 'mute-icon.png', { class: 'drop-icon' }
                               このユーザーのコメントを非表示
                             %a.dropdown-item
-                              = image_tag 'report-icon', { class: 'drop-icon' }
+                              = image_tag 'report-icon.png', { class: 'drop-icon' }
                               問題を報告
                       .comment-box
                         .comment
@@ -168,14 +168,14 @@
                                 .description
                                   シェアする
                                 .sns-twitter
-                                  = image_tag 'twitter-gray', { class: 'twitter-mark' }
+                                  = image_tag 'twitter-gray.png', { class: 'twitter-mark' }
                                 .sns-facebook
-                                  = image_tag 'facebook-gray', { class: 'facebook-mark' }
+                                  = image_tag 'facebook-gray.png', { class: 'facebook-mark' }
                                 = f.submit 'Pick', class: 'pick-button'
                                 .cancel-button
                                   キャンセル
                           #your-like.like-panel
-                            = image_tag 'like-gray', { class: 'like-icon' }
+                            = image_tag 'like-gray.png', { class: 'like-icon' }
                             / = image_tag 'like-red', { class: 'like-mark' }
                             .like-count-box
                               .like-count
@@ -211,13 +211,13 @@
                                 ⋮
                               .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
                                 %a.dropdown-item
-                                  = image_tag 'follow', { class: 'drop-icon' }
+                                  = image_tag 'follow.png', { class: 'drop-icon' }
                                   このユーザーをフォロー
                                 %a.dropdown-item
-                                  = image_tag 'mute-icon', { class: 'drop-icon' }
+                                  = image_tag 'mute-icon.png', { class: 'drop-icon' }
                                   このユーザーのコメントを非表示
                                 %a.dropdown-item
-                                  = image_tag 'report-icon', { class: 'drop-icon' }
+                                  = image_tag 'report-icon.png', { class: 'drop-icon' }
                                   問題を報告
                           .comment-box
                             .comment
@@ -242,13 +242,13 @@
                                 ⋮
                               .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
                                 %a.dropdown-item
-                                  = image_tag 'follow', { class: 'drop-icon' }
+                                  = image_tag 'follow.png', { class: 'drop-icon' }
                                   このユーザーをフォロー
                                 %a.dropdown-item
-                                  = image_tag 'mute-icon', { class: 'drop-icon' }
+                                  = image_tag 'mute-icon.png', { class: 'drop-icon' }
                                   このユーザーのコメントを非表示
                                 %a.dropdown-item
-                                  = image_tag 'report-icon', { class: 'drop-icon' }
+                                  = image_tag 'report-icon.png', { class: 'drop-icon' }
                                   問題を報告
                           .comment-box
                             .comment
@@ -275,7 +275,7 @@
         .related-user-section-title
           配信メディア
           .related-user
-            = image_tag 'sky.jpg', { class: 'transmit-source-icon' }
+            = image_tag 'user-image.png', { class: 'transmit-source-icon' }
             .related-user-name
               = @show_article.site_name
             = image_tag 'follow-button.png', { class: 'follow-btn' }
