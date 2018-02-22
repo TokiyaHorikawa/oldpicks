@@ -1,7 +1,6 @@
 class RankingController < ApplicationController
   before_action :set_user_article
   before_action :set_user_follow
-<<<<<<< HEAD
   before_action :following_article
 
 
@@ -39,8 +38,6 @@ class RankingController < ApplicationController
     @follower = @user.followers
   end
 
-<<<<<<< HEAD
-=======
   private
   def following_article
     if user_signed_in?
@@ -49,5 +46,4 @@ class RankingController < ApplicationController
     end
   end
 
->>>>>>> master
 end
