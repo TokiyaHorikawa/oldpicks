@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :set_news, only: [:index, :show]
-  before_action :set_need, only: [:index, :show]
+  before_action :set_news, only: [:index, :show, :create]
+  before_action :set_need, only: [:index, :show, :create]
 
   def index
 
@@ -10,6 +10,8 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    @questions = Question.create(question_params)
+    redirect_to user_question_path(@user.id, @questions.id)
   end
 
   def update
@@ -19,6 +21,10 @@ class QuestionsController < ApplicationController
   end
 
   private
+
+  def question_params
+    params.require(:question).permit(:content).merge(user_id: current_user.id)
+  end
 
   def set_news
     @article = Article.new
