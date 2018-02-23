@@ -10,8 +10,8 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @questions = Question.create(question_params)
-    redirect_to user_question_path(@user.id, @questions.id)
+    questions = Question.create(question_params)
+    redirect_to user_question_path(@user.id, questions.id)
   end
 
   def update
