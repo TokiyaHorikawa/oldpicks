@@ -1,20 +1,8 @@
 / if文で分ける
 .answer-box-list
-  .label-info
+  .question-label-info
     #{@user.name}さんが過去に答えた質問
-  .answer-box
-    = link_to '#', { class: "answer-box-wrapper" } do
-      .question-date
-        %span.question-date
-          日付 2/22
-      .answer
-        質問あざっす！！質問あざっす！！質問あざっす！！質問あざっす！！質問あざっす！！質問あざっす！！質問あざっす！！質問あざっす！！
-      .question-show
-        = link_to '#', { class: "answer-box-wrapper" } do
-          .question-wrapper
-            .question-content
-              部下に裏切られるってどんな気分ですか？
-      / 回答が一つもなかった時のview
-      .no-answer
-        %div !!
-        まだありません。受け取った質問に回答するとこちらに移動します
+    = render partial: "answer-card"
+    .no-answer
+      %div !!
+      まだありません。受け取った質問に回答するとこちらに移動します
