@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @a_question = Question.find(params[:id])
   end
 
   def create
@@ -34,7 +35,7 @@ class QuestionsController < ApplicationController
 
   def set_need
     @user = User.find(params[:user_id])
-    @ansers = Answer.all.limit(10)
+    @answers = Answer.all.limit(10)
   end
 
 end
