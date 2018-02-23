@@ -1,10 +1,6 @@
 class QuestionsController < ApplicationController
-<<<<<<< HEAD
-  before_action :set_news, only: [:index, :show]
-=======
   before_action :set_news, only: [:index, :show, :create]
   before_action :set_need, only: [:index, :show, :create]
->>>>>>> add_question
 
   def index
   end

@@ -1,6 +1,6 @@
 .answer-box-list
   .label-info
-    @userさんが過去に答えた質問
+    #{@user.name}さんが過去に答えた質問
   .answer-box
     = link_to '#', { class: "answer-box-wrapper" } do
       .question-date
