@@ -2,7 +2,7 @@
   .user-label
     質問に回答しましょう
     .user-form-area
-      = form_for '' do |f|
+      = form_for [@user, @question, @answer] do |f|
         = f.text_area :content, { class: 'question-form-area' }
         .question-submit-button
           = f.submit '回答する'

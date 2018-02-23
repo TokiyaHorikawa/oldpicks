@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy] do
     resources :follows, only: [:index, :create, :destroy]
     resources :followers, only: [:index]
-    resources :questions, only: [:index, :show, :create, :update, :destroy]
+    resources :questions, only: [:index, :show, :create, :update, :destroy], shallw: true do
+      resources :answers, only: [:create]
+    end
   end
 
   post '/comments/:comment_id/like', to: 'likes#create', as: 'like'
