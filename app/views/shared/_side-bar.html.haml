@@ -23,22 +23,22 @@
               = image_tag 'blue-arrow.png', {class: 'arrow'}
               .time-line-sub-caption 興味に合わせてカスタマイズ
         .stream_time-line
-          - @side_articles_login.each do |article|
+          - @side_articles_login.each do |comment|
             .stream-tile
               .picker-info
-                = link_to user_path(article.user.id), remote: true do
-                  = image_tag article.user.avatar_image.present? ? article.user.avatar_image : 'user-image.png', {class: 'picker-icon'}
+                = link_to user_path(comment.user.id), remote: true do
+                  = image_tag comment.user.avatar_image.present? ? comment.user.avatar_image : 'user-image.png', {class: 'picker-icon'}
                   .picker-name
-                    #{article.user.name}
+                    #{comment.user.name}
                   .picked-date
-                    #{article.before_time}
-              = link_to article_path(article) do
+                    #{comment.before_time}
+              = link_to article_path(comment) do
                 .picker-comment
-                  #{article.content}
+                  #{comment.content}
                 .pick-news-info
-                  = link_to article_path(article) do
+                  = link_to article_path(comment.article.id) do
                     %span.news-title
-                    #{article.article.title}
+                    #{comment.article.title}
                 %span をPickしました
       - elsif user_signed_in? && @side_articles_login.empty?
         .user-header
@@ -61,22 +61,22 @@
               = image_tag 'blue-arrow.png', {class: 'arrow'}
               .time-line-sub-caption 興味に合わせてカスタマイズ
           .stream_time-line
-            - @side_articles.each do |article|
+            - @side_articles.each do |comment|
               .stream-tile
                 .picker-info
-                  = link_to user_path(article.user.id), remote: true do
-                    = image_tag article.user.avatar_image.present? ? article.user.avatar_image : 'user-image.png', {class: 'picker-icon'}
+                  = link_to user_path(comment.user.id), remote: true do
+                    = image_tag comment.user.avatar_image.present? ? comment.user.avatar_image : 'user-image.png', {class: 'picker-icon'}
                     .picker-name
-                      #{article.user.name}
+                      #{comment.user.name}
                     .picked-date
-                      #{article.before_time}
-                = link_to article_path(article) do
+                      #{comment.before_time}
+                = link_to article_path(comment.article.id) do
                   .picker-comment
-                    #{article.content}
+                    #{comment.content}
                   .pick-news-info
-                    = link_to article_path(article) do
+                    = link_to article_path(comment.article.id) do
                       %span.news-title
-                      #{article.article.title}
+                      #{comment.article.title}
                 %span をPickしました
 
       -else
