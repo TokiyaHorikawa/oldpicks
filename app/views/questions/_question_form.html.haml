@@ -1,0 +1,10 @@
+.question_container
+  .user-label
+    早速　(織田信長) さんに質問してみましょう
+    %p これは「目安箱（公式）」の目安箱です。フォロワーさんと送信先を間違っていないかご確認ください。
+    .user-form-area
+      = form_for '' do |f|
+        = f.text_area :content, { class: 'question-form-area' }
+        .terms_of_use 利用規約、プライバシーポリシー に同意の上ご利用ください
+        .question_submit_button
+          = f.submit '質問を送る', class: 'question-submit-button'
