@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :set_nes, only: [:index, :show]
+  before_action :set_news, only: [:index, :show]
+  before_action :set_need, only: [:index, :show]
 
   def index
 
@@ -27,7 +28,7 @@ class QuestionsController < ApplicationController
   end
 
   def set_need
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     @ansers = Answer.all.limit(10)
   end
 
