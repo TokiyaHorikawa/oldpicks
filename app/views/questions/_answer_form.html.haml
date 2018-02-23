@@ -1,0 +1,8 @@
+.question_container
+  .user-label
+    質問に回答しましょう
+    .user-form-area
+      = form_for '' do |f|
+        = f.text_area :content, { class: 'question-form-area' }
+        .question_submit_button
+          = f.submit '回答する', class: 'question-submit-button'

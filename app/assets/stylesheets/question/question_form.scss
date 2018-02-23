@@ -5,16 +5,18 @@
     padding: 20px;
     color: #777;
     text-align: center;
+    margin: 0 auto;
     p{
       width: 560px;
       font-size: 16px;
       background: #F00;
       color: #FFF;
       padding: 10px;
-      margin: 25px 0;
+      margin-top: 25px;
     }
     .user-form-area{
       width: 560px;
+      margin-top: 25px;
       textarea{
         width: 530px;
         height: 200px;
