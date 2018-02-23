@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_nes, only: [:index, :show]
+  before_action :set_news, only: [:index, :show]
 
   def index
 

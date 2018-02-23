@@ -1,5 +1,8 @@
 .wrapper
   = render partial: "shared/header"
   = render partial: "shared/main-menu"
-
-  = render partial: "questions/ansered"
+  .body
+    .container
+      = render partial: "question-top"
+      = render partial: "question_form"
+      = render partial: "questions/answered"
