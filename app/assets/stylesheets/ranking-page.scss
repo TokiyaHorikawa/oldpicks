@@ -34,7 +34,8 @@
     .ranking-main-container{
       background-color: #EFEFEF;
       padding-top: 70px;
-      min-height: 400vw;
+      min-height: 100vh;
+      overflow: auto;
       .ranking-selected{
         background-color: #EFEFEF;
         padding-left: 60px;
@@ -194,6 +195,7 @@
               height: 131px;
               padding: 16px;
               position: relative;
+              background-color: #FFFFFF;
               .user-icon{
                 width: 42px;
                 height: 42px;
