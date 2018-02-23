@@ -36,6 +36,7 @@ class QuestionsController < ApplicationController
   def set_need
     @user = User.find(params[:user_id])
     @answers = Answer.all.limit(10)
+    @questions = Question.all.limit(10)
   end
 
 end
