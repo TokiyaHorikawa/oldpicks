@@ -67,8 +67,17 @@
         }
         a{
           text-decoration: none;
-          }
+        }
       }
+    }
+  }
+  .no-answer{
+    margin-top: 2px;
+    background: #eee;
+    padding: 100px 0;
+    text-align: center;
+    div{
+      font-size: 100px;
     }
   }
 }

@@ -1,3 +1,4 @@
+/ if文で分ける
 .answer-box-list
   .label-info
     #{@user.name}さんが過去に答えた質問
@@ -13,3 +14,7 @@
           .question-wrapper
             .question-content
               部下に裏切られるってどんな気分ですか？
+      / 回答が一つもなかった時のview
+      .no-answer
+        %div !!
+        まだありません。受け取った質問に回答するとこちらに移動します
