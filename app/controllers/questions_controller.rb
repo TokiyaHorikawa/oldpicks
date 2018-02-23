@@ -3,7 +3,6 @@ class QuestionsController < ApplicationController
   before_action :set_need, only: [:index, :show, :create]
 
   def index
-
   end
 
   def show
