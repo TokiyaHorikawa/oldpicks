@@ -2,8 +2,9 @@
   max-width: 600px;
   height: 100%;
   margin: 0 auto;
-  .label-info {
-
+  .question-label-info {
+    font-size: 12px;
+    font-weight: 700;
   }
   .answer-box-wrapper {
     width: 100%;
@@ -73,7 +74,7 @@
   }
   .no-answer{
     margin-top: 2px;
-    background: #eee;
+    background: #FFF;
     padding: 100px 0;
     text-align: center;
     div{
