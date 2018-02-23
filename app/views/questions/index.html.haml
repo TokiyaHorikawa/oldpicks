@@ -5,5 +5,6 @@
     .container
       = render partial: "question-top"
       = render partial: "question_form"
-      = render partial: "questions/answered"
+      = render partial: "questions/answered", collection: @answers, as: :answer
       -# = render partial: "answer_form"
+
