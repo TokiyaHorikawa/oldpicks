@@ -10,8 +10,8 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    questions = Question.create(question_params)
-    redirect_to user_question_path(@user.id, questions.id)
+    question = Question.create(question_params)
+    redirect_to user_question_path(@user.id, question.id)
   end
 
   def update
@@ -36,7 +36,7 @@ class QuestionsController < ApplicationController
   def set_need
     @user = User.find(params[:user_id])
     @answers = Answer.all.limit(10)
-    @questions = Question.all.limit(10)
+    @questions = Question.order("created_at DESC").limit(10)
   end
 
 end

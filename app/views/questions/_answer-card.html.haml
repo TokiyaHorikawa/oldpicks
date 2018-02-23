@@ -1,12 +1,12 @@
 .answer-box
-  = link_to '#', { class: "answer-box-wrapper" } do
+  = link_to user_question_path(@user.id, question.id), { class: "answer-box-wrapper" } do
     .question-date
       %span.question-date
         日付 2/22
     .answer
-      質問あざっす！！質問あざっす！！質問あざっす！！質問あざっす！！質問あざっす！！質問あざっす！！質問あざっす！！質問あざっす！！
+      ここに回答が入ります！
     .question-show
-      = link_to '#', { class: "answer-box-wrapper" } do
+      = link_to user_question_path(@user.id, question.id), { class: "answer-box-wrapper" } do
         .question-wrapper
           .question-content
-            部下に裏切られるってどんな気分ですか？
+            = question.content
