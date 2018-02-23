@@ -46,7 +46,7 @@
         .innovation-header
           %h4.title イノベーション
           = image_tag 'IBM.png', { class: 'ibm-logo'}
-          = link_to "イノベーション 一覧を見る", '#', { class: 'innovation-link'}
+          = link_to "イノベーション 一覧を見る", user_signed_in? ? root_path : user_session_path, { class: 'innovation-link'}
         .innovation-content
           .innovation-left-block
             = render partial: 'innovation-box'
