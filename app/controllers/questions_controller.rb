@@ -1,14 +1,20 @@
 class QuestionsController < ApplicationController
+<<<<<<< HEAD
   before_action :set_news, only: [:index, :show]
+=======
+  before_action :set_news, only: [:index, :show, :create]
+  before_action :set_need, only: [:index, :show, :create]
+>>>>>>> add_question
 
   def index
-
   end
 
   def show
   end
 
   def create
+    @questions = Question.create(question_params)
+    redirect_to user_question_path(@user.id, @questions.id)
   end
 
   def update
@@ -19,6 +25,10 @@ class QuestionsController < ApplicationController
 
   private
 
+  def question_params
+    params.require(:question).permit(:content).merge(user_id: current_user.id)
+  end
+
   def set_news
     @article = Article.new
     @comment = Comment.new
@@ -27,7 +37,7 @@ class QuestionsController < ApplicationController
   end
 
   def set_need
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     @ansers = Answer.all.limit(10)
   end
 
