@@ -32,7 +32,7 @@
                     #{comment.user.name}
                   .picked-date
                     #{comment.before_time}
-              = link_to article_path(comment) do
+              = link_to article_path(comment.article.id) do
                 .picker-comment
                   #{comment.content}
                 .pick-news-info
