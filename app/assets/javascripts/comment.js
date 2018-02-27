@@ -89,7 +89,8 @@ $(function(){
                               'シェアする' +
                             '</div>' +
                             '<div class="sns-twitter">' +
-                              '<img class="twitter-mark" src="/assets/twitter-gray.png" alt="Twitter gray">' +
+                              // '<img class="twitter-mark" src="/assets/twitter-gray.png" alt="Twitter gray">' +
+                              '<img class="twitter-mark" src="/images/twitter-gray.png" alt="Twitter gray">' +
                             '</div>' +
                             '<div class="sns-facebook">' +
                               '<img class="facebook-mark" src="/assets/facebook-gray.png" alt="Facebook gray">' +
