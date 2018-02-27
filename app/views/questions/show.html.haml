@@ -3,6 +3,10 @@
   = render partial: "shared/main-menu"
   .body
     .container
+      -# 指定した質問
+      .answer-box-list
+        .question-label-info
+          = render partial: "answer-card", locals: { question: @a_question }
       = render partial: "answer_form"
       = render partial: "question_form"
       = render partial: "answered"

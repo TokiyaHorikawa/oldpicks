@@ -10,7 +10,7 @@ class User < ApplicationRecord
   acts_as_followable # フォロワー機能
   acts_as_follower   # フォロー機能
   has_many :questions, dependent: :destroy
-  belongs_to :answer, dependent: :destroy
+  has_one :answer, dependent: :destroy
 
   validates :name, presence: true
 

@@ -16,13 +16,15 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy] do
     resources :follows, only: [:index, :create, :destroy]
     resources :followers, only: [:index]
-    resources :questions, only: [:index, :show, :create, :update, :destroy]
+    resources :questions, only: [:index, :show, :create, :update, :destroy] do
+      resources :answers, only: [:create]
+    end
   end
 
   post '/comments/:comment_id/like', to: 'likes#create', as: 'like'
   delete '/comments/:comment_id/unlike', to: 'likes#destroy', as: 'unlike'
 
-  post '/users/:user_id/questions/:question_id/answer', to: 'answer#create', as: 'answer'
+  # post '/users/:user_id/questions/:question_id', to: 'answers#create', as: 'answer'
 
   #フィールド以下（分野別記事）
   get 'technology', to: 'fields#technology', as: 'technology'
