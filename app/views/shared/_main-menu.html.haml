@@ -13,5 +13,5 @@
       = link_to "金融・マーケット", user_signed_in? ? finance_path : user_session_path, {class: 'menu-item'}
       = link_to "キャリア・教育", user_signed_in? ? career_path : user_session_path, {class: 'menu-item'}
       = link_to "社会・スポーツ", user_signed_in? ? society_path : user_session_path, {class: 'menu-item'}
-      = link_to 'イノベーション', root_path, {class: 'menu-item'}
+      = link_to 'イノベーション', user_signed_in? ? root_path : user_session_path, {class: 'menu-item'}
       = link_to "ジョブオファー", user_signed_in? ? job_path : user_session_path, {class: 'menu-item'}
