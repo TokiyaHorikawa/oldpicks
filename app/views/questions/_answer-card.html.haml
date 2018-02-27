@@ -2,7 +2,7 @@
   = link_to user_question_path(@user.id, question.id), { class: "answer-box-wrapper" } do
     .question-date
       %span.question-date
-        日付 2/22
+        日付 #{question.date}
     .answer
       ここに回答が入ります！
     .question-show
