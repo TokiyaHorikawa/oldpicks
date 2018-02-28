@@ -229,7 +229,7 @@
                         .comment-row-no-border
                           .user-bar
                             .user-cover
-                              = image_tag comment.user.avatar_image.present? ? comment.avatar_image : 'user-image.png', { class: 'user-icon' }
+                              = image_tag comment.user.avatar_image.present? ? comment.user.avatar_image : 'user-image.png', { class: 'user-icon' }
                             .user-profile
                               .user-name
                                 = comment.user.name

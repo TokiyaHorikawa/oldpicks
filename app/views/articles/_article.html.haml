@@ -13,20 +13,20 @@
       .top-title_ellipsised
         = article.title.truncate(50)
 
-    = link_to user_path(article.user.id), remote: true do
+    = link_to article.comments.first.present? ? user_path(article.fetch_top_comment.user.id) : nil, remote: true do
       .top-article-user
         .top-user-icon
-          = image_tag article.user.avatar_image.present? ? article.user.avatar_image : 'user-image.png', { class: 'icon-image'}
+          = top_user_avatar_image(article.fetch_top_comment)
 
         .top-user-info
           .top-user-name
-            = article.user.name
+            = top_user_name(article.fetch_top_comment)
           .top-user-status
-            = article.user.position
+            = top_user_position(article.fetch_top_comment)
       .top-article-comment
         = link_to article_path(article.user.id) do
           .top-comment-text
-            = article.comments.first.present? ? article.comments.first.content : "コメントはありません"
+            = top_user_comment(article.fetch_top_comment)
 
         - 0.upto(4) do |num|
           - if article.comments[num].present?
@@ -54,20 +54,20 @@
       .title_ellipsised
         = article.title.truncate(50)
 
-    = link_to user_path(article.user.id), remote: true do
+    = link_to article.comments.first.present? ? user_path(article.fetch_top_comment.user.id) : nil, remote: true do
       .article-user
         .user-icon
-          = image_tag article.user.avatar_image.present? ? article.user.avatar_image : 'user-image.png', { class: 'icon-image'}
+          = top_user_avatar_image(article.fetch_top_comment)
 
         .user-info
           .user-name
-            = article.user.name
+            = top_user_name(article.fetch_top_comment)
           .user-status
-            = article.user.position
+            = top_user_position(article.fetch_top_comment)
       .article-comment
         = link_to article_path(article.user.id) do
           .comment-text
-            = article.comments.first.present? ? article.comments.first.content : "コメントはありません"
+            = top_user_comment(article.fetch_top_comment)
 
         - 0.upto(4) do |num|
           - if article.comments[num].present?
