@@ -8,14 +8,14 @@ class QuestionsController < ApplicationController
   def show
     @a_question = Question.find(params[:id])
     @a_user = User.find(params[:user_id])
+    if @a_question.answer.present?
+      @a_answer = Answer.find(@a_question.answer.id)
+    end
   end
 
   def create
     question = Question.create(question_params)
     redirect_to user_question_path(@user.id, question.id)
-  end
-
-  def update
   end
 
   def destroy
@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:content).merge(user_id: current_user.id)
+    params.require(:question).permit(:content).merge(user_id: @user.id)
   end
 
   def set_news
@@ -37,7 +37,7 @@ class QuestionsController < ApplicationController
   def set_need
     @user = User.find(params[:user_id])
     @answers = Answer.all.limit(10)
-    @questions = Question.order("created_at DESC").limit(10)
+    @questions = Question.where( user_id: @user ).order( "created_at DESC" ).limit(10)
   end
 
 end

@@ -4,8 +4,11 @@
       %span.question-date
         日付 #{question.date}
     .answer
-      -# = question.answer.content
-      ああああ
+      - if question.answer.present?
+        = question.answer.content
+      - else
+        回答はまだありません
+
     .question-show
       = link_to user_question_path(@user.id, question.id), { class: "answer-box-wrapper" } do
         .question-wrapper

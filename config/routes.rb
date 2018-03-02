@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :follows, only: [:index, :create, :destroy]
     resources :followers, only: [:index]
     resources :questions, only: [:index, :show, :create, :update, :destroy] do
-      resources :answers, only: [:create]
+      resources :answers, only: [:create, :update]
     end
   end
 

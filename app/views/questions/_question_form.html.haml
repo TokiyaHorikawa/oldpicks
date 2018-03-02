@@ -1,11 +1,11 @@
 .question-container
   .user-label
     - if current_page?(user_questions_path)
-      早速　(#{@user.name}) さんに質問してみましょう
-      %p これは「目安箱（公式）」の目安箱です。フォロワーさんと送信先を間違っていないかご確認ください。
+      早速、#{@user.name} さんに質問してみましょう
+      / %p これは「目安箱（公式）」の目安箱です。フォロワーさんと送信先を間違っていないかご確認ください。
     -else
       他の質問もして見ませんか？
-      ここから匿名で〇〇さんに質問を送れます
+      ここから匿名で#{@user.name}さんに質問を送れます
     .user-form-area
       = form_for [@user, @question] do |f|
         = f.text_area :content, { class: 'question-form-area' }

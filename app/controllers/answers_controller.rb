@@ -5,6 +5,12 @@ class AnswersController < ApplicationController
     redirect_to user_questions_path(user.id)
   end
 
+  def update
+    @answers = Answer.find(params[:id])
+    @answers.update(answer_params)
+    redirect_to user_questions_path(current_user.id)
+  end
+
   private
   def answer_params
     params.require(:answer).permit(:content).merge(question_id: params[:question_id], user_id: current_user.id)

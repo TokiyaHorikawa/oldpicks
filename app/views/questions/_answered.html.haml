@@ -1,8 +1,9 @@
-/ if文で分ける
 .answer-box-list
   .question-label-info
-    #{@user.name}さんが過去に答えた質問
-    = render partial: "answer-card", collection: @questions, as: :question
-    .no-answer
-      %div !!
-      まだありません。受け取った質問に回答するとこちらに移動します
+    過去の#{@user.name}さんへの質問
+    -if @user.questions.present?
+      = render partial: "answer-card", collection: @questions, as: :question
+    -else
+      .no-answer
+        %div !!
+        まだありません。受け取った質問に回答するとこちらに移動します
