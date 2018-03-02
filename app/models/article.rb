@@ -39,6 +39,6 @@ class Article < ApplicationRecord
   end
 
   def fetch_top_comment
-    self.comments.includes(:user).order("like_counts DESC").take(1).first
+    self.comments.includes(:user).order("like_counts DESC").first
   end
 end
