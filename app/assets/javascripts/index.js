@@ -22,6 +22,7 @@ $(document).on('turbolinks:load', function() {
       dots: true,
       arrows:true,
       accessibility: true,
+      swipe:true,
     });
 
 });
