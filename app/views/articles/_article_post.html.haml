@@ -27,13 +27,15 @@
                 .pick-site
                 .cover-controls
                   .cover
-                    Icon
+                    = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', {class: "cover"}
                   = fields_for @comment do |o|
                     .comment-container
                       = o.text_area :content, placeholder: "コメントを書く（任意）", class: "comment"
                     .pick-control
                       .description シェアする
-                      .sns.twitter twitter
-                      .sns.facebook facebook
+                      .sns.twitter
+                        = image_tag "twitter-gray.png"
+                      .sns.facebook
+                        = image_tag "facebook-gray.png"
               .pick
                 = f.submit 'Pick', class: 'pick-font'
