@@ -48,14 +48,17 @@
       }
     }
   }
-  .logo
+  .logo{
     .logo-mark{
       display: inline-block;
       float: left;
-      margin: 10px 100px;
+      padding: 10px 0;
+      position: absolute;
+      left: 35%;
       font-size: 25px;
       color: white;
     }
+  }
   .right-items{
     position: absolute;
     right: 0;

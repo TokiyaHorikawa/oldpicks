@@ -1,0 +1,14 @@
+.you_or_other これは#{@user.name}さんの目安箱です。誰でも匿名で質問を送ることができます。
+.container-user-top
+  .bar
+  .user-label
+    #{@user.name}さんの目安箱
+  .user-icon
+    - if @user.avatar_image.present?
+      = image_tag @user.avatar_image, {class: 'user-icon'}
+    - else
+      = image_tag 'user-image.png', {class: 'user-icon'}
+  .question-name
+    = @user.name
+  .question-profile
+    何でも質問してください!!

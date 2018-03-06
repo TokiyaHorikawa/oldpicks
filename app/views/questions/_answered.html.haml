@@ -1,0 +1,9 @@
+.answer-box-list
+  .question-label-info
+    過去の#{@user.name}さんへの質問
+    -if @user.questions.present?
+      = render partial: "answer-card", collection: @questions, as: :question
+    -else
+      .no-answer
+        %div !!
+        まだありません。受け取った質問に回答するとこちらに移動します

@@ -1,0 +1,19 @@
+- if current_user.id == @a_user.id
+  .question-container
+    - if @a_question.answer.present?
+      .user-label
+        回答を編集できます
+        .user-form-area
+          = form_for ([@a_user, @a_question, @a_answer]) do |f|
+            = f.text_area :content, { class: 'question-form-area' }
+            .question-submit-button
+              = f.submit '回答する'
+    - else
+      .user-label
+        質問に回答しましょう
+        .user-form-area
+          = form_for ([@a_user, @a_question, @answer]) do |f|
+            = f.text_area :content, { class: 'question-form-area' }
+            .question-submit-button
+              = f.submit '回答する'
+

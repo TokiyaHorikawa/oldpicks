@@ -81,6 +81,19 @@
       float: left;
       padding: 0;
       min-height: calc( ( 910px - 220px) * 0.3 );
+      .article-empty{
+        height: 100%;
+        font-size: 24px;
+        font-family: HiraMinPro-W6;
+        font-style: oblique;
+        border-bottom: 1px white solid;
+        border-right: 1px white solid;
+        .text{
+          text-align: center;
+          position: relative;
+          top: 70px;
+        }
+      }
       .top{
         height: calc( ( 100vw - 185px ) * 0.3 * 0.5);
         min-height: calc( ( 910px - 220px) * 0.3 * 0.5);
