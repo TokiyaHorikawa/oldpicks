@@ -5,12 +5,12 @@ $(document).on('turbolinks:load', function() {
     function buildPageinfo(page) {
       // 記事概要HTML生成
       var html = '<div class="pageinfo">' +
-                    '<div class="page-thumbnail" style="background-image: url(' + page.image + '); background-size: contain; height: 120px; width: 120px;"></div>' +
+                    '<div class="page-thumbnail" style="background-image: url(' + page.image + '); background-size: cover; height: 120px; width: 120px;"></div>' +
                     '<div class="texts">' +
-                      '<div class="title_ellipsised" style="overflow: initial;">' +
+                      '<div class="title_ellipsised" style="overflow: hidden; height: 45px;">' +
                       '<span> ' + page.title + ' </span>' +
                       '</div>' +
-                      '<div class="summary_ellipsised" title=' + page.title + ' style="overflow: initial;">' +
+                      '<div class="summary_ellipsised" title=' + page.title + ' style="overflow: hidden; height: 75px;">' +
                         '<span> ' + page.description + ' </span>' +
                        '</div>' +
                     '</div>' +
@@ -51,7 +51,7 @@ $(document).on('turbolinks:load', function() {
       $('.pick').show();
     });
     // keyupで記事概要表示
-    $("#url-pick-box").on("keyup", function() {
+    $("#url-pick-box").one("keyup", function() {
       var input = $('#url-pick-box').val();
       $.ajax({
         type: 'GET',
@@ -71,9 +71,10 @@ $(document).on('turbolinks:load', function() {
         $('.post_description').append(page.description)
         $('.post_image').append(page.image)
         $('.post_site_name').append(page.site_name)
+        $('.notfound').show();
       })
         // 条件分岐に変える
-        $('notfound').show();
+        // $('.notfound').show();
     });
   });
 });

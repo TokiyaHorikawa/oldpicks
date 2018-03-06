@@ -12,11 +12,12 @@
   }
   .article-image{
     box-sizing: border-box;
-    height: 25%;
+    height: 130px;
     width: 100%;
     .image{
       height: 100%;
       width: 100%;
+      object-fit: cover;
       &:hover{
         opacity: .8;
       }
@@ -25,7 +26,7 @@
   .picks{
     display: inline-block;
     position: relative;
-    bottom: 95px;
+    bottom: 110px;
     left: 280px;
     width: 80px;
     padding: 5px 10px;

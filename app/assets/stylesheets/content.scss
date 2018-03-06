@@ -20,8 +20,9 @@
       z-index: 1;
       .slide-image{
         width: 100%;
-        height: 100%;
+        height: 370.5px;
         border-right: 1px white solid;
+        object-fit: cover;
         // &:hover{
         //   background-color: rgba(0,0,0,0.7);
         //   position: absolute;
@@ -106,6 +107,7 @@
           height: calc( ( 100vw - 185px ) * 0.3 * 0.5);
           min-height: calc( ( 910px - 220px) * 0.3 * 0.5);
           border-bottom: 1px white solid;
+          object-fit: cover;
         }
         .capture{
           position: absolute;
@@ -137,6 +139,7 @@
           width: 100%;
           height: calc( ( 100vw - 185px ) * 0.3 * 0.5);
           min-height: calc( ( 910px - 220px) * 0.3 * 0.5);
+          object-fit: cover;
         }
         .capture{
           position: absolute;
