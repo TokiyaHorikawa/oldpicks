@@ -10,19 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213062658) do
+ActiveRecord::Schema.define(version: 20180222112934) do
+
+  create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "content",     limit: 65535, null: false
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["question_id"], name: "index_answers_on_question_id", using: :btree
+    t.index ["user_id"], name: "index_answers_on_user_id", using: :btree
+  end
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "url",            null: false
     t.integer  "user_id"
-    t.integer  "comment_counts"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "title",          null: false
     t.string   "description",    null: false
     t.string   "image",          null: false
     t.string   "site_name",      null: false
-    t.integer  "pick_counts"
+    t.integer  "comment_counts"
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
   end
 
@@ -30,9 +39,9 @@ ActiveRecord::Schema.define(version: 20180213062658) do
     t.text     "content",     limit: 65535, null: false
     t.integer  "user_id"
     t.integer  "article_id"
-    t.integer  "like_counts"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "like_counts"
     t.index ["article_id"], name: "index_comments_on_article_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
@@ -51,13 +60,18 @@ ActiveRecord::Schema.define(version: 20180213062658) do
 
   create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
-    t.integer  "article_id"
     t.integer  "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_likes_on_article_id", using: :btree
     t.index ["comment_id"], name: "index_likes_on_comment_id", using: :btree
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
+  end
+
+  create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "content",    limit: 65535, null: false
+    t.integer  "user_id",                  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -112,7 +126,6 @@ ActiveRecord::Schema.define(version: 20180213062658) do
   add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
-  add_foreign_key "likes", "articles"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "users"
 end
