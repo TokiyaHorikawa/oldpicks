@@ -19,3 +19,12 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# AWS_keyなど
+config/secrets.yml
+
+# 画像を上げない
+*.png
+*.jpg
+*.gif
+*.jpeg
