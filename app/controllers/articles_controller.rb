@@ -6,10 +6,10 @@ class ArticlesController < ApplicationController
   def index
     @article = Article.new
     @comments = Comment.includes(:user).order("like_counts DESC").limit(4)
-    @head_articles = Article.where(params[:id]).limit(2)
     @slider_articles = Article.tagged_with('スライダー').limit(7)
     @top_articles = Article.tagged_with('トップ').limit(4)
     @latest_articles = Article.order('created_at DESC').limit(8)
+    @feature_articles = Article.tagged_with("特集").limit(2)
     @tech_articles = Article.tagged_with("テクノロジー").limit(3)
     @business_articles = Article.tagged_with("ビジネス").limit(3)
     @economy_articles = Article.tagged_with("政治").limit(3)

@@ -116,6 +116,18 @@
               display: inline-block;
               float: left;
             }
+            .tab-item-question{
+              padding: 15px 24px 8px;
+              width: 100px;
+              height: 54px;
+              text-align: center;
+              transition: all .1s ease-in-out;
+              color: #15274D;
+              cursor: auto;
+              border-bottom: 4px solid #15274D;
+              display: inline-block;
+              float: left;
+            }
             .count{
               font-size: 16px;
               font-weight: 700;
@@ -125,6 +137,11 @@
               font-size: 9px;
               color: #999;
               padding-bottom: 5px;
+            }
+            .tab-title{
+              pointer-events: none;
+              display: block;
+              font-weight: 700;
             }
             a{
               text-decoration: none;
@@ -478,6 +495,7 @@
             #thumbnail-image{
               height:100%;
               width: 100%;
+              object-fit: cover;
             }
           }
           .picks-block{

@@ -37,4 +37,8 @@ class Article < ApplicationRecord
       return "たった今"
     end
   end
+
+  def fetch_top_comment
+    self.comments.includes(:user).order("like_counts DESC").first
+  end
 end

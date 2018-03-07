@@ -15,7 +15,7 @@
               -# 管理者権限0のみ表示
               - if current_user.admin == 0
                 .tag
-                  = f.text_area :tag_list, placeholder: "[選択]トップ,スライダー,テクノロジー,ビジネス,政治,金融,キャリア,社会,ジョブ,過去記事,アナリスト", value: @article.tag_list.join(','), class: 'tag-list'
+                  = f.text_area :tag_list, placeholder: "[選択]トップ,スライダー,特集,テクノロジー,ビジネス,政治,金融,キャリア,社会,ジョブ,過去記事,アナリスト", value: @article.tag_list.join(','), class: 'tag-list'
               .notfound
                 指定されたページがありません。
               .urlpick-dialog-content
@@ -27,13 +27,15 @@
                 .pick-site
                 .cover-controls
                   .cover
-                    Icon
+                    = image_tag current_user.avatar_image.present? ? current_user.avatar_image : 'user-image.png', {class: "cover"}
                   = fields_for @comment do |o|
                     .comment-container
                       = o.text_area :content, placeholder: "コメントを書く（任意）", class: "comment"
                     .pick-control
                       .description シェアする
-                      .sns.twitter twitter
-                      .sns.facebook facebook
+                      .sns.twitter
+                        = image_tag "twitter-gray.png"
+                      .sns.facebook
+                        = image_tag "facebook-gray.png"
               .pick
                 = f.submit 'Pick', class: 'pick-font'

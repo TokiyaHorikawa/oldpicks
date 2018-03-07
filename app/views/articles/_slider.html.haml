@@ -3,7 +3,7 @@
     = image_tag article.image, { class: 'slide-image'}
     .capture_string
       .picks
-        45
+        = article.comment_counts
         .small-letter
           Picks
       .title
@@ -12,4 +12,4 @@
         .source
           = article.site_name.truncate(20)
         .time
-          12時
+          = article.before_time

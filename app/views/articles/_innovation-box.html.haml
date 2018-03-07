@@ -1,27 +1,27 @@
 .innovation-article
-  = link_to root_path do       #仮置きのリンク
+  = link_to article_path(article.id) do
     .innovation-article-image
       / - if article.image.present?
-      = image_tag 'sky.jpg', { class: 'innovation-image'}
+      = image_tag article.image, { class: 'innovation-image'}
       / - else
 
       .innovation-picks
         .innovation-picks-count
-          10
+          = article.comment_counts
         %span.innovation-picks-small-letter
           Picks
 
     .innovation-title_ellipsised
-      ネット広告市場に忍び寄るアマゾンの脅威　 eコマースの巨人、すでにツイッターを上回る広告収入
+      = article.title.truncate(50)
 
-
-  = link_to root_path do       #仮置きのリンク
-    .innovation-comment-user
-      = image_tag 'sky.jpg', { class: 'innovation-comment-user-icon'}
-      = image_tag 'sky.jpg', { class: 'innovation-comment-user-icon'}
+  - 0.upto(4) do |num|
+    - if article.comments[num].present?
+      = link_to user_path(article.comments[num].user_id), remote: true do
+        .innovation-comment-user
+          = image_tag article.comments[num].user.avatar_image.present? ? article.comments[num].user.avatar_image : 'user-image.png', { class: 'innovation-comment-user-icon' }
 
   .bottom
     .innovation-publisher
-      ITmedia ビジネスオンライン
+      = article.site_name.truncate(20)
     .innovation-published
-      10時間前
+      = article.before_time

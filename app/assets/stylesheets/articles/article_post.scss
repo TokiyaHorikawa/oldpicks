@@ -72,6 +72,8 @@
                   margin: 15px 0;
                   .page-thumbnail{
                     float: left;
+                    margin-right: 20px;
+                    background: center center/cover no-repeat;
                   }
                   .texts{
                     overflow: hidden;
@@ -93,6 +95,8 @@
                 margin-top: 25px;
                 .cover{
                   float: left;
+                  height: 40px;
+                  width: 40px;
                 }
                 .comment-container{
                   float: right;
@@ -119,12 +123,22 @@
                   margin-right: 90px;
                   .description{
                     margin-left: 10px;
+                    font-size: 8px;
+                    color: #999;
                   }
                   .sns.twitter{
                     margin-left: 10px;
+                    img{
+                      height: 16px;
+                      width: 16px;
+                    }
                   }
                   .sns.facebook{
                     margin-left: 10px;
+                    img{
+                      height: 16px;
+                      width: 16px;
+                    }
                   }
                 }
               }
