@@ -510,6 +510,7 @@
             border-right: none;
             width: auto;
             height: auto;
+            text-shadow: 0px 0px 15px #191919;
             .pick-counts{
               position: absolute;
               left: 0;
@@ -526,7 +527,7 @@
           .show-title_ellipsised{
             font-size: 16px;
             margin: 16px 20px 12px;
-            height: 48px;
+            height: 45px;
             overflow: hidden;
             white-space: normal;
             text-overflow: ellipsis;
