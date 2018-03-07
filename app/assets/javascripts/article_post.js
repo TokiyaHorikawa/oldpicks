@@ -71,7 +71,7 @@ $(document).on('turbolinks:load', function() {
         $('.post_description').append(page.description)
         $('.post_image').append(page.image)
         $('.post_site_name').append(page.site_name)
-        $('.notfound').show();
+        // $('.notfound').show();
       })
         // 条件分岐に変える
         // $('.notfound').show();

@@ -6,28 +6,30 @@
     .col-md-4.sub
       .top
         - if @feature_articles.present?
-          = image_tag @feature_articles[0][:image], { class: 'top-image'}
-          .capture
-            .special
-              特集
-            .about
-              トーク
-            .title
-              = @feature_articles[0][:title]
+          = link_to article_path(@feature_articles[0]) do
+            = image_tag @feature_articles[0][:image], { class: 'top-image'}
+            .capture
+              .special
+                特集
+              .about
+                トーク
+              .title
+                = @feature_articles[0][:title]
         - else
           .article-empty
             .text  No Article
 
       .bottom
         - if @feature_articles[1].present?
-          = image_tag @feature_articles[1][:image], { class: 'bottom-image'}
-          .capture
-            .special
-              特集
-            .about
-              トーク
-            .title
-              = @feature_articles[1][:title]
+          = link_to article_path(@feature_articles[1]) do
+            = image_tag @feature_articles[1][:image], { class: 'bottom-image'}
+            .capture
+              .special
+                特集
+              .about
+                トーク
+              .title
+                = @feature_articles[1][:title]
         - else
           .article-empty
             .text  No Article
