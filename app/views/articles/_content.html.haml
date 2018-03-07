@@ -48,14 +48,14 @@
         .innovation-header
           %h4.title イノベーション
           = image_tag 'IBM.png', { class: 'ibm-logo'}
-          = link_to "イノベーション 一覧を見る", user_signed_in? ? root_path : user_session_path, { class: 'innovation-link'}
+          = link_to "__ My 目安箱リンク __", user_signed_in? ? user_questions_path(current_user.id) : user_session_path, { class: 'innovation-link'}
         .innovation-content
           .innovation-left-block
-            = render partial: 'innovation-box'
-            = render partial: 'innovation-box'
+            = render partial: 'innovation-box', collection: @feature_articles, as: :article
           .innovation-right-block
-            = image_tag 'sky.jpg', { class: 'innovation-right-image'}
-            = link_to "もっと見る", '#', { class: 'innovation-right-block-link'}
+            = link_to user_signed_in? ? user_questions_path(current_user.id): user_session_path do
+              = image_tag 'https://stat.ameba.jp/user_images/20171115/22/akiyamaatakta/86/07/j/o0960063514071247748.jpg', { class: 'innovation-right-image'}
+              -# .innovation-right-block-link 使ってみる
 
     .genre-topic
       .genreblock
