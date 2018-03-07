@@ -247,10 +247,14 @@
             height: 400px;
             width: 630px;
             float: left;
-            .innovation-right-image{
+            .innovation-right-image {
               width: 500px;
               height:320px;
               margin: 20px 0 20px 50px;
+              box-shadow: 0 0 20px 13px black;
+              &:hover {
+                box-shadow: 0px 0px 20px 7px #bfd7ec;
+              }
             }
             .innovation-right-block-link{
               z-index: 1;
