@@ -5,30 +5,32 @@
 
     .col-md-4.sub
       .top
-        - if @head_articles.present?
-          = image_tag @head_articles[0][:image], { class: 'top-image'}
+        - if @feature_articles.present?
+          = image_tag @feature_articles[0][:image], { class: 'top-image'}
           .capture
             .special
               特集
             .about
               トーク
             .title
-              = @head_articles[0][:title]
+              = @feature_articles[0][:title]
         - else
-          %p No Article
+          .article-empty
+            .text  No Article
 
       .bottom
-        - if @head_articles[1].present?
-          = image_tag @head_articles[1][:image], { class: 'bottom-image'}
+        - if @feature_articles[1].present?
+          = image_tag @feature_articles[1][:image], { class: 'bottom-image'}
           .capture
             .special
               特集
             .about
               トーク
             .title
-              = @head_articles[1][:title]
+              = @feature_articles[1][:title]
         - else
-          %p No Article
+          .article-empty
+            .text  No Article
   .topic
     .top-topic
       .top-article-block
