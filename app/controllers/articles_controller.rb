@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
     @slider_articles = Article.tagged_with('スライダー').limit(7)
     @top_articles = Article.tagged_with('トップ').limit(4)
     @latest_articles = Article.order('created_at DESC').limit(8)
-    @feature_articles = Article.tagged_with("特集").limit(2)
+    @feature_articles = Article.tagged_with("特集").order("created_at DESC").limit(2)
     @tech_articles = Article.tagged_with("テクノロジー").limit(3)
     @business_articles = Article.tagged_with("ビジネス").limit(3)
     @economy_articles = Article.tagged_with("政治").limit(3)
