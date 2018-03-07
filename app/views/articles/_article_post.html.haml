@@ -15,7 +15,7 @@
               -# 管理者権限0のみ表示
               - if current_user.admin == 0
                 .tag
-                  = f.text_area :tag_list, placeholder: "[選択]テクノロジー,ビジネス,政治,金融,キャリア,社会,ジョブ,過去記事,アナリスト,特集", value: @article.tag_list.join(','), class: 'tag-list'
+                  = f.text_area :tag_list, placeholder: "[選択]トップ,スライダー,特集,テクノロジー,ビジネス,政治,金融,キャリア,社会,ジョブ,過去記事,アナリスト", value: @article.tag_list.join(','), class: 'tag-list'
               .notfound
                 指定されたページがありません。
               .urlpick-dialog-content
