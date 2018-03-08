@@ -8,12 +8,12 @@
       .go-logon
       %span.go アカウントをお持ちでない方は
       = link_to '新規登録へ', new_user_registration_path, {class: 'login'}
-      = link_to 'https://www.facebook.com/' do
+      = link_to '#' do
         %button.register-fb
           = image_tag 'facebook.png', {class: 'fb-btn'}
           %span.facebook Facebookでログイン
       %br
-      = link_to 'https://twitter.com/?lang=ja' do
+      = link_to '#' do
         %button.register-tw
           = image_tag 'twitter.png', {class: 'tw-btn'}
           %span.twetter Twitterでログイン
