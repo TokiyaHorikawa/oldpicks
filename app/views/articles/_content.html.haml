@@ -48,8 +48,8 @@
     .innovation-topic
       .innovation-block
         .innovation-header
-          %h4.title イノベーション
-          = image_tag 'IBM.png', { class: 'ibm-logo'}
+          %h4.title 【特集】○○を知るには歴史を学べ！！
+          -# = image_tag 'IBM.png', { class: 'ibm-logo'}
           = link_to "__ My 目安箱リンク __", user_signed_in? ? user_questions_path(current_user.id) : user_session_path, { class: 'innovation-link'}
         .innovation-content
           .innovation-left-block
