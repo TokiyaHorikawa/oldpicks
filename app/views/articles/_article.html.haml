@@ -24,7 +24,7 @@
           .top-user-status
             = top_user_position(article.fetch_top_comment)
       .top-article-comment
-        = link_to article_path(article.user.id) do
+        = link_to article_path(article.id) do
           .top-comment-text
             = top_user_comment(article.fetch_top_comment)
 
@@ -65,7 +65,7 @@
           .user-status
             = top_user_position(article.fetch_top_comment)
       .article-comment
-        = link_to article_path(article.user.id) do
+        = link_to article_path(article.id) do
           .comment-text
             = top_user_comment(article.fetch_top_comment)
 
