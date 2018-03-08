@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
     @comments = Comment.includes(:user).order("like_counts DESC").limit(4)
     @slider_articles = Article.tagged_with('スライダー').order("created_at DESC").limit(7)
     @top_articles = Article.tagged_with('トップ').order("created_at DESC").limit(4)
+    @top_likes = Article.order("comment_counts DESC").limit(3)
     @latest_articles = Article.order('created_at DESC').limit(8)
     @feature_articles = Article.tagged_with("特集").order("created_at DESC").limit(2)
     @tech_articles = Article.tagged_with("テクノロジー").order("created_at DESC").limit(3)

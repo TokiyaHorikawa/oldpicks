@@ -43,7 +43,7 @@
             新着ニュース
           = render partial: 'latest-new', collection: @latest_articles, as: :article
       .bottom-article-block
-        = render partial: 'article', collection: @tech_articles, as: :article
+        = render partial: 'article', collection: @top_likes, as: :article
 
     .innovation-topic
       .innovation-block
